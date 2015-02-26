@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2015 by HumanMan (http://jsbin.com/simeti/9/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+<meta name="description" content="sqlnotebookdesign">
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/4.12.0/codemirror.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/4.12.0/mode/sql/sql.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.4.0/less.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/4.12.0/codemirror.css" rel="stylesheet">
+  <link rel="stylesheet/less" type="text/css" href="content/style.less" />
+</head>
+<body>
+  <header>
+    <h1>Sql Notebook</h1>
+    <ul>
+      <li><a href="#">File</a></li>
+      <li><a href="#">Edit</a></li>
+      <li><a href="#">View</a></li>
+      <li><a href="#">Help</a></li>
+    </ul>
+  </header>
+  <section>
+    <div class="cell">
+      <div class="input">
+        <label>In <em>[<b>1</b>]</em>:</label>
+        <div class="editor"><textarea>SELECT * 
+FROM tablea
+WHERE tablea.col1 = 10
+AND tablea.col2 in (23,34);</textarea></div>
+      </div>
+      <div class="output">
+        <label>Out<em>[<b>1</b>]</em>:</label>
+        <pre>
+        </pre>
+      </div>
+    </div>
+    <div class="cell">
+      <div class="input">
+        <label>In <em>[<b>1</b>]</em>:</label>
+        <div class="editor"><textarea></textarea></div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <p>Sql Notebook - 2015 <em>James Peach</em> - UoM</p>
+  </footer>
+<script id="jsbin-javascript">
+var textAreas = document.getElementsByTagName('textarea');
+var textAreaObjects = [];
+
+for(var ti=0;ti<textAreas.length;ti++){
+  var ta = textAreas[ti]; 
+  textAreaObjects.push({ta:ta});
+}
+for(var ti=0;ti<textAreaObjects.length;ti++){
+  var tao = textAreaObjects[ti];
+  tao.cm = CodeMirror.fromTextArea(tao.ta,{
+    mode:'text/x-mssql',
+    linenumbers:true
+  });
+  
+}
+</script>
+</body>
+</html>
