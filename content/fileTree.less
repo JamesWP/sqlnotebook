@@ -1,0 +1,51 @@
+.fileTree{
+  ul{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    padding:0;
+    margin:0;
+  }
+  li{
+    margin:0;
+    padding:0 0;
+    display:flex;
+    flex-direction:column;
+    .info{
+      padding:3px 0;
+      display:flex;
+      flex-direction:row;
+      &:hover{
+        background:blue;
+      }
+    }
+    a{
+      box-sizing:border-box;
+      text-decoration:none;
+      color:black;
+      width:200px;
+      overflow: hidden; 
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      &:before{
+        font-family: FontAwesome;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: inherit;
+        content:"\f114";
+        position:relative;
+        padding-right:10px;
+        left:0;
+        top:0;
+        bottom:0;
+      }
+    }
+    .modified{
+      width:200px;
+    }
+  }
+  li a {padding-left:20px;}
+  li li a {padding-left:30px;}
+  li li li a {padding-left:40px;}
+  li li li li a {padding-left:50px;}
+}

@@ -1,0 +1,29 @@
+
+
+POST /Session/
+      Returns: new session
+        SessionToken
+GET  /Session/:SessionToken.json
+      Returns: session info or 404
+POST /Session/Logout/:SessionToken/
+      Returns: ok
+
+GET  /Storage/:SessionToken/Directory/:Path.json
+POST /Storage/:SessionToken/Directory/:Path/
+POST /Storage/:SessionToken/Directory/Delete/:Path/
+GET  /Storage/:SessionToken/File/:Path.json
+POST /Storage/:SessionToken/File/:Path/
+POST /Storage/:SessionToken/File/Delete/:Path/
+
+POST /Connection/
+      Returns new session
+        ConnectionToken
+GET  /Connection/:ConnectionToken.json
+POST /Connection/Close/:ConnectionToken/
+POST /Connection/Parse/:ConnectionToken/
+      Returns: new query token
+        QueryToken
+
+GET  /Query/:QueryToken.json
+POST /Query/:QueryToken/Execute
+GET  /Query/:QueryToken/Results.json

@@ -1,0 +1,12 @@
+Created: Mon 21 Sep 12:56
+Event: Reasearch
+
+Description:
+found a parser generator that will take a grammar and an input and produce 
+a javascript module to parse the grammar
+
+this should allow me to validate sql syntax or highlight my source locally and
+not have to rely on sql server to do this for me
+
+
+Url: http://pegjs.org/online
