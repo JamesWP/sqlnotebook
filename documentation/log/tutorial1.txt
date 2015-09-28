@@ -1,0 +1,33 @@
+28th september
+
+- Goals and Plan
+
+. Minutes after meeting
+. Agenda to be sent 24h before next meeting
+
+
+Deliverables for next meeting:
+
+. Minutes of previous meeting
+. Agenda for next meeting
+. Writen scope / Proposal
+  - Before process
+  - After process
+  - Functional requirements
+  - Rank of functional requirements
+
+
+Discussions
+
+. Logbook is a good idea
+. Split project into three stages
+  - each stage should be accompanied with a small writeup
+    to help produce the report
+
+
+Points of further research:
+
+. interface types
+. different flows of processes for database admins
+. an interface might be a metaphore for somthing i.e. notebook
+. a notebook has a history of all code, searchable to aid reuse
