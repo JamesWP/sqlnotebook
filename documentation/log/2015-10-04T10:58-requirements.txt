@@ -1,0 +1,60 @@
+Course/Project:  log
+Date:            04/10/15 10:58
+
+
+Some common tasks for a developer:-
+  - Fix Bugs
+  - Support call
+  - Data
+    * enquiry
+    * admin
+    * insert
+  - View database structure
+
+Data Task Flow:-
+    . (open project and view related saved scripts // notes // diagram)
+  - Look at the table list find related tables
+    . (relates tables are presented)
+  - Find the related data and define a search predecate for it
+    . (interactive ui to query the data)
+  - edit the related data 
+    . (edit data excel style incl create a script)
+    . (open related rows in other tables)
+    . (data may be xml format)
+  - if xml then no internal editor have to write update manually
+  - observe the correct data from the front end
+
+Fix Bugs:-
+  - connect to database
+  - execute the debug command and find the erronious request
+    sql: "exec log.last"
+  - view list of requests (some xml, opens in new tab )
+  - expore the debugging traces from the request
+  - find and open the procedure that needs editing
+  - open multiple other related procedures
+  - edit and save the procedure and re run the request
+
+Support call:-
+  - connect to database
+  - find other support calls that may help / relate to the call
+  - remember what was done
+  see: Fix Bugs
+
+View database structure:-
+  - connect to database
+  - open list of tables in object browser
+  - open table column list
+  - view associated database diagram for database ( not always present )
+  - open (for viewing) the definition of a stored procedure
+
+Implement new procedure:-
+  - an existing procedure is found and opened for editing
+  - the opened procedure definition is changed into a CREATE and the name is
+    changed to the new name
+    . (a new procedure can be created with the same signature as an existing proc)
+    . (these could be stored in the project file)
+  - run the CREATE statement 
+  - change the CREATE to an ALTER before making any more changes
+  - run the procedure with some test parameters
+  - edit the procedure as required
+

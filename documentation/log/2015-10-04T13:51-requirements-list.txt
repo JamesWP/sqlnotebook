@@ -1,0 +1,43 @@
+Course/Project:  log
+Date:            04/10/15 13:51
+
+Requirements for the project:
+
+
+The interface needs to be Web based.
+
+The interface should store all required files for remote access so any browser
+can be used anywhere.
+
+The focus for all operations will be Project oriented. when a project is opened
+the primary database and all supporting databases on the server will be opened
+and all else will be hidden (reduce clutter).
+
+For each project (usually single database) there will be a collection of
+scripts stored for easy access and manipulation. These scripts will allow
+the developer to view the previous actions performed.
+
+When a developer needs to accomplish a task, all the things he has done are
+automatically ( or easily ) saved into the history of the project to aid future
+reference.
+
+Frequently executed statements and there results can be viewed on the screen
+and updated with ease.
+
+Results for frequent queries can have there results shown in different ways
+so as a list or a grid or pie charts etc.
+
+When looking into a table, filters will be easily applied and related records
+in other tables will be easily viewed. ( via foreign keys )
+
+When a result contains an xml type result there will be integrated tools to
+edit the document and save it back. ( cutently this is acheived by opening a
+new window to view the document, and to save the resulting xml is copied into 
+an UPDATE statement )
+
+When creating a new procedure, an existing procedure signature can be picked 
+as a template.
+
+When developing, it is usefull to have a quick reference to the definition of
+some tables. this would be a good use of extra screen space.
+
