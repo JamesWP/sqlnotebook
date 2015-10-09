@@ -1,0 +1,17 @@
+{
+  "name": "sqlnotebook",
+  "version": "1.0.0",
+  "description": "a single page web based sql server ide",
+  "main": "index.js",
+  "dependencies": {
+    "react": "^0.14.0",
+    "react-global": "^0.1.8",
+    "typescript": "^1.7.0-dev.20151006"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
