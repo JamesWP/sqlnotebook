@@ -1,0 +1,41 @@
+Course/Project:  log
+Date:            05/10/15 12:09
+
+Tutorial 2
+
+MVP Agreed
+
+The metaphor was agreed
+  Notebook
+    Tabs
+      Types:- Content | Result | Interactive
+      Examples:- "Scripts", "Test Cases"
+
+Other notes for future implementation:-
+  - if a peice of content is runnable, there is an action associated to run it
+  - if a peice of context is an outcome of executing other content then you
+    should be able to bind to bind it, or view the code that created it (if 
+    links exist between them)
+  - when you have code, running it created the outcome object and then a link 
+    is created between them, changes to one or the other can be linked back 
+    and allow for updating.
+    * the link can be broken and this is then a historical output or script
+      with no curent link
+  - "all" the content is indexed, if it exists there will be a method to search
+    for it and find it again
+  - history needs to be visible for all actions and previous outputs of queries
+  - there will be a set of display modes (extendable) that will detect output 
+    in a form and display it into the window in the custom format
+    * pie charts
+    * hirachy
+    * tables 
+      etc...
+  
+
+Stuff for next week:
+  - MVP
+    * UI partial
+    * code execution and results view
+    * code execution api first
+    * notebook interface
+
