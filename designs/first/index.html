@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="description" content="sqlnotebookdesign">
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/4.12.0/codemirror.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/4.12.0/mode/sql/sql.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-handsontable/0.10.2/jquery.handsontable.full.min.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="content/style.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/4.12.0/codemirror.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-handsontable/0.10.2/jquery.handsontable.full.min.css" rel="stylesheet">
+ 
+</head>
+<body>
+  <header>
+    <div id="topBar">
+      <h1>Sql Notebook Menu</h1>
+      <ul id="topMenu">
+        <li for=""><a href="#">File</a></li>
+        <li for="edit"><a href="#">Edit</a></li>
+        <li><a href="#">View</a></li>
+        <li><a href="#">Help</a></li>
+      </ul>
+    </div>
+  </header>
+  <div class="wrapper">
+    <section>
+      <div class="cell">
+        <div class="input">
+          <label>In <em>[<b>1</b>]</em>:</label>
+          <div class="editor"><textarea>SELECT * 
+    FROM tablea
+    WHERE tablea.col1 = 10
+    AND tablea.col2 in (23,34);</textarea></div>
+        </div>
+        <div class="output">
+          <label>Out<em>[<b>1</b>]</em>:</label>
+          <div class="tableScroll" id="table1">
+            <table>
+              <colgroup>
+                <col class="column1">
+                <col class="columns2plus3" span="2">
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>Lime</th>
+                  <th>Lemon</th>
+                  <th>Orange</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Green</td>
+                  <td>Yellow</td>
+                  <td>Orange</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="cell">
+        <div class="input">
+          <label>In <em>[<b>1</b>]</em>:</label>
+          <div class="editor"><textarea></textarea></div>
+        </div>
+      </div>
+      <div class="cell">
+        <div class="fileTree">
+          <ul>
+            <li>
+              <div class="info">
+                <a href="#">Folder 1</a>
+                <span class="modified">12th Jan 2015 10:30<span>
+              </div>
+              <ul>
+                <li><div class="info"><a href="#">File 1</a><span class="modified">12th Jan 2015 10:30</span></div></li>
+                <li><div class="info"><a href="#">File 2</a><span class="modified">12th Jan 2015 10:30</span></div></li>
+                <li><div class="info"><a href="#">File 3</a><span class="modified">12th Jan 2015 10:30</span></div></li>
+                <li><div class="info"><a href="#">File 4</a><span class="modified">12th Jan 2015 10:30</span></div></li>
+                <li><div class="info"><a href="#">File 5</a><span class="modified">12th Jan 2015 10:30</span></div></li>
+              </ul>
+            </li>
+            <li>
+              <div class="info">
+                <a href="#">Top level file</a>
+                <span class="modified">12th Jan 2015 10:30</span>
+              </div>
+            </li>
+            <li>
+              <div class="info">
+                <a href="#">Nested Folder 1</a>
+                <span class="modified">12th Jan 2015 10:30</span>
+              </div>
+              <ul>
+                <li>
+                  <div class="info">
+                    <a href="#">Nested Folder 2</a>
+                    <span class="modified">12th Jan 2015 10:30</span>
+                  </div>
+                  <ul>
+                    <li>
+                      <div class="info">
+                        <a href="#">Nested Folder 3</a>
+                        <span class="modified">12th Jan 2015 10:30</span>
+                      </div>
+                      <ul>
+                        <li><div class="info"><a href="#">File 5</a><span class="modified">12th Jan 2015 10:30</span></div></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <div class="info">
+                <a href="#">Folder 2</a>
+                <span class="modified">12th Jan 2015 10:30</span>
+              </div>
+              <ul>
+                <li><div class="info"><a href="#">File 1</a><span class="modified">12th Jan 2015 10:30</span></div></li>
+                <li><div class="info"><a href="#">File 2</a><span class="modified">12th Jan 2015 10:30</span></div></li>
+                <li><div class="info"><a href="#">File 3</a><span class="modified">12th Jan 2015 10:30</span></div></li>
+                <li><div class="info"><a href="#">File 4</a><span class="modified">12th Jan 2015 10:30</span></div></li>
+                <li><div class="info"><a href="#">File 5</a><span class="modified">12th Jan 2015 10:30</span></div></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+  <footer>
+    <p>Sql Notebook - 2015 <em>James Peach</em> - UoM</p>
+  </footer>
+<script id="jsbin-javascript" src="content/notebook-app.js"></script>
+</body>
+</html>
