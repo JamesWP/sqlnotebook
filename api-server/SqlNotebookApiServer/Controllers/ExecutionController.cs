@@ -14,37 +14,40 @@ namespace SqlNotebookApiServer.Controllers
     /// </summary>
     public class ExecutionController : ApiController
     {
-        public ExecutionContextManager CM = new ExecutionContextManager();
-
+        public static ExecutionContextManager CM = new ExecutionContextManager();
+        
         [HttpPost]
-        public Guid CreateExecutionContext(string Database, string Server, string Username, string Password) {
-            return CM.New(Database, Server, Username, Password);
+        public Guid CreateExecutionContext(ExecutionContextManager.ContextRequest Req) {
+            return CM.New(Req);
         }
 
         [HttpPost]
-        public async Task<JValue> Execute(Guid Context, string query)
+        [Route("api/Execution/Execute/{id}")]
+        public async Task<ExecutionResult> Execute(Guid? id, [FromBody] string query)
         {
-            var context = CM.Get(Context);
-            var result = await new SqlCommand(query, context).ExecuteReaderAsync();
-            var resultObj = new ExecutionResult(result);
-            var resultJson = JsonConvert.SerializeObjectAsync(resultObj);
+            var context = CM.Get(id.Value);
+            using (var result = await new SqlCommand(query, context).ExecuteReaderAsync())
+            {
+                var resultObj = new ExecutionResult(result);
+                return resultObj;
+            }
         }
     }
 
     public class ExecutionContextManager
     {
-        private Dictionary<Guid, SqlConnection> Contexts;
+        private Dictionary<Guid, SqlConnection> Contexts = new Dictionary<Guid, SqlConnection>();
 
-        public Guid New(string Database, string Server, string Username, string Password)
+        public Guid New(ContextRequest Req)
         {
             var g = Guid.NewGuid();
             var connectionString = new SqlConnectionStringBuilder() {
                 ApplicationName = "SqlNotebook",
-                InitialCatalog = Database,
-                Password = Password,
-                UserID = Username
+                InitialCatalog = Req.Database,
+                Password = Req.Password,
+                UserID = Req.Username
             };
-            connectionString["server"] = Server;
+            connectionString["server"] = Req.Server;
             var context = new SqlConnection(connectionString.ConnectionString);
             context.Open();
             Contexts[g] = context;
@@ -54,6 +57,14 @@ namespace SqlNotebookApiServer.Controllers
         public SqlConnection Get(Guid context)
         {
             return Contexts.ContainsKey(context) ? Contexts[context] : null;
+        }
+
+        public class ContextRequest
+        {
+            public string Database { get; set; }
+            public string Server { get; set; }
+            public string Username { get; set; }
+            public string Password { get; set; }
         }
     }
 
@@ -73,14 +84,15 @@ namespace SqlNotebookApiServer.Controllers
 
     public class PartialResult
     {
-        public List<PartialColumn> Columns;
-        public List<PartialRow> Rows;
+        public List<PartialColumn> Columns = new List<PartialColumn>();
+        public List<PartialRow> Rows = new List<PartialRow>();
         public PartialResult(SqlDataReader result)
         {
             ParseColumns(result);
             while (result.Read())
             {
                 var row = new PartialRow(result);
+                Rows.Add(row);
             }
         }
 
@@ -110,6 +122,7 @@ namespace SqlNotebookApiServer.Controllers
         public object[] Values;
         public PartialRow(SqlDataReader result)
         {
+            Values = new object[result.FieldCount];
             result.GetValues(Values);
         }
     }

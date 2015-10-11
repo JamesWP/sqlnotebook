@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<form action="~/api/Execution/CreateExecutionContext" method="post">
+    Database <input name="Database" value="onswitch" />
+    <br />
+    Server <input name="Server" value="10.110.205.75" />
+    <br />
+    Username <input name="Username" value="sa" />
+    <br />
+    Password <input name="Password" value="00-DdlAdm!n" />
+    <br/>
+    <input type="submit" value="Run"/>
+</form>
+
