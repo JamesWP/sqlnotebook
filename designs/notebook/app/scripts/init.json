@@ -1,0 +1,25 @@
+{
+    "selectedTab":"t1",
+    "tabs": {
+        "t1": {
+            "name": "Tab 1",
+            "pages": {
+                "p1": {
+                    "title": "page uno"
+                },
+                "p2": {
+                    "title": "page dos"
+                },
+                "p3": {
+                    "title": "page tres"
+                }
+            }
+        },
+        "t2": {
+            "name": "Tab 2"
+        },
+        "t3": {
+            "name": "Tab 3"
+        }
+    }
+}
