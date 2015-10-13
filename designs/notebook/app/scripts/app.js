@@ -1,4 +1,3 @@
-
 var React = window.React = require('react'),
     mountNode = document.getElementById("app");
 
@@ -22,7 +21,7 @@ var SqlNotebookApp = React.createClass({
       <div style={flex.horiz}>
         <Binder selectedTab={this.state.selectedTab} tabs={this.state.tabs}/>
         <Tab tab={this.state.tabs[this.state.selectedTab]}/>
-        <Workspace/>
+        <Workspace workspace={this.state.workspace}/>
       </div>
     );
   }

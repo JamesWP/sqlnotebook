@@ -1,3 +1,6 @@
+var React = window.React = require('react')
+
+// My helpers
 var omap = require('../helpers/objItter.js').map;
 
 var Tab = React.createClass({
