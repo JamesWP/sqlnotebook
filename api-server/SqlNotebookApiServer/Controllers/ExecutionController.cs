@@ -3,6 +3,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 
@@ -16,21 +17,22 @@ namespace SqlNotebookApiServer.Controllers
     {
         public static ExecutionContextManager CM = new ExecutionContextManager();
         
+        public string Test() { return "efwf"; }
+
         [HttpPost]
         public Guid CreateExecutionContext(ExecutionContextManager.ContextRequest Req) {
             return CM.New(Req);
         }
 
         [HttpPost]
-        [Route("api/Execution/Execute/{id}")]
-        public async Task<ExecutionResult> Execute(Guid? id, [FromBody] string query)
+        public ExecutionResult Execute(Guid? id, [FromBody] string query)
         {
             var context = CM.Get(id.Value);
-            using (var result = await new SqlCommand(query, context).ExecuteReaderAsync())
-            {
-                var resultObj = new ExecutionResult(result);
-                return resultObj;
-            }
+            
+            var command = new SqlCommand(query, context);
+            var result = command.ExecuteReader();
+            var resultObj = new ExecutionResult(result);
+            return resultObj;
         }
     }
 
