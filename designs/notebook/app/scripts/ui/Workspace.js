@@ -4,18 +4,17 @@ var React = window.React = require('react')
 var Page = require('./Page.js');
 
 // My helpers
-var flex = require('../helpers/flex.js');
 var omap = require('../helpers/objItter.js').map;
 
 var Workspace = React.createClass({
   render: function(){
-    var pages = this.props.workspace.pages.map(function(page){
-      return <li>{page.page}</li>;
+    var pages = this.props.workspace.pages.map(function(page,i){
+      return <Page key={i} pageIndex={i} page={page}/>;
     });
     return (
-      <div style={flex.fill}>
+      <div className="workspace">
         <h1>Workspace</h1>
-        <ul>{pages}</ul>
+        <ul className="workarea">{pages}</ul>
       </div>
     );
   }

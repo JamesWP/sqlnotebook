@@ -10,7 +10,6 @@ var $ = require('gulp-load-plugins')();
 var browserify = require('browserify');
 var watchify = require('watchify');
 var source = require('vinyl-source-stream'),
-
     sourceFile = './app/scripts/app.js',
 
     destFolder = './dist/scripts',
@@ -20,13 +19,14 @@ var browserSync = require('browser-sync');
 var reload = browserSync.reload;
 
 // Styles
-gulp.task('styles', ['sass', 'moveCss'  ]);
+gulp.task('styles', ['sass', 'moveCss']);
 
-gulp.task('moveCss',['clean'], function(){
-  // the base option sets the relative root for the set of files,
-  // preserving the folder structure
-  gulp.src(['./app/styles/**/*.css'], { base: './app/styles/' })
-  .pipe(gulp.dest('dist/styles'));
+gulp.task('moveCss', ['cleancss'], function() {
+    // the base option sets the relative root for the set of files,
+    // preserving the folder structure
+    gulp.src(['./app/styles/**/*.css',
+            './node_modules/codemirror/lib/codemirror.css'
+        ]).pipe(gulp.dest('dist/styles'));
 });
 
 gulp.task('sass', function() {
@@ -37,7 +37,9 @@ gulp.task('sass', function() {
         })
         .pipe($.autoprefixer('last 1 version'))
         .pipe(gulp.dest('dist/styles'))
-        .pipe($.size());
+        .pipe($.size())
+        //JP added reload after sass change
+        .pipe(browserSync.reload({stream:true}));
 });
 
 
@@ -106,6 +108,11 @@ gulp.task('fonts', function() {
         .pipe(gulp.dest('dist/fonts'));
 });
 
+// Clean css
+gulp.task('cleancss', function(cb) {
+    $.cache.clearAll();
+    cb(del.sync(['dist/styles']));
+});
 // Clean
 gulp.task('clean', function(cb) {
     $.cache.clearAll();
@@ -130,11 +137,13 @@ gulp.task('buildBundle', ['styles', 'buildScripts', 'moveLibraries', 'bower'], f
 });
 
 // Move JS Files and Libraries
-gulp.task('moveLibraries',['clean'], function(){
-  // the base option sets the relative root for the set of files,
-  // preserving the folder structure
-  gulp.src(['./app/scripts/**/*.js'], { base: './app/scripts/' })
-  .pipe(gulp.dest('dist/scripts'));
+gulp.task('moveLibraries', ['clean'], function() {
+    // the base option sets the relative root for the set of files,
+    // preserving the folder structure
+    gulp.src(['./app/scripts/**/*.js'], {
+            base: './app/scripts/'
+        })
+        .pipe(gulp.dest('dist/scripts'));
 });
 
 
@@ -180,9 +189,10 @@ gulp.task('watch', ['html', 'fonts', 'bundle'], function() {
     // Watch .html files
     gulp.watch('app/*.html', ['html']);
 
-    gulp.watch(['app/styles/**/*.scss', 'app/styles/**/*.css'], ['styles', 'scripts', reload]);
+    //JP removed scripts task from css and scss changes
+    gulp.watch(['app/styles/**/*.scss', 'app/styles/**/*.css'], ['styles']);
 
-    
+    gulp.watch(['app/scripts/**/*.js'], ['scripts']);
 
     // Watch image files
     gulp.watch('app/images/**/*', reload);
@@ -197,4 +207,4 @@ gulp.task('build', ['html', 'buildBundle', 'images', 'fonts', 'extras'], functio
 });
 
 // Default task
-gulp.task('default', ['clean', 'build'  ]);
+gulp.task('default', ['clean', 'build']);

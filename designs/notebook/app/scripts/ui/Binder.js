@@ -6,7 +6,7 @@ var Binder = React.createClass({
       return (<li key={tkey}>{tab.name}</li>);
     });
     return (
-      <div>
+      <div className={"binder"}>
         <h1>Binder</h1>
         <ul>{tabs}</ul>
       </div>
