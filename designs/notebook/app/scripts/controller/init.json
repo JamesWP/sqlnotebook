@@ -29,12 +29,8 @@
         }, {
             "page": ["t1", "p2"],
             "content":"testing the\n\n new line content"
-        }, {
-            "page": ["t1", "p2"],
-            "content":"testing the\n\n new line content"
-        }, {
-            "page": ["t1", "p2"],
-            "content":"testing the\n\n new line content"
+        },{
+            "page": ["t1", "p2"]
         }]
     }
 }

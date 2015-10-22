@@ -65,15 +65,28 @@ body {
     display:flex;
     flex-direction: column;
     .workarea{
-      overflow: scroll;
       display:flex;
       flex:1;
+      .page{
+        width:250px;
+        display:flex;
+        flex-direction: column;
+        .ReactCodeMirror{
+          flex:1;
+          .CodeMirror{
+            height:auto;
+          }
+        }
+      }
     }
   }
 }
 
 .ReactCodeMirror {
 	border: 1px solid #ccc;
+  height:0;
+  overflow:scroll;
 }
 // copied from node_modules in gulpfile.js
 @import "codemirror.css";
+@import "fixed-data-table.css";

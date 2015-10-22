@@ -25,7 +25,8 @@ gulp.task('moveCss', ['cleancss'], function() {
     // the base option sets the relative root for the set of files,
     // preserving the folder structure
     gulp.src(['./app/styles/**/*.css',
-            './node_modules/codemirror/lib/codemirror.css'
+            './node_modules/codemirror/lib/codemirror.css',
+            './node_modules/fixed-data-table/dist/fixed-data-table.css',
         ]).pipe(gulp.dest('dist/styles'));
 });
 

@@ -1,0 +1,14 @@
+Course/Project:  log
+Date:            20/10/15 22:38
+
+Talked about the interface idea,
+disussed the implementation goals for next monday.
+  - Talking with the database
+  - Page types result page, code page
+  - Syntax highlighting
+  - Code needs "run again" option
+  - History page type
+(stretch goals)
+  - Pages need to be organised into paragraphs
+
+

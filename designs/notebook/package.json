@@ -2,8 +2,10 @@
   "name": "sqlnotebook",
   "version": "0.0.0",
   "dependencies": {
+    "fixed-data-table": "^0.4.7",
     "react-codemirror": "^0.1.5",
-    "react-dom": "^0.14.0"
+    "react-dom": "^0.14.0",
+    "superagent": "^1.4.0"
   },
   "devDependencies": {
     "del": "~0.1.3",
