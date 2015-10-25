@@ -42,7 +42,7 @@ module.exports = {
     });
   },
   execute: function(options, resultReceived){
-    var query = JSON.stringify("select * from [user]");
+    var query = JSON.stringify(options.content);
     post(api.base+api.execute+'/'+options.conTok,query,function(res){
       resultReceived(res);
     });

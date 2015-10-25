@@ -1,5 +1,9 @@
-var React = window.React = require('react'),
-    Codemirror = require('react-codemirror');
+var React = window.React = require('react');
+
+require('codemirror/mode/sql/sql');
+require('codemirror/addon/edit/matchbrackets');
+
+var Codemirror = require('react-codemirror');
 // Controller
 var SqlNotebookController = require('../controller/main.js');
 var Execute = require('../controller/execute.js');
@@ -27,7 +31,12 @@ var Page = React.createClass({
         index:this.props.pageIndex
       });
     },
+    disconnnect:function(){
+     this.state.conTok = "";
+     this.setState(this.state);
+    },
     connect:function(){
+      this.disconnnect();
       var P = this;
       Execute.newSession({},function(conTok){
         P.state.conTok = conTok;
@@ -37,7 +46,7 @@ var Page = React.createClass({
     execute:function(){
       var P = this;
       if(P.state.conTok.length>0){
-        Execute.execute({conTok: P.state.conTok},function(result){
+        Execute.execute({conTok: P.state.conTok, content: this.props.page.content},function(result){
           SqlNotebookController.processMessage({
             type:SqlNotebookController.messageTypes.resultReceived,
             index:P.props.pageIndex,
@@ -48,8 +57,23 @@ var Page = React.createClass({
     },
     render: function() {
         var options = {
-          lineNumbers:true
+          lineNumbers:true,
+          mode:"text/x-mssql",
+          matchBrackets:true
         };
+        var connectionButton;
+        if(this.state.conTok.length>0)
+          connectionButton = (
+            <div>
+              <button onClick={this.connect}>Reconnect</button>
+              <button onClick={this.execute}>Execute</button>
+            </div>
+          );
+        else
+          connectionButton = (
+            <button onClick={this.connect}>Connect</button>
+          );
+          
         return (
             <li className="page">
                 <b>Page
@@ -57,8 +81,7 @@ var Page = React.createClass({
                   <div className="actions">
                     <button onClick={this.save}>Save</button>
                     <button onClick={this.close}>Close</button>
-                    <button onClick={this.connect}>Connect</button>
-                    <button onClick={this.execute}>Execute</button>
+                    {connectionButton}
                   </div>
                 <Codemirror value={this.props.page.content} onChange={this.updateCode} options={options}/>
             </li>

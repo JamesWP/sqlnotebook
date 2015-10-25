@@ -49,6 +49,7 @@ var Tab = React.createClass({
                 <h1>{tab.name}</h1>
                 <ul>{pages}</ul>
                 <input type="text" value={this.state.value} onChange={this.handleChange}/>
+                <br/>
                 <button onClick={this.createPage}>Create new page</button>
             </div>
         );

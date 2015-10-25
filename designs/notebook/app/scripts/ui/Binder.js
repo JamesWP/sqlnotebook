@@ -42,6 +42,7 @@ var Binder = React.createClass({
         <h1>Binder</h1>
         <ul>{tabs}</ul>
         <input type="text" value={this.state.value} onChange={this.handleChange}/>
+        <br/>
         <button onClick={this.createTab}>Create new tab</button>
       </div>
     );
