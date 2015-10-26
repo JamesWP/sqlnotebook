@@ -1,0 +1,10 @@
+Course/Project:  log
+Date:            26/10/15 11:58
+
+The key parts of the system that need implementing are as follows:
+  - The ability to link or bind a code result to the code that executed it
+  - Historical view of code, previous versions and also previous linked output
+  - Delete and edit capability across the different parts of the system, consistency
+  - Schema capture ability for all code executed, find all referenced objects and capture schema
+
+
