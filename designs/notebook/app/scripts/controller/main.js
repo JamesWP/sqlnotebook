@@ -15,6 +15,7 @@ var messageTypes = {
   makeNewPage:"makeNewPage",
   savePage:"savePage",
   openPage:"openPage",
+  openIndex:"openIndex",
   closePage:"closePage",
   saveTempPage:"saveTempPage",
   resultReceived:"resultReceived"
@@ -25,7 +26,11 @@ var listeners = {
 };
 
 function getState(){
-    return state;
+  return state;
+}
+
+function getPages(tabKey){
+  return state.tabs[tabKey];
 }
 
 function processMessage(message){
@@ -57,8 +62,18 @@ function processMessage(message){
     case messageTypes.savePage:
         // save contense of page back into tab
         var address = message.address,tabID = address[0],pageID = address[1];
-        var content = message.content;
-        state.tabs[tabID].pages[pageID].content = content;
+        var page = state.tabs[tabID].pages[pageID];
+        var content = message.content; 
+        var oldContent = page.content;
+        var oldDate = page.date;
+        page.content = content;
+        page.date = new Date();
+        var oldVersions = page.oldContent || [];
+        if(oldContent) oldVersions.push({
+          time:oldDate,
+          content:oldContent
+        });
+        page.oldContent = oldVersions;
         triggerEvent(messageTypes.stateChange);
         break;
     case messageTypes.openPage:
@@ -70,6 +85,15 @@ function processMessage(message){
           page:address,
           content:content,
           type:"code"
+        });
+        triggerEvent(messageTypes.stateChange);
+        break;
+    case messageTypes.openIndex:
+        // open index page for the tab
+        var tabKey = message.tabKey;
+        state.workspace.pages.push({
+          tabKey:tabKey,
+          type:"index"
         });
         triggerEvent(messageTypes.stateChange);
         break;
@@ -111,12 +135,15 @@ function registerListener(messageType, message){
   var listenerGroup = listeners[messageType];
   if(listenerGroup===undefined)
     throw "no such messageType: "+ messageType;
-  listenerGroup.push(message);
+  listenerGroup.push(function(mt){
+    setTimeout(function(){message(mt);},0);
+  });
 }
 
 module.exports = {
   messageTypes: messageTypes,
   getState: getState,
+  getPages: getPages,
   processMessage: processMessage,
   registerListener: registerListener
 };

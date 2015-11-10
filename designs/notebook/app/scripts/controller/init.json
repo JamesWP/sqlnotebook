@@ -26,11 +26,9 @@
         "pages": [{
             "page": ["t1", "p1"],
             "content":"testing the content"
-        }, {
-            "page": ["t1", "p2"],
-            "content":"testing the\n\n new line content"
         },{
-            "page": ["t1", "p2"]
+            "type": "index",
+            "tabKey": "t1"
         }]
     }
 }

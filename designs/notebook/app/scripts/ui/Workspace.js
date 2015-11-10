@@ -3,7 +3,8 @@ var React = window.React = require('react')
 // My components
 var Page = {
   Code: require('./Page.js'),
-  Result: require('./Result.js')
+  Result: require('./Result.js'),
+  Index: require('./Index.js')
 }
 // My helpers
 var omap = require('../helpers/objItter.js').map;
@@ -21,6 +22,7 @@ var Workspace = React.createClass({
       .map(function(page){
         switch (page.type){
           case "result": return <Page.Result key={page.i} pageIndex={page.i} page={page}/>;
+          case "index": return <Page.Index key={page.i} pageIndex={page.i} tabKey={page.tabKey}/>;
         }
         return <Page.Code key={page.i} pageIndex={page.i} page={page}/>;
       });

@@ -35,6 +35,12 @@ var Tab = React.createClass({
         address:[tabID,pkey]
       });
     },
+    openIndex: function(){
+      SqlNotebookController.processMessage({
+        type:SqlNotebookController.messageTypes.openIndex,
+        tabKey: this.props.tabID
+      });
+    },
     render: function() {
         var t = this;
         var tab = t.props.tab;
@@ -51,6 +57,7 @@ var Tab = React.createClass({
                 <input type="text" value={this.state.value} onChange={this.handleChange}/>
                 <br/>
                 <button onClick={this.createPage}>Create new page</button>
+                <button onClick={this.openIndex}>View index</button>
             </div>
         );
     }
