@@ -15,11 +15,9 @@ body {
     flex:1;
     display:flex;
     align-items: stretch;
-    > div{
-      padding:0.5em 1em;
-    }
   }
   .binder{
+    padding:0.1em 0.6em;
     background:#333;
     color:white;
     a{
@@ -41,6 +39,8 @@ body {
     }
   }
   .tab{
+    padding:0.1em 0.6em;
+    color:white;
     background:#447B08;
     h1{
       font-size: 1.2em
@@ -60,39 +60,14 @@ body {
       }
     }
   }
-  .workspace{
-    flex:1;
-    display:flex;
-    flex-direction: column;
-    .workarea{
-      display:flex;
-      flex:1;
-      margin:0;
-      padding:0;
-      .page{
-        display:flex;
-        width:300px;
-        list-style:none;
-        margin:0;
-        padding:0;
-        flex-shrink:0;
-        flex-direction: column;
-        .ReactCodeMirror{
-          flex:1;
-          .CodeMirror{
-            height:auto;
-          }
-        }
-      }
-    }
-  }
 }
 
 .ReactCodeMirror {
-	border: 1px solid #ccc;
-  height:0;
+  height:100%;
   overflow:scroll;
 }
 // copied from node_modules in gulpfile.js
 @import "codemirror.css";
 @import "fixed-data-table.css";
+
+@import "workspace.scss"

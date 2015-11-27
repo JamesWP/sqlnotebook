@@ -28,7 +28,6 @@ var Workspace = React.createClass({
       });
     return (
       <div className="workspace">
-        <h1>Workspace</h1>
         <ul className="workarea">{pages}</ul>
       </div>
     );
