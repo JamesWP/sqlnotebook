@@ -63,7 +63,7 @@ function processMessage(message){
         // save contense of page back into tab
         var address = message.address,tabID = address[0],pageID = address[1];
         var page = state.tabs[tabID].pages[pageID];
-        var content = message.content; 
+        var content = message.content;
         var oldContent = page.content;
         var oldDate = page.date;
         page.content = content;
@@ -80,7 +80,8 @@ function processMessage(message){
         // open page from tab into workspace
         // as code page
         var address = message.address,tabID = address[0],pageID = address[1];
-        var content = state.tabs[tabID].pages[pageID].content;
+        // if message has content then use that, else load content
+        var content = message.content || state.tabs[tabID].pages[pageID].content;
         state.workspace.pages.push({
           page:address,
           content:content,

@@ -5,23 +5,11 @@ var React = window.React = require('react'),
 // My components
 var Binder = require('./ui/Binder.js'),
     Tab = require('./ui/Tab.js'),
-    Workspace = require('./ui/Workspace.js');
+    Workspace = require('./ui/Workspace.js'),
+    Toggle = require('./ui/Toggle.js');
 
 // Controller
 var SqlNotebookController = require('./controller/main.js');
-
-
-var Toggle = React.createClass({
-  onToggle: function(){
-    this.props.onToggle();
-  },
-  render:function(){
-    var openClose =(this.props.open)?"<":">";
-    return (
-      <div className="toggle" onClick={this.onToggle}>{openClose}</div>
-    );
-  }
-});
 
 var SqlNotebookApp = React.createClass({
   getInitialState: function() {
