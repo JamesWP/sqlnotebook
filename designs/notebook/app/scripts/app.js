@@ -13,9 +13,7 @@ var SqlNotebookController = require('./controller/main.js');
 
 var SqlNotebookApp = React.createClass({
   getInitialState: function() {
-    var st = SqlNotebookController.getState();
-    st.open = true;
-    return st;
+    return SqlNotebookController.getState();
   },
   componentDidMount: function(){
     var app = this;
@@ -26,7 +24,7 @@ var SqlNotebookApp = React.createClass({
       });
   },
   onToggle:function(){
-    this.setState({"open":!this.state.open});
+    SqlNotebookController.toggleSidebar();
   },
   render: function() {
     return (

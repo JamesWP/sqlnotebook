@@ -49,8 +49,8 @@ var Tab = React.createClass({
         };
         var pages = omap(tab.pages, function(pkey, page) {
             return <li key={pkey} onClick={_openPage(pkey)}>{page.title}</li>;
-        });
-        return (
+        }); 
+        return (this.props.open)?(
             <div className={"tab"}>
                 <h1>{tab.name}</h1>
                 <ul>{pages}</ul>
@@ -59,7 +59,7 @@ var Tab = React.createClass({
                 <button onClick={this.createPage}>Create new page</button>
                 <button onClick={this.openIndex}>View index</button>
             </div>
-        );
+        ):(<span/>);
     }
 });
 

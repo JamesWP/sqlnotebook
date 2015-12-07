@@ -141,10 +141,17 @@ function registerListener(messageType, message){
   });
 }
 
+function toggleSidebar()
+{
+  state["open"] = !state["open"];
+  triggerEvent(messageTypes.stateChange);
+}
+
 module.exports = {
   messageTypes: messageTypes,
   getState: getState,
   getPages: getPages,
   processMessage: processMessage,
-  registerListener: registerListener
+  registerListener: registerListener,
+  toggleSidebar:toggleSidebar
 };

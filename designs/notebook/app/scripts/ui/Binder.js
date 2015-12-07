@@ -37,7 +37,7 @@ var Binder = React.createClass({
     var tabs = omap(this.props.tabs,function(tkey,tab){
       return (<li onClick={changeTab(tkey)} key={tkey}>{tab.name}</li>);
     });
-    return (
+    return (this.props.open)?(
       <div className={"binder"}>
         <h1>Binder</h1>
         <ul>{tabs}</ul>
@@ -45,7 +45,7 @@ var Binder = React.createClass({
         <br/>
         <button onClick={this.createTab}>Create new tab</button>
       </div>
-    );
+    ):(<span/>);
   }
 });
 
