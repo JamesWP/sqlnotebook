@@ -4,7 +4,6 @@ var React = window.React = require('react'),
 
 // My components
 var Binder = require('./ui/Binder.js'),
-    Tab = require('./ui/Tab.js'),
     Workspace = require('./ui/Workspace.js'),
     Toggle = require('./ui/Toggle.js');
 
@@ -29,8 +28,7 @@ var SqlNotebookApp = React.createClass({
   render: function() {
     return (
       <div className={"container"}>
-        <Binder open={this.state.open} selectedTab={this.state.selectedTab} tabs={this.state.tabs}/>
-        <Tab open={this.state.open} tabID={this.state.selectedTab} tab={this.state.tabs[this.state.selectedTab]}/>
+        <Binder open={this.state.open}/>
         <Toggle open={this.state.open} onToggle={this.onToggle}/>
         <Workspace workspace={this.state.workspace}/>
       </div>

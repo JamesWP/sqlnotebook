@@ -57,10 +57,16 @@ var bundler = watchify(browserify({
 bundler.on('update', rebundle);
 bundler.on('log', $.util.log);
 
+function onError(message) {
+  $.util.log('Browserify Error');
+  console.log(message.message);
+  console.log(message.codeFrame);
+}
+
 function rebundle() {
     return bundler.bundle()
         // log errors if they happen
-        .on('error', $.util.log.bind($.util, 'Browserify Error'))
+        .on('error', onError)
         .pipe(source(destFileName))
         .pipe(gulp.dest(destFolder))
         .on('end', function() {

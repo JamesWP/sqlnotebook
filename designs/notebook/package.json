@@ -6,6 +6,7 @@
     "moment": "^2.10.6",
     "react-codemirror": "^0.1.5",
     "react-dom": "^0.14.0",
+    "reflux": "^0.3.0",
     "superagent": "^1.4.0"
   },
   "devDependencies": {

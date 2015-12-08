@@ -42,26 +42,26 @@ body {
                 background: #000;
             }
         }
-    }
-    .tab {
-        padding: 0.1em 0.6em;
-        color: white;
-        background: #447B08;
-        h1 {
-            font-size: 1.2em;
-        }
-        ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-        li {
-            padding: 0.2em;
-            margin-bottom: 0.3em;
-            border: 1px solid black;
-            cursor: pointer;
-            &:hover {
-                background: #000;
+        .tab {
+            padding: 0.1em 0.6em;
+            color: white;
+            background: #447B08;
+            h1 {
+                font-size: 1.2em;
+            }
+            ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+            li {
+                padding: 0.2em;
+                margin-bottom: 0.3em;
+                border: 1px solid black;
+                cursor: pointer;
+                &:hover {
+                    background: #000;
+                }
             }
         }
     }
