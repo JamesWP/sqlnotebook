@@ -4,7 +4,8 @@ var objKeys = require('../helpers/objKeys.js');
 
 var PageActions = Reflux.createActions([
     "pageCreate",
-    "pageDelete"
+    "pageDelete",
+    "pageSave"
 ]);
 
 // Creates a DataStore
@@ -22,6 +23,12 @@ var PageActions = Reflux.createStore({
     this.pages[pageKey] = {
       "name":pageName
     };
+    this.onUpdate();
+  },
+  pageSave:function(pageKey,newContent){
+    this.pages[pageKey].content = newContent;
+    this.pages[pageKey].date = new Date();
+    //TODO: save history
     this.onUpdate();
   },
   pageDelete:function(pageKey){

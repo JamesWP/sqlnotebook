@@ -1,0 +1,20 @@
+PageStore:
+  pages accessed by pageid
+  get page by id
+    returns Page
+
+Page:
+  curent content
+  date saved
+  type of page
+  History of old versions
+
+  page.store content
+    should save history
+  page.delete
+
+History:
+  content
+  date saved
+  history.open
+  history.delete

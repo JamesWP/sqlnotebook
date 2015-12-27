@@ -1,0 +1,10 @@
+WorkspaceStore:
+  stores a bunch of open Window s
+
+  openPage(pageID)
+
+Window:
+  pageId the open page
+  curent content
+
+  window.close

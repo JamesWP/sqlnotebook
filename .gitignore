@@ -4,3 +4,15 @@ node_modules/
 /api-server/SqlNotebookApiServer/obj/Debug
 /api-server/packages
 /api-server/.vs
+
+*.out
+
+*.log
+
+*.fls
+
+*.fdb_latexmk
+
+*.aux
+
+*.pdf

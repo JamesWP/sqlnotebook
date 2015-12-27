@@ -1,0 +1,179 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{comment} % enables the use of multi-line comments (\ifx \fi)
+\usepackage{fullpage} % changes the margin
+\usepackage{csquotes} % for quotations
+\usepackage{hyperref} % for hyperlinks
+
+\begin{document}
+
+\noindent\large\textbf{3rd Year Project Report} \hfill \normalsize Project Supervisor  \\
+\textbf{James Peach}  \hfill
+\textbf{Dr. Alvaro A A Fernandes}\hfill
+
+\section*{Abstract}
+
+\section*{Acknowledgements}
+
+\section*{Table of contents}
+
+\section{Introduction and Motivation}
+
+There are lots of ways to write programs. And while working in the real world
+you get to do things in lots of ways. Some of the ways work well, and others
+leave things to be desired. In this section I will outline how I came  to pick a
+project where I am tasked to creating a new way to manage Sql database projects.
+
+Over the last few summers I had the opportunity to work on various applications
+for a small business. The applications were all based on a Sql database as the
+store for all the logic and data. Over my time spent developing and maintaining
+the applications, I found increasingly that I was having to rediscover parts of
+the applications when I was forced to switch between different tasks. This
+causes more mistakes to be made by the programmer. I needed to know how
+component $a$ was connected to component $b$, what the field was in table $x$
+that stored the name of the employee's grandfather. I wanted a way that would
+allow me to program the database and document it at the same time or at least
+have the correct information at my fingertips.
+
+Over the next few months working I was looking at different tools and languages
+and stumbled across other students using $IPython Notebook$. For those who don't
+know what the $IPython Notebook$ is, by the project description:
+\begin{displayquote}
+The IPython Notebook is an interactive computational environment, in which
+ you can combine code execution, rich text, mathematics, plots and rich media
+\end{displayquote}
+The IPython Notebook is web based, and accessed via a browser and allows the
+code to live interleaved between the text and can provide a nice way to store
+extra information about the code and descriptions of the different parts of the
+database.
+
+I will explain my initial idea for the project and how it has morphed into
+something different.
+
+I will have paragraphs containing explanations of the different users of the
+system. ``A day in the life of" will be here. Throughout these paragraphs I will
+be identifying some of the problems that I will be putting into the requirements
+later on. Examples of tasks:
+
+\begin{itemize}
+  \item{Development}
+  \item{bugs}
+  \item{reports}
+  \item{performance}
+  \item{analysis}
+\end{itemize}
+
+\section{Background}
+
+There will be a detailed explanation of the tools available in the market
+and what each individual tool brings to the area.
+
+\begin{itemize}
+  \item{Command line interfaces}
+  \item{Sql-Server Management studio}
+  \item{PhpMyadmin}
+\end{itemize}
+
+\section{Design}
+
+I will then give a high level explanation of the project and its goals with an
+idea on how my project might solve them.
+
+\begin{itemize}
+  \item{to manage documents and code}
+  \item{to encourage up to date documentation of the system}
+  \item{to help the developers understand what the code does not explain}
+  \item{to make simple tasks easy, to put emphasis on the harder tasks}
+\end{itemize}
+
+I have made various choices during the development of the project i will explain
+what each of the main choices were and what my thoughts on them are. I
+specifically want to be able to reason about the choice of medium (the web) and
+weigh up the pros and cons
+
+\begin{itemize}
+  \item{medium}
+  \item{development style}
+  \item{use of metaphor}
+  \item{usefullness of features}
+  \item{technology}
+\end{itemize}
+
+Here i will have a section with the final list of formal requirements for the
+project
+
+\begin{itemize}
+  \item{}
+\end{itemize}
+
+\section{Implementation}
+
+In this section i will give an overview of how i intended to go about
+implementing the system (non technical).
+
+\begin{itemize}
+  \item{Idea reasearch}
+  \item{identify requirements}
+  \item{notebook metaphor: inc. links, index search etc..}
+  \item{technology research and trial}
+  \item{testing strategy}
+\end{itemize}
+
+In this section there will be a paragraph on the challenges with adopting a new
+technology (react.js) and how this affected the project development.
+
+\begin{itemize}
+  \item{speed of coding}
+  \item{seperation of concerns}
+  \item{how react.js might affect the testing of the project}
+  \item{build process}
+\end{itemize}
+
+\section{Testing}
+
+In this section i will begin by explaining some testing methodology and the
+challenges with testing a GUI based project.
+
+The project itself is an exploration into a new interface for dealing with
+database systems. I.e. more of an exploration into user experience
+
+\begin{itemize}
+  \item{unit testing of modules}
+  \item{automated browser testing}
+\end{itemize}
+
+\section{Conclusions}
+
+Talk about the idea of the project and how it has developed.
+Evolution into an information database.
+
+Things complete and things not yet complete.
+
+Self Evaluation of the finished project with regards to the requirements set out
+
+Things learnt from taking on the project
+
+Future improvements
+
+\begin{itemize}
+  \item{security}
+  \item{extend to multiple users}
+  \item{host storage online}
+\end{itemize}
+
+\begin{thebibliography}{9}
+
+  \bibitem{IPython Notebook} IPython development team \emph{The IPython Notebook -
+  IPython}. Available from
+  (\href{http://ipython.org/notebook.html}{here})
+  accessed 27th December 2015
+
+\ifx
+  \bibitem{Robotics} Fred G. Martin \emph{Robotics Explorations: A Hands-On Introduction to Engineering}. New Jersey: Prentice Hall.
+  \bibitem{Flueck}  Flueck, Alexander J. 2005. \emph{ECE 100}[online]. Chicago: Illinois Institute of Technology, Electrical and Computer Engineering Department, 2005 [cited 30
+  August 2005]. Available from World Wide Web: (http://www.ece.iit.edu/~flueck/ece100).
+\fi
+
+\end{thebibliography}
+
+
+\end{document}
