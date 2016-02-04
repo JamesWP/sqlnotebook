@@ -3,6 +3,8 @@ var React = window.React = require('react');
 require('codemirror/mode/sql/sql');
 require('codemirror/addon/edit/matchbrackets');
 
+var WorkspaceStore = require('../stores/WorkspaceStore.js');
+
 var Codemirror = require('react-codemirror');
 // Controller
 var SqlNotebookController = require('../controller/main.js');
@@ -10,16 +12,16 @@ var Execute = require('../controller/execute.js');
 
 var Page = React.createClass({
     getInitialState: function() {
-        return {conTok: ''};
+        return {conTok: '',code: this.props.page.content};
     },
     updateCode: function(newCode) {
-        SqlNotebookController.processMessage({type: SqlNotebookController.messageTypes.saveTempPage, pageIndex: this.props.pageIndex, content: newCode});
+        this.setState({code:newCode});
     },
     save: function() {
-        SqlNotebookController.processMessage({type: SqlNotebookController.messageTypes.savePage, address: this.props.page.page, content: this.props.page.content});
+        WorkspaceStore.savePage(this.props.pageIndex, this.state.code);
     },
     close: function() {
-        SqlNotebookController.processMessage({type: SqlNotebookController.messageTypes.closePage, index: this.props.pageIndex});
+        WorkspaceStore.closePage(this.props.pageIndex);
     },
     disconnnect: function() {
         this.state.conTok = "";
@@ -71,7 +73,7 @@ var Page = React.createClass({
                         {connectionButton}
                     </div>
                 </div>
-                <Codemirror value={this.props.page.content} onChange={this.updateCode} options={options}/>
+                <Codemirror value={this.state.code} onChange={this.updateCode} options={options}/>
             </li>
         );
     }

@@ -1,6 +1,7 @@
 var Reflux = require('reflux');
 
 var PageStore = require('../stores/PageStore.js');
+var TabStore = require('../stores/TabStore.js');
 
 var WorkspaceActions = Reflux.createActions([
     "openPage",
@@ -33,13 +34,22 @@ var WorkspaceAction = Reflux.createStore({
     });
     this.onUpdate();
   },
-  openIndexPage:function(){
-
+  openIndexPage:function(tabKey){
+    var page = TabStore.getInitialState()[tabKey];
+    this.windows.push({
+      type:"index",
+      tabKey:tabKey
+    });
     this.onUpdate();
   },
   closePage:function(pageIndex){
-
+    this.windows[pageIndex].closed=true;
     this.onUpdate();
+  },
+  savePage:function(pageIndex,content){
+    var page = this.windows[pageIndex];
+    var pkey = page.pageKey;
+    PageStore.pageSave(pkey,content);
   },
   onUpdate:function(){
     this.trigger(this.windows);

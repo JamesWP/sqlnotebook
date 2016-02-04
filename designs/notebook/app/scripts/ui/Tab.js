@@ -2,6 +2,7 @@ var React = window.React = require('react')
 var Reflux = require('reflux');
 var PageStore = require('../stores/PageStore.js');
 var TabStore = require('../stores/TabStore.js');
+var WorkspaceStore = require('../stores/WorkspaceStore.js');
 // My helpers
 var omap = require('../helpers/objItter.js').map;
 
@@ -20,17 +21,18 @@ var Tab = React.createClass({
       }
     },
     openPage: function(pkey){
-      var tabID = this.props.tabID;
-      //TODO: send message to workspace store to open page
+      WorkspaceStore.openPage(pkey);
     },
     openIndex: function(){
-      //TODO: send message to workspace store to open index page for this tab
+      WorkspaceStore.openIndexPage(this.props.tabID);
     },
     render: function() {
         var t = this;
         var tab = this.props.tab;
         var spages = this.state.pages;
-        var _openPage = this.openPage.bind(this.props.tabID);
+        var tid = this.props.tabID;
+        var openPage = this.openPage;
+        var _openPage = function (pkey){ return function(){ openPage(pkey); }; };
         var pages = omap(tab.pages, function(pkey, bind) {
           if(!bind)return undefined;
           var page = spages[pkey];

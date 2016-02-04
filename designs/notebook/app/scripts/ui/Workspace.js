@@ -1,5 +1,11 @@
 var React = window.React = require('react')
 
+
+var Reflux = require('reflux');
+var PageStore = require('../stores/PageStore.js');
+var TabStore = require('../stores/TabStore.js');
+var WorkspaceStore = require('../stores/WorkspaceStore.js');
+
 // My components
 var Page = {
   Code: require('./Page.js'),
@@ -10,8 +16,9 @@ var Page = {
 var omap = require('../helpers/objItter.js').map;
 
 var Workspace = React.createClass({
+  mixins: [Reflux.connect(WorkspaceStore,"windows")],
   render: function(){
-    var pages = this.props.workspace.pages
+    var pages = this.state.windows
       .map(function(page,i){
         page.i = i;
         return page;
