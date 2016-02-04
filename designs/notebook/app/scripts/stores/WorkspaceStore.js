@@ -37,6 +37,15 @@ var WorkspaceAction = Reflux.createStore({
     });
     this.onUpdate();
   },
+  openPageAtVersion(pageKey,index){
+    var content = PageStore.getInitialState()[pageKey].oldContent[index];
+    this.windows.push({
+      type: "code",
+      pageKey: pageKey,
+      content: content.content
+    });
+    this.onUpdate();
+  },
   openIndexPage:function(tabKey){
     var page = TabStore.getInitialState()[tabKey];
     this.windows.push({

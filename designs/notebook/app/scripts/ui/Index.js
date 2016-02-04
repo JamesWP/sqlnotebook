@@ -15,16 +15,27 @@ var Index = React.createClass({
     openPage: function(pkey){
       WorkspaceStore.openPage(pkey);
     },
+    openPageAtVersion: function(pkey,index){
+      WorkspaceStore.openPageAtVersion(pkey,index);
+    },
     close: function() {
-        WorkspaceStore.closePage(this.props.pageIndex);
+      WorkspaceStore.closePage(this.props.pageIndex);
     },
     render: function() {
         var pages = omap(this.state.pages, (pkey, page) => {
           if(!page) return null;
+          const hasHistory = !!page.oldContent;
           return (
               <li key={pkey}>
-                <b>{page.name}</b>
+                <b>{page.name}</b><small>{page.date?page.date.toString():null}</small>
                 <button onClick={()=>this.openPage(pkey)}>open</button>
+                {hasHistory?(
+                  <ul>
+                    {page.oldContent.map((c,i)=>{
+                      return <li key={i} onClick={()=>this.openPageAtVersion(pkey,i)}>{c.date.toString()}</li>;
+                    })}
+                  </ul>
+                ):null}
               </li>
           );
         });

@@ -7,30 +7,17 @@ var Binder = require('./ui/Binder.js'),
     Workspace = require('./ui/Workspace.js'),
     Toggle = require('./ui/Toggle.js');
 
-// Controller
-var SqlNotebookController = require('./controller/main.js');
-
 var SqlNotebookApp = React.createClass({
-  getInitialState: function() {
-    return SqlNotebookController.getState();
-  },
-  componentDidMount: function(){
-    var app = this;
-    SqlNotebookController.registerListener(
-      SqlNotebookController.messageTypes.stateChange,
-      function(messageType){
-        app.setState(SqlNotebookController.getState());
-      });
-  },
+  getInitialState:()=>{return {open:true};},
   onToggle:function(){
-    SqlNotebookController.toggleSidebar();
+    this.setState({open: !this.state.open});
   },
   render: function() {
     return (
       <div className={"container"}>
         <Binder open={this.state.open}/>
         <Toggle open={this.state.open} onToggle={this.onToggle}/>
-        <Workspace workspace={this.state.workspace}/>
+        <Workspace/>
       </div>
     );
   }

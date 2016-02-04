@@ -26,9 +26,19 @@ var PageActions = Reflux.createStore({
     this.onUpdate();
   },
   pageSave:function(pageKey,newContent){
-    this.pages[pageKey].content = newContent;
-    this.pages[pageKey].date = new Date();
-    //TODO: save history
+    let page = this.pages[pageKey];
+
+    if(typeof(page.content)!=="undefined"){
+      if(!page.oldContent) page.oldContent = [];
+      page.oldContent.push({
+        content: page.content,
+        date: page.date
+      });
+    }
+
+    page.content = newContent;
+    page.date = new Date();
+
     this.onUpdate();
   },
   pageDelete:function(pageKey){

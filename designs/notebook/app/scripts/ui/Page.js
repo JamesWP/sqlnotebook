@@ -14,12 +14,13 @@ var Execute = require('../controller/execute.js');
 var Page = React.createClass({
     mixins: [Reflux.connect(PageStore,"pages")],
     getInitialState: function() {
-        return {conTok: '', code: this.props.page.content};
+        return {conTok: '', code: this.props.page.content, altered: false};
     },
     updateCode: function(newCode) {
-        this.setState({code: newCode});
+        this.setState({code: newCode, altered:true});
     },
     save: function() {
+        this.setState({altered: false});
         WorkspaceStore.savePage(this.props.pageIndex, this.state.code);
     },
     close: function() {
@@ -70,7 +71,7 @@ var Page = React.createClass({
         return (
             <li className="page">
                 <div className="head">
-                    <b>{thisPage.name}
+                    <b>{thisPage.name} {this.state.altered?"*":null}
                         <small> {this.props.pageIndex}</small>
                         <button className="close" onClick={this.close}>X</button>
                     </b>
