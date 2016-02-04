@@ -21,6 +21,9 @@ var WorkspaceAction = Reflux.createStore({
   init: function() {
     this.listenToMany(WorkspaceActions);
     this.windows = [];
+
+    this.openIndexPage("t1");
+    this.openPage("p1");
   },
   getInitialState:function(){
     return this.windows;

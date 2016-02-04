@@ -8,6 +8,10 @@ var Tab = require('./Tab.js');
 
 var Binder = React.createClass({
   mixins: [Reflux.connect(TabStore,"tabs")],
+  getInitialState: function(){
+    //TODO: remove this
+    return {selectedTab:'t1'};
+  },
   handleChange: function(event){
     this.setState({value: event.target.value,selectedTab:null});
   },

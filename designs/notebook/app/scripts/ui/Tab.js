@@ -23,6 +23,9 @@ var Tab = React.createClass({
     openPage: function(pkey){
       WorkspaceStore.openPage(pkey);
     },
+    deletePage: function(pkey){
+      PageStore.pageDelete(pkey);
+    },
     openIndex: function(){
       WorkspaceStore.openIndexPage(this.props.tabID);
     },
@@ -31,12 +34,15 @@ var Tab = React.createClass({
         var tab = this.props.tab;
         var spages = this.state.pages;
         var tid = this.props.tabID;
-        var openPage = this.openPage;
-        var _openPage = function (pkey){ return function(){ openPage(pkey); }; };
-        var pages = omap(tab.pages, function(pkey, bind) {
+        var pages = omap(tab.pages, (pkey, bind) => {
           if(!bind)return undefined;
           var page = spages[pkey];
-          return <li key={pkey} onClick={_openPage(pkey)}>{page.name}</li>;
+          if (!page) return null;
+          return <li key={pkey}>
+            {page.name}
+            <button onClick={()=>{this.openPage(pkey)}}>open</button>
+            <button onClick={()=>{this.deletePage(pkey)}}>delete</button>
+          </li>;
         });
         return (
             <div className={"tab"}>

@@ -1,9 +1,10 @@
 var React = window.React = require('react');
-
+var Reflux = require('reflux');
 require('codemirror/mode/sql/sql');
 require('codemirror/addon/edit/matchbrackets');
 
 var WorkspaceStore = require('../stores/WorkspaceStore.js');
+var PageStore = require('../stores/PageStore.js');
 
 var Codemirror = require('react-codemirror');
 // Controller
@@ -11,11 +12,12 @@ var SqlNotebookController = require('../controller/main.js');
 var Execute = require('../controller/execute.js');
 
 var Page = React.createClass({
+    mixins: [Reflux.connect(PageStore,"pages")],
     getInitialState: function() {
-        return {conTok: '',code: this.props.page.content};
+        return {conTok: '', code: this.props.page.content};
     },
     updateCode: function(newCode) {
-        this.setState({code:newCode});
+        this.setState({code: newCode});
     },
     save: function() {
         WorkspaceStore.savePage(this.props.pageIndex, this.state.code);
@@ -36,6 +38,7 @@ var Page = React.createClass({
         });
     },
     execute: function() {
+        //TODO: refactor this
         var P = this;
         if (P.state.conTok.length > 0) {Execute.execute({
                 conTok: P.state.conTok, content: this.props.page.content
@@ -44,11 +47,13 @@ var Page = React.createClass({
             });}
     },
     render: function() {
+        //debugger;
         var options = {
             lineNumbers: true,
             mode: "text/x-mssql",
             matchBrackets: true
         };
+        var thisPage = this.state.pages[this.props.page.pageKey];
         var connectionButton;
         if (this.state.conTok.length > 0)
             connectionButton = (
@@ -65,9 +70,10 @@ var Page = React.createClass({
         return (
             <li className="page">
                 <div className="head">
-                    <b>Page
-                        {this.props.pageIndex}
-                        <button className="close" onClick={this.close}>X</button></b>
+                    <b>{thisPage.name}
+                        <small> {this.props.pageIndex}</small>
+                        <button className="close" onClick={this.close}>X</button>
+                    </b>
                     <div className="actions">
                         <button onClick={this.save}>Save</button>
                         {connectionButton}
