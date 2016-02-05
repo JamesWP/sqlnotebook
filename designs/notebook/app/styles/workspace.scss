@@ -1,25 +1,4 @@
-$headColor:darkblue;
-$headColorDark:darken($headColor,10%);
-$headTextColor:white;
 
-.ButtonDef{
-  padding:0.4em 0.6em;
-  margin-right:1em;
-  margin-top:1em;
-  margin-bottom:1em;
-  flex:1;
-  justify-content: space-between;
-  background:white;
-  cursor: pointer;
-  border:none;
-  &:last-child{
-    margin-right:0;
-  }
-  &:hover{
-    background:$headColorDark;
-    color:white;
-  }
-}
 
 .workspace{
   flex:1;
@@ -31,6 +10,7 @@ $headTextColor:white;
     margin:0;
     padding:0;
     .page{
+
 
       display:flex;
       width:300px;
@@ -77,6 +57,10 @@ $headTextColor:white;
             margin-bottom:0;
           }
         }
+      }
+      .resultTable{
+        flex:1;
+        overflow:auto;
       }
       .ReactCodeMirror{
         flex:1;

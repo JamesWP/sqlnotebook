@@ -26,7 +26,7 @@ gulp.task('moveCss', ['cleancss'], function() {
     // preserving the folder structure
     gulp.src(['./app/styles/**/*.css',
             './node_modules/codemirror/lib/codemirror.css',
-            './node_modules/fixed-data-table/dist/fixed-data-table.css',
+            './node_modules/react-datagrid/index.css',
         ]).pipe(gulp.dest('dist/styles'));
 });
 

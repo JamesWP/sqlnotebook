@@ -1,51 +1,59 @@
 var React = window.React = require('react'),
     Codemirror = require('react-codemirror');
 // Controller
-var SqlNotebookController = require('../controller/main.js');
+var WorkspaceStore = require('../stores/WorkspaceStore.js');
 var Execute = require('../controller/execute.js');
 
-var FixedDataTable = require('fixed-data-table');
-var Table = FixedDataTable.Table;
-var Column = FixedDataTable.Column;
+var DataGrid = require('react-datagrid')
 
+
+var RNKEY = "ROWNOKEY";
 
 var Result = React.createClass({
-    close:function(){
-      SqlNotebookController.processMessage({
-        type:SqlNotebookController.messageTypes.closePage,
-        index:this.props.pageIndex
+    close: function() {
+        WorkspaceStore.closePage(this.props.pageIndex);
+    },
+    getInitialState: function(){
+      var content = this.props.page.content;
+      var table = content.Parts[0];
+      var columns = table.Columns.map((c,i)=>{
+        return {
+          name: "" + i,
+          title: c.Name?c.Name:"No Name",
+          width: 100
+        };
       });
+      var rows = table.Rows.map((r,i)=>{
+        let row = {};
+        row[RNKEY] = i;
+        for(var ci=0;ci<columns.length;ci++)
+          row[ci] = r.Values[ci];
+        return row;
+      });
+
+
+      return {columns: columns, rows: rows};
     },
     render: function() {
-        var options = {
-          lineNumbers:true
-        };
-        var content = this.props.page.content;
-        var table = content.Parts[0];
-        var columns = table.Columns;
-        var rows = table.Rows;
-        var rowGetter = function(index){return rows[index].Values;};
-        var Cols = columns.map(function(col,i){
-          return <Column label={col.Name} dataKey={i} width={100}/>;
-        });
         return (
             <li className="page">
-                <b>Result
-                    {this.props.pageIndex}</b>
-                  <div className="actions">
-                    <button onClick={this.close}>Close</button>
-                  </div>
-                  <Table
-                    rowHeight={30}
-                    rowGetter={rowGetter}
-                    rowsCount={rows.length}
-                    width={400}
-                    maxHeight={1000}
-                    headerHeight={50}>
-                    {Cols} 
-                  </Table>
+                <div className="head">
+                    <b> Result
+                        <small>
+                            {this.props.pageIndex}</small>
+                        <button className="close" onClick={this.close}>X</button>
+                    </b>
+                </div>
+                <div className="resultTable">
+                  <DataGrid
+              			idProperty={RNKEY}
+              			dataSource={this.state.rows}
+              			columns={this.state.columns}
+              			style={{height: 500}}
+              		/>
+                </div>
             </li>
-          );
+        );
     }
 });
 

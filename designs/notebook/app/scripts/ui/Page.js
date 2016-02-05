@@ -32,20 +32,20 @@ var Page = React.createClass({
     },
     connect: function() {
         this.disconnnect();
-        var P = this;
-        Execute.newSession({}, function(conTok) {
-            P.state.conTok = conTok;
-            P.setState(P.state);
+        Execute.newSession({}, (conTok) => {
+            this.state.conTok = conTok;
+            this.setState(this.state);
         });
     },
     execute: function() {
-        //TODO: refactor this
-        var P = this;
-        if (P.state.conTok.length > 0) {Execute.execute({
-                conTok: P.state.conTok, content: this.props.page.content
-            }, function(result) {
-                SqlNotebookController.processMessage({type: SqlNotebookController.messageTypes.resultReceived, index: P.props.pageIndex, result: result});
-            });}
+        if (this.state.conTok.length > 0) {
+          let ex = {
+            conTok: this.state.conTok, content: this.state.code
+          };
+          Execute.execute(ex, (result) => {
+            WorkspaceStore.openResult(result);
+          });
+        }
     },
     render: function() {
         //debugger;
