@@ -2,6 +2,9 @@ var Reflux = require('reflux');
 
 var objKeys = require('../helpers/objKeys.js');
 
+const PAGE_TYPE_CODE = "code";
+const PAGE_TYPE_RESULT = "result";
+
 var PageActions = Reflux.createActions([
     "pageCreate",
     "pageDelete",
@@ -21,7 +24,15 @@ var PageActions = Reflux.createStore({
   },
   pageCreate:function(pageKey,pageName){
     this.pages[pageKey] = {
-      "name":pageName
+      "name":pageName,
+      "type":PAGE_TYPE_CODE
+    };
+    this.onUpdate();
+  },
+  pageCreateResult:function(pageKey,pageName){
+    this.pages[pageKey] = {
+      "name": pageName,
+      "type": PAGE_TYPE_RESULT
     };
     this.onUpdate();
   },

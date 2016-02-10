@@ -1,6 +1,7 @@
 var Reflux = require('reflux');
 
 var objKeys = require('../helpers/objKeys.js');
+var objItter = require('../helpers/objItter.js');
 
 var TabActions = Reflux.createActions([
     "tabCreate",
@@ -46,7 +47,13 @@ var TabStore = Reflux.createStore({
   onUpdate:function(){
     this.trigger(this.tabs);
   },
-
+  searchPage:function(pageKey){
+    return objItter.map(this.tabs,(tabKey,tab)=>{
+      if(typeof(tab.pages[pageKey]) !== 'undefined')
+        return tabKey;
+      else return null;
+    }).filter((x)=>{return !!x;});
+  },
   // convenience functions
   createNewKey:function(newTabName){
     return objKeys.newKeyTo(this.tabs,newTabName);

@@ -30,17 +30,29 @@ var WorkspaceAction = Reflux.createStore({
   },
   openPage:function(pageKey){
     var page = PageStore.getInitialState()[pageKey];
-    this.windows.push({
-      type:"code",
-      pageKey:pageKey,
-      content:page.content
-    });
+    switch(page.type){
+        case "result":
+          this.windows.push({
+            type:"result",
+            pageKey:pageKey,
+            result:page.content
+          });
+          break;
+        default:
+          this.windows.push({
+            type:"code",
+            pageKey:pageKey,
+            content:page.content
+          });
+    }
     this.onUpdate();
   },
-  openResult: function(result){
+  openResult: function(result, pageIndex){
+    var pageKey = this.windows[pageIndex].pageKey;
     this.windows.push({
       type: "result",
-      content: result
+      content: result,
+      resultOf: pageKey
     });
     this.onUpdate();
   },
