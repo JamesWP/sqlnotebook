@@ -1,5 +1,6 @@
 var React = window.React = require('react');
 var Reflux = require('reflux');
+var Links = require('./Links.js');
 require('codemirror/mode/sql/sql');
 require('codemirror/addon/edit/matchbrackets');
 
@@ -13,6 +14,7 @@ var Execute = require('../controller/execute.js');
 
 const MODE_NORMAL = "NORMAL";
 const MODE_REQUEST_CONFIRM = "REQUEST_CONFIRM";
+const MODE_LINKS = "LINKS";
 
 var Page = React.createClass({
     mixins: [Reflux.connect(PageStore,"pages")],
@@ -46,7 +48,6 @@ var Page = React.createClass({
         // cancel close
         this.setState({mode: MODE_NORMAL});
       }
-
     },
     disconnnect: function() {
         this.state.conTok = "";
@@ -69,6 +70,12 @@ var Page = React.createClass({
           });
         }
     },
+    showLinks: function(){
+      this.setState({mode:MODE_LINKS});
+    },
+    closeLinks: function() {
+      this.setState({mode:MODE_NORMAL});
+    },
     render: function() {
         //debugger;
         var options = {
@@ -76,7 +83,11 @@ var Page = React.createClass({
             mode: "text/x-mssql",
             matchBrackets: true
         };
-        var thisPage = this.state.pages[this.props.page.pageKey];
+
+        var linksout = PageStore.getLinksFrom(this.props.pageKey);
+        var linksin = PageStore.getLinksTo(this.props.pageKey);
+
+        var thisPage = this.state.pages[this.props.pageKey];
         var connectionButton;
         if (this.state.conTok.length > 0)
             connectionButton = (
@@ -97,6 +108,7 @@ var Page = React.createClass({
                   <div className="head">
                       <b>{thisPage.name} {this.state.altered?"*":null}
                           <small> {this.props.pageIndex}</small>
+                          <small onClick={()=>this.showLinks()}> links:{linksout.length + linksin.length}</small>
                           <button className="close" disabled={true}>X</button>
                       </b>
                       <div className="actions">
@@ -114,12 +126,32 @@ var Page = React.createClass({
                   </div>
               </li>
             );
+            case MODE_LINKS:
+            return (
+              <li className="page">
+                  <div className="head">
+                      <b>{thisPage.name} {this.state.altered?"*":null}
+                          <small> {this.props.pageIndex}</small>
+                          <small onClick={()=>this.showLinks()}> links:{linksout.length + linksin.length}</small>
+                          <button className="close" disabled={true}>X</button>
+                      </b>
+                      <div className="actions">
+                          <button onClick={this.save}>Save</button>
+                      </div>
+                  </div>
+                  <div>
+                      <Links pageKey={this.props.pageKey} in={linksin} out={linksout}/>
+                      <button onClick={()=>{this.closeLinks();}}>close</button>
+                  </div>
+              </li>
+            );
             default:
             return (
                 <li className="page">
                     <div className="head">
                         <b>{thisPage.name} {this.state.altered?"*":null}
                             <small> {this.props.pageIndex}</small>
+                            <small onClick={()=>this.showLinks()}> links:{linksout.length + linksin.length}</small>
                             <button className="close" onClick={this.close}>X</button>
                         </b>
                         <div className="actions">

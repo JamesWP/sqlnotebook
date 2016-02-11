@@ -25,3 +25,9 @@ var SqlNotebookApp = React.createClass({
 
 
 ReactDOM.render(<SqlNotebookApp />, mountNode);
+
+window.sqlnotebook = {
+  PageStore: require('./stores/PageStore.js'),
+  WorkspaceStore: require('./stores/WorkspaceStore.js'),
+  TabStore: require('./stores/TabStore.js')
+};

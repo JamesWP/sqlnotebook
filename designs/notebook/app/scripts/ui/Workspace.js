@@ -28,10 +28,10 @@ var Workspace = React.createClass({
       })
       .map(function(page){
         switch (page.type){
-          case "result": return <Page.Result key={page.i} pageIndex={page.i} page={page}/>;
-          case "index": return <Page.Index key={page.i} pageIndex={page.i} tabKey={page.tabKey}/>;
+          case "result": return <Page.Result pageKey={page.pageKey} key={page.i} pageIndex={page.i} page={page}/>;
+          case "index": return <Page.Index pageKey={page.pageKey} key={page.i} pageIndex={page.i} tabKey={page.tabKey}/>;
         }
-        return <Page.Code key={page.i} pageIndex={page.i} page={page}/>;
+        return <Page.Code pageKey={page.pageKey} key={page.i} pageIndex={page.i} page={page}/>;
       });
     return (
       <div className="workspace">

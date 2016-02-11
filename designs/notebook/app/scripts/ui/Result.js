@@ -1,5 +1,6 @@
 var React = window.React = require('react'),
     Codemirror = require('react-codemirror');
+var Links = require('./Links.js');
 // Controller
 var WorkspaceStore = require('../stores/WorkspaceStore.js');
 var PageStore = require('../stores/PageStore.js');
@@ -10,6 +11,9 @@ var DataGrid = require('react-datagrid')
 
 
 var RNKEY = "ROWNOKEY";
+
+const MODE_NORMAL = "NORMAL";
+const MODE_LINKS = "LINKS";
 
 function getPartData(table){
   var columns = table.Columns.map((c,i)=>{
@@ -38,9 +42,9 @@ var Result = React.createClass({
         var content = this.props.page.content;
         var table = content.Parts[0];
         var parts = content.Parts.map((table)=>{return getPartData(table);});
-        return {parts: parts, saved: false};
+        return {mode: MODE_NORMAL,parts: parts, saved: false};
       }else if(typeof(this.props.page.result)){
-        return {parts: this.props.page.result, saved:true};
+        return {mode: MODE_NORMAL,parts: this.props.page.result, saved:true};
       }else{
         throw "unknown result data";
       }
@@ -52,11 +56,20 @@ var Result = React.createClass({
       var pageKey = PageStore.createNewKey(pageName);
       PageStore.pageCreateResult(pageKey, pageName);
       PageStore.pageSave(pageKey,this.state.parts);
+      PageStore.linkCreate(this.props.page.resultOf,pageKey, {
+        // created from link
+        type:"resultOf"
+      });
       for(var i=0;i<queryPageTabs.length;i++)
         TabStore.tabLinkPage(queryPageTabs[i],pageKey);
       this.close();
       WorkspaceStore.openPage(pageKey);
-    },
+    },    showLinks: function(){
+          this.setState({mode:MODE_LINKS});
+        },
+        closeLinks: function() {
+          this.setState({mode:MODE_NORMAL});
+        },
     render: function() {
         let tables = this.state.parts.map((p,i)=>{
           return <DataGrid key={i}
@@ -72,15 +85,24 @@ var Result = React.createClass({
                     <b> Result
                         <small>
                             {this.props.pageIndex}</small>
+                        <small onClick={()=>this.showLinks()}> links:{linksout.length + linksin.length}</small>
                         <button className="close" onClick={this.close}>X</button>
                     </b>
                     <div className="actions">
                         {!this.state.saved?<button onClick={this.save}>Save</button>:null}
                     </div>
                 </div>
-                <div className="resultTable">
-                  {tables}
-                </div>
+                {this.state.mode==MODE_NORMAL?(
+                  <div className="resultTable">
+                    {tables}
+                  </div>
+                ):(
+                  <div>
+                      <Links pageKey={this.props.pageKey} in={linksin} out={linksout}/>
+                      <button onClick={()=>{this.closeLinks();}}>close</button>
+                  </div>
+                )}
+
             </li>
         );
     }
