@@ -37,6 +37,9 @@ var Search = React.createClass({
       });
       this.setState({search:term});
     },
+    openPage: function(pageKey){
+      WorkspaceStore.openPage(pageKey);
+    },
     render: function() {
       var matches = this.state.matches;
 
@@ -62,7 +65,7 @@ var Search = React.createClass({
                   {hasMatches?"Matches: " + numMatches:null}
                   <br/>
                   <ul>
-                  {hasMatches?matches.map((match,i)=>{return <Match key={i} match={match}/>}):null}
+                  {hasMatches?matches.map((match,i)=>{return <Match key={i} match={match} onClick={()=>{this.openPage(match.pageKey)}} term={this.state.search}/>}):null}
                   </ul>
                 </div>
           </li>

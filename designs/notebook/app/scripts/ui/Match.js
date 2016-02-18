@@ -1,5 +1,12 @@
 
 var React = require('react');
+var PageStore = require('../stores/PageStore.js');
+
+function matchParts(str,term){
+    var loc = str.indexOf(term);
+
+    return [str.substr(0,loc),term,str.substr(loc + term.length,str.length-loc-term.length)];
+}
 
 var Match = React.createClass({
   onClick: function(e){
@@ -8,12 +15,18 @@ var Match = React.createClass({
   },
   render: function(){
     var match = this.props.match;
+    var pageName = PageStore.getInitialState()[match.pageKey].name;
+    var term = this.props.term;
+    var location = match.line.indexOf(term);
+    var parts = matchParts(match.line,term);
     return (
       <li onClick={this.onClick}>
-        <i>{match.pageKey}</i>
-      <b>:{match.lineNumber}</b>
+        <i>{pageName}</i>
+      <small> location {match.lineNumber}:{location+1}-{location+1 + term.length}</small>
       <br/>
-      {match.line}
+      Match:
+      <br/>
+      {parts[0]}<u><b>{parts[1]}</b></u>{parts[2]}
       </li>
     );
   }
