@@ -10,7 +10,8 @@ var WorkspaceStore = require('../stores/WorkspaceStore.js');
 var Page = {
   Code: require('./Page.js'),
   Result: require('./Result.js'),
-  Index: require('./Index.js')
+  Index: require('./Index.js'),
+  Search: require('./Search.js')
 }
 // My helpers
 var omap = require('../helpers/objItter.js').map;
@@ -30,6 +31,7 @@ var Workspace = React.createClass({
         switch (page.type){
           case "result": return <Page.Result pageKey={page.pageKey} key={page.i} pageIndex={page.i} page={page}/>;
           case "index": return <Page.Index pageKey={page.pageKey} key={page.i} pageIndex={page.i} tabKey={page.tabKey}/>;
+          case "search": return <Page.Search page={page} key={page.i} pageIndex={page.i}/>;
         }
         return <Page.Code pageKey={page.pageKey} key={page.i} pageIndex={page.i} page={page}/>;
       });

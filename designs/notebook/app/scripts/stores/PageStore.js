@@ -1,7 +1,7 @@
 var Reflux = require('reflux');
 
 var objKeys = require('../helpers/objKeys.js');
-
+var objItter = require('../helpers/objItter.js');
 const PAGE_TYPE_CODE = "code";
 const PAGE_TYPE_RESULT = "result";
 
@@ -23,6 +23,7 @@ var PageActions = Reflux.createStore({
     };
     this.pageCreate("p1","Page One");
     this.pageCreate("p2","Page Two");
+    this.pageSave("p1","test\ntesting\ntesting code\ncode rules")
   },
   getInitialState:function(){
     return this.pages;
@@ -81,20 +82,75 @@ var PageActions = Reflux.createStore({
     this.pageLinks.to[toPageKey].push(linkId);
     this.onUpdate();
   },
-  getLinks:function(){
+  getLinks: function(){
     return this.pageLinks;
   },
-  getLinksFrom:function(pageKey){
+  getLinksFrom: function(pageKey){
     if(typeof(this.pageLinks.from[pageKey])==="undefined") return [];
     return this.pageLinks.from[pageKey].map(
       (linkId)=>{return this.pageLinks.links[linkId];}
     );
   },
-  getLinksTo:function(pageKey){
+  getLinksTo: function(pageKey){
     if(typeof(this.pageLinks.to[pageKey])==="undefined") return [];
     return this.pageLinks.to[pageKey].map(
       (linkId)=>{return this.pageLinks.links[linkId];}
     );
+  },
+  getResultAsString: function(pageKey){
+    var parts = this.pages[pageKey].content;
+
+    var partsstrings = parts.map(part=>{
+      var partstringarray = [];
+      var cols = part.columns;
+      var numCols = cols.length
+      var rows = part.rows;
+      // add column row
+      partstringarray.push(cols.map(c=>c.title).join(', '));
+
+      // add rows for each row
+      partstringarray.push.apply(partstringarray,rows.map(row=>{
+        var rowarr = [];
+        for(var i=0;i<numCols;i++){
+            rowarr.push(row[i]);
+        }
+        return rowarr.join(', ');
+      }));
+
+      return partstringarray.join('\n');
+    });
+    var allstring = partsstrings.join('\n');
+
+    return allstring;
+  },
+  getPageContent: function(pageKey){
+    var page = this.pages[pageKey];
+    switch(page.type){
+      case PAGE_TYPE_CODE:
+        return (page.content?page.content:"");
+      case PAGE_TYPE_RESULT:
+        return this.getResultAsString(pageKey);
+      default:
+        return "";
+    }
+  },
+  search: function(term,callback){
+    if(term.length==0)
+      callback([]);
+    else setTimeout(()=>{
+      var matches = objItter.map(this.pages,(key,page)=>{
+        return this.getPageContent(key)
+            .split('\n')
+            .map((line,lineNumber)=>{return {lineNumber:lineNumber+1,line:line,pageKey:key};})
+            .filter(c=> {
+              var found = c.line.indexOf(term)>=0;
+              return found;
+            });
+      }).filter(x=>{return x.length>0;});
+      // flattern
+      matches = [].concat.apply([], matches);
+      callback(matches);
+    },0);
   },
   /******** /LINKS ********/
   onUpdate:function(){

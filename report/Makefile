@@ -34,3 +34,7 @@ report.pdf: report.tex
 
 clean:
 	latexmk -CA
+	rm -f newPlan.pdf
+
+newPlan.pdf: clean newPlan.md
+	pandoc newPlan.md --latex-engine=pdflatex -o newPlan.pdf -N -Vdocumentclass=report

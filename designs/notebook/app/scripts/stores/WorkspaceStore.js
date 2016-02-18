@@ -24,6 +24,7 @@ var WorkspaceAction = Reflux.createStore({
 
     this.openIndexPage("t1");
     this.openPage("p1");
+    this.openSearch('test');
   },
   getInitialState:function(){
     return this.windows;
@@ -46,9 +47,16 @@ var WorkspaceAction = Reflux.createStore({
           });
     }
     this.onUpdate();
+    return this.windows.length-1; // return new page index for handle
   },
-  openResult: function(result, pageIndex){
-    var pageKey = this.windows[pageIndex].pageKey;
+  openResult: function(result, pageReference){
+    var pageKey = null;
+    // adapted to be flexible to open page index or pagekey
+    if(typeof(pageReference)==='string'){
+      pageKey = pageReference;
+    }else{
+      pageKey = this.windows[pageReference].pageKey;
+    }
     this.windows.push({
       type: "result",
       content: result,
@@ -70,6 +78,13 @@ var WorkspaceAction = Reflux.createStore({
     this.windows.push({
       type:"index",
       tabKey:tabKey
+    });
+    this.onUpdate();
+  },
+  openSearch:function(term){
+    this.windows.push({
+      type:'search',
+      term: term
     });
     this.onUpdate();
   },

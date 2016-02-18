@@ -3,6 +3,7 @@ var omap = require('../helpers/objItter.js').map;
 var Reflux = require('reflux');
 
 var TabStore = require('../stores/TabStore.js');
+var WorkspaceStore = require('../stores/WorkspaceStore.js');
 
 var Tab = require('./Tab.js');
 
@@ -26,6 +27,9 @@ var Binder = React.createClass({
   changeTab: function(tkey){
     this.setState({selectedTab:tkey});
   },
+  openSearch: function(){
+    WorkspaceStore.openSearch();
+  },
   render: function(){
     var binder = this;
     var changeTab = function(tkey){
@@ -47,6 +51,8 @@ var Binder = React.createClass({
         <br/>
         <button onClick={this.createTab}>Create new tab</button>
         {selTab}
+        <br/>
+        <button onClick={this.openSearch}>Search</button>
       </div>
     ):(<span/>);
   }

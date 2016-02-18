@@ -42,9 +42,9 @@ var Result = React.createClass({
         var content = this.props.page.content;
         var table = content.Parts[0];
         var parts = content.Parts.map((table)=>{return getPartData(table);});
-        return {mode: MODE_NORMAL,parts: parts, saved: false};
+        return {mode: MODE_NORMAL,parts: parts, saved: false, conTok: ''};
       }else if(typeof(this.props.page.result)){
-        return {mode: MODE_NORMAL,parts: this.props.page.result, saved:true};
+        return {mode: MODE_NORMAL,parts: this.props.page.result, saved:true, conTok: ''};
       }else{
         throw "unknown result data";
       }
@@ -64,12 +64,33 @@ var Result = React.createClass({
         TabStore.tabLinkPage(queryPageTabs[i],pageKey);
       this.close();
       WorkspaceStore.openPage(pageKey);
-    },    showLinks: function(){
-          this.setState({mode:MODE_LINKS});
-        },
-        closeLinks: function() {
-          this.setState({mode:MODE_NORMAL});
-        },
+    },
+    showLinks: function(){
+      this.setState({mode:MODE_LINKS});
+    },
+    closeLinks: function() {
+      this.setState({mode:MODE_NORMAL});
+    },
+    refresh: function(pageKey){
+      // load the latest version of the query saved.
+      var query = PageStore.getInitialState()[pageKey].content;
+      // connect if not connected.
+      if(this.state.conTok.length < 1){
+        Execute.newSession({}, (conTok) => {
+            this.state.conTok = conTok;
+            this.setState(this.state);
+            this.refresh(pageKey);
+        });
+        return;
+      }
+      // execute the query again.
+      let ex = {
+        conTok: this.state.conTok, content: query
+      };
+      Execute.execute(ex, (result) => {
+        WorkspaceStore.openResult(result, pageKey);
+      });
+    },
     render: function() {
         let tables = this.state.parts.map((p,i)=>{
           return <DataGrid key={i}
@@ -79,6 +100,20 @@ var Result = React.createClass({
             style={{height: 500}}
           />
         });
+        var linksout = PageStore.getLinksFrom(this.props.pageKey);
+        var linksin = PageStore.getLinksTo(this.props.pageKey);
+
+        const resultLinks = linksin.filter(l=>l.attrs.type=='resultOf');
+        const hasResultOf = resultLinks.length > 0 || this.props.page.resultOf.length > 0;
+        var resultOfPageKey = null;
+        if(hasResultOf){
+            if(resultLinks.length > 0)
+              resultOfPageKey = resultLinks[resultLinks.length-1].from;
+            else {
+              resultOfPageKey = this.props.page.resultOf;
+            }
+        }
+
         return (
             <li className="page">
                 <div className="head">
@@ -90,6 +125,7 @@ var Result = React.createClass({
                     </b>
                     <div className="actions">
                         {!this.state.saved?<button onClick={this.save}>Save</button>:null}
+                        {hasResultOf?(<button onClick={()=>this.refresh(resultOfPageKey)}>re-run</button>):null}
                     </div>
                 </div>
                 {this.state.mode==MODE_NORMAL?(
