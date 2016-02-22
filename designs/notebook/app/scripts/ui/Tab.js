@@ -17,7 +17,7 @@ var Tab = React.createClass({
     createPage: function(format){
       var pageName = this.state.value;
       if(pageName.length>0){
-        var pageKey  =PageStore.createNewKey(pageName)
+        var pageKey = PageStore.createNewKey(pageName)
         var options = {format:format};
         PageStore.pageCreate(pageKey, pageName, options);
         TabStore.tabLinkPage(this.props.tabID,pageKey);

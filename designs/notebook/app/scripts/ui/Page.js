@@ -1,9 +1,9 @@
 var React = window.React = require('react');
 var Reflux = require('reflux');
 var Links = require('./Links.js');
-require('codemirror/mode/sql/sql');
-require('codemirror/mode/markdown/markdown');
-require('codemirror/addon/edit/matchbrackets');
+require('codemirror/mode/sql/sql.js');
+require('codemirror/mode/markdown/markdown.js');
+require('codemirror/addon/edit/matchbrackets.js');
 
 var WorkspaceStore = require('../stores/WorkspaceStore.js');
 var PageStore = require('../stores/PageStore.js');

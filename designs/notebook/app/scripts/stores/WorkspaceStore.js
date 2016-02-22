@@ -41,7 +41,7 @@ var WorkspaceAction = Reflux.createStore({
           break;
         default:
           this.windows.push({
-            type:"code",
+            type:page.type,
             pageKey:pageKey,
             content:page.content
           });
