@@ -32,8 +32,9 @@ var Workspace = React.createClass({
           case "result": return <Page.Result pageKey={page.pageKey} key={page.i} pageIndex={page.i} page={page}/>;
           case "index": return <Page.Index pageKey={page.pageKey} key={page.i} pageIndex={page.i} tabKey={page.tabKey}/>;
           case "search": return <Page.Search page={page} key={page.i} pageIndex={page.i}/>;
+          case "document": return <Page.Code pageKey={page.pageKey} key={page.i} pageIndex={page.i} page={page} format={"markdown"}/>;
         }
-        return <Page.Code pageKey={page.pageKey} key={page.i} pageIndex={page.i} page={page}/>;
+        return <Page.Code pageKey={page.pageKey} key={page.i} pageIndex={page.i} page={page} format={"sql"}/>;
       });
     return (
       <div className="workspace">

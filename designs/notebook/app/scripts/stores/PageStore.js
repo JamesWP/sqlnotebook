@@ -3,6 +3,7 @@ var Reflux = require('reflux');
 var objKeys = require('../helpers/objKeys.js');
 var objItter = require('../helpers/objItter.js');
 const PAGE_TYPE_CODE = "code";
+const PAGE_TYPE_TEXT = "markdown";
 const PAGE_TYPE_RESULT = "result";
 
 var PageActions = Reflux.createActions([
@@ -28,10 +29,14 @@ var PageActions = Reflux.createStore({
   getInitialState:function(){
     return this.pages;
   },
-  pageCreate:function(pageKey,pageName){
+  pageCreate:function(pageKey,pageName,opt){
+    opt = opt || {};
+    opt.format = opt.format || "sql";
+
+    var pageType = opt.format==="sql"?PAGE_TYPE_CODE:PAGE_TYPE_TEXT;
     this.pages[pageKey] = {
       "name":pageName,
-      "type":PAGE_TYPE_CODE
+      "type":pageType,
     };
     this.onUpdate();
   },

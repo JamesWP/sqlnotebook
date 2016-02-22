@@ -2,6 +2,7 @@ var React = window.React = require('react');
 var Reflux = require('reflux');
 var Links = require('./Links.js');
 require('codemirror/mode/sql/sql');
+require('codemirror/mode/markdown/markdown');
 require('codemirror/addon/edit/matchbrackets');
 
 var WorkspaceStore = require('../stores/WorkspaceStore.js');
@@ -80,7 +81,7 @@ var Page = React.createClass({
         //debugger;
         var options = {
             lineNumbers: true,
-            mode: "text/x-mssql",
+            mode: this.props.format=="sql"?"text/x-mssql":"text/x-markdown",
             matchBrackets: true
         };
 
@@ -89,7 +90,9 @@ var Page = React.createClass({
 
         var thisPage = this.state.pages[this.props.pageKey];
         var connectionButton;
-        if (this.state.conTok.length > 0)
+        if (this.props.format!=="sql"){
+          connectionButton = null;
+        }else if(this.state.conTok.length > 0)
             connectionButton = (
                 <div>
                     <button onClick={this.connect}>Reconnect</button>
