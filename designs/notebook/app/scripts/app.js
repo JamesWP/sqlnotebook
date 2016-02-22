@@ -2,6 +2,15 @@ var React = window.React = require('react'),
     ReactDOM = require('react-dom'),
     mountNode = document.getElementById("app");
 
+import injectTapEventPlugin from 'react-tap-event-plugin';
+// Needed for onTouchTap
+// Can go away when react 1.0 release
+// Check this repo:
+// https://github.com/zilverline/react-tap-event-plugin
+injectTapEventPlugin();
+
+import LeftNav from 'material-ui/lib/left-nav';
+
 // My components
 var Binder = require('./ui/Binder.js'),
     Workspace = require('./ui/Workspace.js'),

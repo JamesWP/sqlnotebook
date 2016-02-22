@@ -6,6 +6,11 @@ var WorkspaceStore = require('../stores/WorkspaceStore.js');
 // My helpers
 var omap = require('../helpers/objItter.js').map;
 
+import List from 'material-ui/lib/lists/list';
+import ListItem from 'material-ui/lib/lists/list-item';
+import Paper from 'material-ui/lib/paper';
+
+
 var Tab = React.createClass({
     mixins: [Reflux.connect(PageStore,"pages")],
     getInitialState: function(){
@@ -42,22 +47,24 @@ var Tab = React.createClass({
           if(!bind)return undefined;
           var page = spages[pkey];
           if (!page) return null;
-          return <li key={pkey}>
-            {page.name}
-            <button onClick={()=>{this.openPage(pkey)}}>open</button>
-            <button onClick={()=>{this.deletePage(pkey)}}>delete</button>
-          </li>;
+          let actions = (
+            <span>
+              <button onClick={()=>{this.deletePage(pkey)}}>delete</button>
+            </span>);
+          return <ListItem key={pkey} primaryText={page.name} onClick={()=>{this.openPage(pkey)}} rightIcon={actions}/>;
         });
         return (
-            <div className={"tab"}>
+            <Paper style={{padding:5,margin:5}}>
                 <h1>{tab.name}</h1>
-                <ul>{pages}</ul>
+                <List>
+                  {pages}
+                </List>
                 <input type="text" value={this.state.value} onChange={this.handleChange}/>
                 <br/>
                 <button onClick={()=>this.createPage("sql")}>Create new code page</button>
                 <button onClick={()=>this.createPage("markdown")}>Create new text page</button>
                 <button onClick={this.openIndex}>View index</button>
-            </div>
+            </Paper>
         );
     }
 });

@@ -13,6 +13,10 @@ var Codemirror = require('react-codemirror');
 var SqlNotebookController = require('../controller/main.js');
 var Execute = require('../controller/execute.js');
 
+import PageActionBar from './PageActionBar';
+import MenuItem from 'material-ui/lib/menus/menu-item';
+import FontIcon from 'material-ui/lib/font-icon';
+
 const MODE_NORMAL = "NORMAL";
 const MODE_REQUEST_CONFIRM = "REQUEST_CONFIRM";
 const MODE_LINKS = "LINKS";
@@ -93,16 +97,14 @@ var Page = React.createClass({
         if (this.props.format!=="sql"){
           connectionButton = null;
         }else if(this.state.conTok.length > 0)
-            connectionButton = (
-                <div>
-                    <button onClick={this.connect}>Reconnect</button>
-                    <button onClick={this.execute}>Execute</button>
-                </div>
-            );
+            connectionButton = [
+                <MenuItem leftIcon={<FontIcon className="fa fa-refresh"/>} primaryText="Reconnect" onClick={this.connect}/>,
+                <MenuItem leftIcon={<FontIcon className="fa fa-paper-plane"/>} primaryText="Execute" onClick={this.execute}/>
+            ];
         else
-            connectionButton = (
-                <button onClick={this.connect}>Connect</button>
-            );
+            connectionButton = [
+                <MenuItem leftIcon={<FontIcon className="fa fa-magic"/>} primaryText="Connect" onClick={this.connect}/>
+            ];
 
         switch(this.state.mode){
             case MODE_REQUEST_CONFIRM:
@@ -151,17 +153,20 @@ var Page = React.createClass({
             default:
             return (
                 <li className="page">
-                    <div className="head">
-                        <b>{thisPage.name} {this.state.altered?"*":null}
-                            <small> {this.props.pageIndex}</small>
-                            <small onClick={()=>this.showLinks()}> links:{linksout.length + linksin.length}</small>
-                            <button className="close" onClick={this.close}>X</button>
-                        </b>
-                        <div className="actions">
-                            <button onClick={this.save}>Save</button>
+                    <PageActionBar
+                      title={(
+                        <span>{thisPage.name} {this.state.altered?"*":null}
+                          <small> {this.props.pageIndex}</small></span>
+                        )}
+                      onClose={this.close}
+                      menuItems={(
+                          <div>
+                            <MenuItem leftIcon={<FontIcon className="fa fa-link"/>} primaryText={"Links " + linksout.length + linksin.length} onClick={this.showLinks}/>
+                            <MenuItem leftIcon={<FontIcon className="fa fa-save"/>} primaryText="Save" onClick={this.save}/>
                             {connectionButton}
-                        </div>
-                    </div>
+                          </div>
+                          )}
+                    />
                     <Codemirror value={this.state.code} onChange={this.updateCode} options={options}/>
                 </li>
             );

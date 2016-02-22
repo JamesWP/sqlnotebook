@@ -10,6 +10,8 @@ var WorkspaceStore = require('../stores/WorkspaceStore.js')
 // My helpers
 var omap = require('../helpers/objItter.js').map;
 
+import PageActionBar from './PageActionBar';
+
 var Index = React.createClass({
     mixins: [Reflux.connect(PageStore,"pages")],
     openPage: function(pkey){
@@ -41,17 +43,12 @@ var Index = React.createClass({
         });
         return (
             <li className="page">
-                <div className="head">
-                    <b>Index for tab
-                        {this.props.tabKey}
-                      <button className="close" onClick={this.close}>X</button></b>
-                    <div className="actions">
-
-                    </div>
-                </div>
-                <ul>
-                  {pages}
-                </ul>
+              <PageActionBar
+                title={(<span>Index for tab {this.props.tabKey}</span>)}
+                onClose={this.close}/>
+              <ul>
+                {pages}
+              </ul>
             </li>
         );
     }

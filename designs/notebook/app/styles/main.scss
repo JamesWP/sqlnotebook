@@ -2,6 +2,7 @@ $headColor:darkblue;
 $headColorDark:darken($headColor,10%);
 $headTextColor:white;
 
+@import "font-awesome/scss/font-awesome.scss";
 
 html {
     height: 100%;
@@ -100,3 +101,4 @@ body {
 @import "codemirror.css";
 @import "react-datagrid.scss"; // this is for the grid plugin
 @import "workspace.scss";
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500);
