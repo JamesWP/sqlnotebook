@@ -20,6 +20,7 @@ var TabStore = Reflux.createStore({
     this.tabLinkPage("t1","p1");
     this.tabLinkPage("t1","p2");
     this.tabLinkPage("t2","p2");
+    this.tabLinkPage("t1","p3");
   },
   getInitialState:function(){
     return this.tabs;

@@ -24,7 +24,9 @@ var PageActions = Reflux.createStore({
     };
     this.pageCreate("p1","Page One");
     this.pageCreate("p2","Page Two");
+    this.pageCreate("p3","Page Three", {fornat:'text'});
     this.pageSave("p1","test\ntesting\ntesting code\ncode rules")
+    this.pageSave("p3","# main title\n\n this is content\n\ttabbed content is verbatum\n## level 2 heading");
   },
   getInitialState:function(){
     return this.pages;
