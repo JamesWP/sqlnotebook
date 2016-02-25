@@ -10,6 +10,9 @@ import List from 'material-ui/lib/lists/list';
 import ListItem from 'material-ui/lib/lists/list-item';
 import Paper from 'material-ui/lib/paper';
 import DeleteIcon from 'material-ui/lib/svg-icons/action/delete';
+import FlatButton from 'material-ui/lib/flat-button';
+import FontIcon from 'material-ui/lib/font-icon';
+import TextField from 'material-ui/lib/text-field';
 
 const MODE_NORMAL = 'normal';
 const MODE_DELETE = 'delete';
@@ -57,18 +60,23 @@ var Tab = React.createClass({
           let clickAction = this.state.mode==MODE_NORMAL?()=>this.openPage(pkey):()=>this.deletePage(pkey);
           return <ListItem key={pkey} primaryText={page.name} onClick={clickAction} rightIcon={actions}/>;
         });
+        if(pages.length==0){
+          pages = <ListItem value={-1} key={-1} primaryText={"No pages created"}/>;
+        }
         return (
-            <Paper style={{padding:5,margin:5}}>
-                <h1>{tab.name}</h1>
-                <button onClick={this.toggleMode}>EDIT</button>
-                <List>
-                  {pages}
-                </List>
-                <input type="text" value={this.state.value} onChange={this.handleChange}/>
-                <br/>
-                <button onClick={()=>this.createPage("sql")}>Create new code page</button>
-                <button onClick={()=>this.createPage("markdown")}>Create new text page</button>
-                <button onClick={this.openIndex}>View index</button>
+            <Paper style={{margin:5}}>
+              <p style={{padding:10}}>{tab.name}</p>
+              <FlatButton onClick={this.toggleMode} label="edit" primary={this.state.mode==MODE_NORMAL} secondary={this.state.mode==MODE_DELETE} icon={<FontIcon className="fa fa-edit"/>}/>
+              <List>
+                {pages}
+              </List>
+              <Paper style={{padding:10}}>
+                <TextField hintText="Page Name" value={this.state.value} onChange={this.handleChange}/>
+                <FlatButton disabled={this.state.value.length< 1} onClick={()=>this.createPage("sql")} label="new code page" icon={<FontIcon className="fa fa-plus"/>}/>
+                <FlatButton disabled={this.state.value.length< 1} onClick={()=>this.createPage("markdown")} label="new text page" icon={<FontIcon className="fa fa-plus"/>}/>
+              </Paper>
+              <br/>
+              <FlatButton onClick={this.openIndex} label="view index" icon={<FontIcon className="fa fa-bookmark"/>}/>
             </Paper>
         );
     }

@@ -2,6 +2,8 @@ var React = window.React = require('react'),
     ReactDOM = require('react-dom'),
     mountNode = document.getElementById("app");
 
+var WorkspaceStore = require('./stores/WorkspaceStore.js');
+
 import injectTapEventPlugin from 'react-tap-event-plugin';
 // Needed for onTouchTap
 // Can go away when react 1.0 release
@@ -12,6 +14,8 @@ injectTapEventPlugin();
 import LeftNav from 'material-ui/lib/left-nav';
 import PageActionBar from './ui/PageActionBar';
 
+import MenuItem from 'material-ui/lib/menus/menu-item';
+import FontIcon from 'material-ui/lib/font-icon';
 
 // My components
 var Binder = require('./ui/Binder.js'),
@@ -23,11 +27,16 @@ var SqlNotebookApp = React.createClass({
   onToggle:function(){
     this.setState({open: !this.state.open});
   },
+  openSearch: function(){
+    WorkspaceStore.openSearch();
+  },
   render: function() {
     return (
       <div className={"container"}>
         <LeftNav open={this.state.open} width={300} disableSwipeToOpen={true}>
-          <PageActionBar title={"Binder"} onClose={this.onToggle}/>
+          <PageActionBar title={"Binder"} onClose={this.onToggle}>
+            <MenuItem leftIcon={<FontIcon className="fa fa-search"/>} primaryText="search" onClick={this.openSearch}/>
+          </PageActionBar>
           <Binder open={this.state.open}/>
         </LeftNav>
         <Toggle open={this.state.open} onToggle={this.onToggle}/>
