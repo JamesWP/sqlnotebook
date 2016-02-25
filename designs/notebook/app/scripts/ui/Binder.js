@@ -22,7 +22,7 @@ let SelectableList = SelectableContainerEnhance(List);
 const style = {
   page:{
     padding:10,
-    width:300
+    width:'auto'
   }
 };
 
@@ -59,7 +59,7 @@ var Binder = React.createClass({
       return (<ListItem value={tkey} key={tkey} primaryText={tab.name}/>);
     });
     return (this.props.open)?(
-      <Paper zDepth={2} style={style.page}>
+      <Paper zDepth={0} style={style.page}>
         <h1>Binder</h1>
 
         <SelectableList valueLink={{value: this.state.selectedTab, requestChange: this.changeTab}}>

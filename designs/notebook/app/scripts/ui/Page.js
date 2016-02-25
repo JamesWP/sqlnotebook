@@ -16,6 +16,7 @@ var Execute = require('../controller/execute.js');
 import PageActionBar from './PageActionBar';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 import FontIcon from 'material-ui/lib/font-icon';
+import Divider from 'material-ui/lib/divider';
 
 const MODE_NORMAL = "NORMAL";
 const MODE_REQUEST_CONFIRM = "REQUEST_CONFIRM";
@@ -93,18 +94,23 @@ var Page = React.createClass({
         var linksin = PageStore.getLinksTo(this.props.pageKey);
 
         var thisPage = this.state.pages[this.props.pageKey];
-        var connectionButton;
-        if (this.props.format!=="sql"){
-          connectionButton = null;
-        }else if(this.state.conTok.length > 0)
-            connectionButton = [
-                <MenuItem leftIcon={<FontIcon className="fa fa-refresh"/>} primaryText="Reconnect" onClick={this.connect}/>,
-                <MenuItem leftIcon={<FontIcon className="fa fa-paper-plane"/>} primaryText="Execute" onClick={this.execute}/>
+
+        let menuItems = [
+              <MenuItem key="save" leftIcon={<FontIcon className="fa fa-save"/>} primaryText="Save" onClick={this.save}/>,
+              <MenuItem key="link" leftIcon={<FontIcon className="fa fa-link"/>} primaryText="Links" secondaryText={"" + (linksout.length + linksin.length)} onClick={this.showLinks}/>
             ];
-        else
-            connectionButton = [
-                <MenuItem leftIcon={<FontIcon className="fa fa-magic"/>} primaryText="Connect" onClick={this.connect}/>
-            ];
+
+        if (this.props.format!=="sql");
+        else if(this.state.conTok.length > 0){
+          menuItems.push(<Divider key={1}/>);
+          menuItems.push(<MenuItem key="refresh" leftIcon={<FontIcon className="fa fa-refresh"/>} primaryText="Reconnect" onClick={this.connect}/>);
+          menuItems.push(<MenuItem key="exec" leftIcon={<FontIcon className="fa fa-paper-plane"/>} primaryText="Execute" onClick={this.execute}/>);
+        }else{
+          menuItems.push(<Divider key={2}/>);
+          menuItems.push(<MenuItem key="connect" leftIcon={<FontIcon className="fa fa-magic"/>} primaryText="Connect" onClick={this.connect}/>);
+        }
+
+
 
         switch(this.state.mode){
             case MODE_REQUEST_CONFIRM:
@@ -159,14 +165,7 @@ var Page = React.createClass({
                           <small> {this.props.pageIndex}</small></span>
                         )}
                       onClose={this.close}
-                      menuItems={(
-                          <div>
-                            <MenuItem leftIcon={<FontIcon className="fa fa-link"/>} primaryText={"Links " + linksout.length + linksin.length} onClick={this.showLinks}/>
-                            <MenuItem leftIcon={<FontIcon className="fa fa-save"/>} primaryText="Save" onClick={this.save}/>
-                            {connectionButton}
-                          </div>
-                          )}
-                    />
+                    >{menuItems}</PageActionBar>
                     <Codemirror value={this.state.code} onChange={this.updateCode} options={options}/>
                 </li>
             );

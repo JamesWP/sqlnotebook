@@ -15,7 +15,8 @@ var Match = React.createClass({
   },
   render: function(){
     var match = this.props.match;
-    var pageName = PageStore.getInitialState()[match.pageKey].name;
+    var page = PageStore.getInitialState()[match.pageKey];
+    var pageName = page.name;
     var term = this.props.term;
     var location = match.line.indexOf(term);
     var parts = matchParts(match.line,term);

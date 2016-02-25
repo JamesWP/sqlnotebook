@@ -9,12 +9,15 @@ var omap = require('../helpers/objItter.js').map;
 import List from 'material-ui/lib/lists/list';
 import ListItem from 'material-ui/lib/lists/list-item';
 import Paper from 'material-ui/lib/paper';
+import DeleteIcon from 'material-ui/lib/svg-icons/action/delete';
 
+const MODE_NORMAL = 'normal';
+const MODE_DELETE = 'delete';
 
 var Tab = React.createClass({
     mixins: [Reflux.connect(PageStore,"pages")],
     getInitialState: function(){
-      return {value:""};
+      return {value:"", mode:MODE_NORMAL};
     },
     handleChange: function(event) {
         this.setState({value: event.target.value});
@@ -38,6 +41,9 @@ var Tab = React.createClass({
     openIndex: function(){
       WorkspaceStore.openIndexPage(this.props.tabID);
     },
+    toggleMode: function(){
+      this.setState({mode:this.state.mode==MODE_DELETE?MODE_NORMAL:MODE_DELETE});
+    },
     render: function() {
         var t = this;
         var tab = this.props.tab;
@@ -47,15 +53,14 @@ var Tab = React.createClass({
           if(!bind)return undefined;
           var page = spages[pkey];
           if (!page) return null;
-          let actions = (
-            <span>
-              <button onClick={()=>{this.deletePage(pkey)}}>delete</button>
-            </span>);
-          return <ListItem key={pkey} primaryText={page.name} onClick={()=>{this.openPage(pkey)}} rightIcon={actions}/>;
+          let actions = this.state.mode==MODE_NORMAL?(null):(<DeleteIcon/>);
+          let clickAction = this.state.mode==MODE_NORMAL?()=>this.openPage(pkey):()=>this.deletePage(pkey);
+          return <ListItem key={pkey} primaryText={page.name} onClick={clickAction} rightIcon={actions}/>;
         });
         return (
             <Paper style={{padding:5,margin:5}}>
                 <h1>{tab.name}</h1>
+                <button onClick={this.toggleMode}>EDIT</button>
                 <List>
                   {pages}
                 </List>

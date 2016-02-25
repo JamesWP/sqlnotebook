@@ -13,14 +13,15 @@ export default class PageActionBar extends React.Component {
         title={this.props.title}
         iconElementLeft={<IconButton onClick={this.props.onClose}><NavigationClose /></IconButton>}
         iconElementRight={
-          (this.props.menuItems!==undefined?<IconMenu
+          (this.props.children!==undefined?<IconMenu
+            desktop={true}
             iconButtonElement={
               <IconButton><MoreVertIcon /></IconButton>
             }
             targetOrigin={{horizontal: 'right', vertical: 'top'}}
             anchorOrigin={{horizontal: 'right', vertical: 'top'}}
           >
-            {this.props.menuItems}
+            {this.props.children}
           </IconMenu>:null)
         }
       />

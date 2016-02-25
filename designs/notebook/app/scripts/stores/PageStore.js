@@ -146,6 +146,7 @@ var PageActions = Reflux.createStore({
       callback([]);
     else setTimeout(()=>{
       var matches = objItter.map(this.pages,(key,page)=>{
+        if(page===undefined) return;
         return this.getPageContent(key)
             .split('\n')
             .map((line,lineNumber)=>{return {lineNumber:lineNumber+1,line:line,pageKey:key};})
@@ -153,7 +154,7 @@ var PageActions = Reflux.createStore({
               var found = c.line.indexOf(term)>=0;
               return found;
             });
-      }).filter(x=>{return x.length>0;});
+      }).filter(x=>{return x!==undefined && x.length>0;});
       // flattern
       matches = [].concat.apply([], matches);
       callback(matches);
