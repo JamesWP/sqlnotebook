@@ -90,6 +90,14 @@ var WorkspaceAction = Reflux.createStore({
   },
   closePage:function(pageIndex){
     this.windows[pageIndex].closed=true;
+    var allClosed = true;
+    for(var i=0;i<this.windows.length;i++)
+      allClosed = allClosed && this.windows[i].closed;
+
+    if(allClosed){
+      setTimeout(()=>window.sqlnotebook.OpenSide(),100);
+    }
+
     this.onUpdate();
   },
   savePage:function(pageIndex,content){

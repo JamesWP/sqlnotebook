@@ -30,15 +30,18 @@ var Workspace = React.createClass({
         return !page.closed;
       })
       .map(page => {
+        let el = null;
         switch (page.type){
-          case "result": return <Page.Result pageKey={page.pageKey} key={page.i} pageIndex={page.i} page={page}/>;
-          case "index": return <Page.Index pageKey={page.pageKey} key={page.i} pageIndex={page.i} tabKey={page.tabKey}/>;
-          case "search": return <Page.Search page={page} key={page.i} pageIndex={page.i}/>;
-          case "markdown": return <Page.Code pageKey={page.pageKey} key={page.i} pageIndex={page.i} page={page} format={"markdown"}/>;
+          case "result": el =  <Page.Result pageKey={page.pageKey} key={page.i} pageIndex={page.i} page={page}/>; break;
+          case "index": el =  <Page.Index pageKey={page.pageKey} key={page.i} pageIndex={page.i} tabKey={page.tabKey}/>; break;
+          case "search": el =  <Page.Search page={page} key={page.i} pageIndex={page.i}/>; break;
+          case "markdown": el =  <Page.Code pageKey={page.pageKey} key={page.i} pageIndex={page.i} page={page} format={"markdown"}/>; break;
+          default: el = <Page.Code pageKey={page.pageKey} key={page.i} pageIndex={page.i} page={page} format={"sql"}/>; break;
         }
-        return <Page.Code pageKey={page.pageKey} key={page.i} pageIndex={page.i} page={page} format={"sql"}/>;
-      })
-      .map(page=>{ return <li className={"page"}>{page}</li>});
+
+        return <li style={{listStyle:'none'}} key={page.i}>{el}</li>;
+      });
+
     return (
       <div className="workspace">
         <ul className="workarea">{pages}</ul>

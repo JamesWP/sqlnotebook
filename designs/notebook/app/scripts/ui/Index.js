@@ -13,6 +13,9 @@ var omap = require('../helpers/objItter.js').map;
 import PageActionBar from './PageActionBar';
 import List from 'material-ui/lib/lists/list';
 import ListItem from 'material-ui/lib/lists/list-item';
+import IconButton from 'material-ui/lib/icon-button';
+import FontIcon from 'material-ui/lib/font-icon';
+import Avatar from 'material-ui/lib/avatar';
 
 var Index = React.createClass({
     mixins: [Reflux.connect(PageStore,"pages")],
@@ -33,13 +36,21 @@ var Index = React.createClass({
           let nestedItems = [];
           if(hasHistory)
             nestedItems = page.oldContent.map((c,i)=>{
-              return <ListItem key={i} onClick={()=>this.openPageAtVersion(pkey,i)}>{c.date.toString()}</ListItem>;
+              return <ListItem
+                        key={i}
+                        primaryText={c.date.toLocaleString()}
+                        leftAvatar={<Avatar icon={<FontIcon className="fa fa-play" onClick={()=>this.openPageAtVersion(pkey,i)}/>}/>}
+                        />;
             });
 
           return (
-              <ListItem key={pkey} nestedItems={nestedItems} onClick={()=>this.openPage(pkey)}>
-                <b>{page.name}</b><small>{page.date?page.date.toString():null}</small>
-              </ListItem>
+              <ListItem
+                key={pkey}
+                nestedItems={nestedItems}
+                primaryText={page.name}
+                secondaryText={page.date?page.date.toLocaleString():null}
+                leftAvatar={<Avatar icon={<FontIcon className="fa fa-play" onClick={()=>this.openPage(pkey)}/>}/>}
+                />
           );
         });
         return (

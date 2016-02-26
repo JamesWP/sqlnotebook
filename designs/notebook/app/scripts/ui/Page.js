@@ -15,6 +15,7 @@ var Execute = require('../controller/execute.js');
 
 import PageActionBar from './PageActionBar';
 import MenuItem from 'material-ui/lib/menus/menu-item';
+import RaisedButton from 'material-ui/lib/raised-button';
 import FontIcon from 'material-ui/lib/font-icon';
 import Divider from 'material-ui/lib/divider';
 import Paper from 'material-ui/lib/paper';
@@ -148,7 +149,7 @@ var Page = React.createClass({
                   >{menuItems}</PageActionBar>
                   <div>
                       <Links pageKey={this.props.pageKey} in={linksin} out={linksout}/>
-                      <button onClick={()=>{this.closeLinks();}}>close</button>
+                      <RaisedButton label="close" onClick={()=>{this.closeLinks();}}/>
                   </div>
               </div>
             );

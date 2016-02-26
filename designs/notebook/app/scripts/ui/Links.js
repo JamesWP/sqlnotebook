@@ -1,13 +1,14 @@
 var React = window.React = require('react');
 
+import List from 'material-ui/lib/lists/list';
+import ListItem from 'material-ui/lib/lists/list-item';
+import Paper from 'material-ui/lib/paper';
 
 var Link = React.createClass({
   render: function(){
     var link = this.props.link;
     return (
-      <li>
-        Type of link: {link.attrs.type}
-      </li>
+      <ListItem primaryText={"Type of link"} secondaryText={link.attrs.type} />
     );
   }
 });
@@ -15,29 +16,33 @@ var Link = React.createClass({
 var Links = React.createClass({
   render: function() {
     let linksin = (
-        <ul>
+        <List>
           { this.props.in.length!=0?
             this.props.in.map((link,i)=>{
               return <Link key={i} link={link}/>;
-            }):(<li>No links</li>)
+            }):(<ListItem>No links</ListItem>)
           }
-        </ul>
+        </List>
     );
     let linksout = (
-        <ul>
+        <List>
           { this.props.out.length!=0?
             this.props.out.map((link,i)=>{
               return <Link key={i} link={link}/>;
-            }):(<li>No links</li>)
+            }):(<ListItem>No links</ListItem>)
           }
-        </ul>
+        </List>
     );
     return (
-      <div className={"links"}>
-        <div><b>Links to this page</b></div>
-        {linksin}
-        <div><b>Links from this page</b></div>
-        {linksout}
+      <div>
+        <Paper style={{margin:10,padding:10}}>
+          <div><b>Links to this page</b></div>
+          {linksin}
+        </Paper>
+        <Paper style={{margin:10,padding:10}}>
+          <div><b>Links from this page</b></div>
+          {linksout}
+        </Paper>
       </div>
     );
   }

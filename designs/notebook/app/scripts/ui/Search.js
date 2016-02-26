@@ -64,7 +64,9 @@ var Search = React.createClass({
               <MenuItem leftIcon={<FontIcon className="fa fa-save"/>} primaryText="Save" onClick={this.save}/>
             </PageActionBar>
             <div className="searchResults">
-              <TextField hintText="Search term" style={{width:"100%",margin:10}} onChange={this.searchChange} value={this.state.search}/>
+              <Paper>
+                <TextField hintText="Search term" style={{width:"auto",margin:10}} onChange={this.searchChange} value={this.state.search}/>
+              </Paper>
               <Paper style={{padding:10}}>
                 <b style={{float:"right"}}>{hasMatches?"Matches: " + numMatches:null}</b>
                 Search results

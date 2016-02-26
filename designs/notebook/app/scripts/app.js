@@ -23,6 +23,8 @@ var Binder = require('./ui/Binder.js'),
     Workspace = require('./ui/Workspace.js'),
     Toggle = require('./ui/Toggle.js');
 
+var app = null;
+
 var SqlNotebookApp = React.createClass({
   getInitialState:()=>{return {open:true};},
   onToggle:function(){
@@ -31,10 +33,13 @@ var SqlNotebookApp = React.createClass({
   openSearch: function(){
     WorkspaceStore.openSearch();
   },
+  componentDidMount: function(){
+    app = this;
+  },
   render: function() {
     return (
       <div className={"container"}>
-        <LeftNav open={this.state.open} width={300} disableSwipeToOpen={true}>
+        <LeftNav open={this.state.open} width={300} disableSwipeToOpen={true} docked={false} onRequestChange={this.onToggle}>
           <PageActionBar title={"Binder"} onClose={this.onToggle} titleStyle={{backgroundColor:Colors.greenA400}}>
             <MenuItem leftIcon={<FontIcon className="fa fa-search"/>} primaryText="search" onClick={this.openSearch}/>
           </PageActionBar>
@@ -53,5 +58,6 @@ ReactDOM.render(<SqlNotebookApp />, mountNode);
 window.sqlnotebook = {
   PageStore: require('./stores/PageStore.js'),
   WorkspaceStore: require('./stores/WorkspaceStore.js'),
-  TabStore: require('./stores/TabStore.js')
+  TabStore: require('./stores/TabStore.js'),
+  OpenSide: ()=>{app.setState({open:true});}
 };

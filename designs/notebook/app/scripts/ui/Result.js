@@ -10,6 +10,14 @@ var Execute = require('../controller/execute.js');
 var DataGrid = require('react-datagrid')
 
 
+import PageActionBar from './PageActionBar';
+import MenuItem from 'material-ui/lib/menus/menu-item';
+import RaisedButton from 'material-ui/lib/raised-button';
+import FontIcon from 'material-ui/lib/font-icon';
+import Divider from 'material-ui/lib/divider';
+import Paper from 'material-ui/lib/paper';
+
+
 var RNKEY = "ROWNOKEY";
 
 const MODE_NORMAL = "NORMAL";
@@ -114,20 +122,19 @@ var Result = React.createClass({
             }
         }
 
+        let menuItems = [];
+
+        if(!this.state.saved)
+          menuItems.push(<MenuItem key="connect" leftIcon={<FontIcon className="fa fa-save"/>} primaryText="save" onClick={this.save}/>);
+        if(hasResultOf)
+          menuItems.push(<MenuItem key="rerun" primaryText="rerun" onClick={()=>this.refresh(resultOfPageKey)}/>);
+
         return (
             <div className="page">
-                <div className="head">
-                    <b> Result
-                        <small>
-                            {this.props.pageIndex}</small>
-                        <small onClick={()=>this.showLinks()}> links:{linksout.length + linksin.length}</small>
-                        <button className="close" onClick={this.close}>X</button>
-                    </b>
-                    <div className="actions">
-                        {!this.state.saved?<button onClick={this.save}>Save</button>:null}
-                        {hasResultOf?(<button onClick={()=>this.refresh(resultOfPageKey)}>re-run</button>):null}
-                    </div>
-                </div>
+                <PageActionBar
+                  title={"Result"}
+                  onClose={this.close}
+                >{menuItems}</PageActionBar>
                 {this.state.mode==MODE_NORMAL?(
                   <div className="resultTable">
                     {tables}
