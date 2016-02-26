@@ -64,9 +64,9 @@ var Binder = React.createClass({
         <SelectableList valueLink={{value: this.state.selectedTab, requestChange: this.changeTab}}>
           {tabs}
         </SelectableList>
-        <Paper style={{padding:10}}>
-        <TextField hintText="Tab Name" value={this.state.value} onChange={this.handleChange}/>
-        <FlatButton disabled={this.state.value.length < 1} icon={<FontIcon className="fa fa-plus"/>} label="New Tab" onClick={this.createTab} />
+        <Paper style={{padding:10, margin:10}}>
+          <TextField hintText="Tab Name" value={this.state.value} onChange={this.handleChange}/>
+          <FlatButton disabled={this.state.value.length < 1} icon={<FontIcon className="fa fa-plus"/>} label="New Tab" onClick={this.createTab} />
         </Paper>
         <Paper style={{padding:10}}>
         {(this.state.selectedTab)?(

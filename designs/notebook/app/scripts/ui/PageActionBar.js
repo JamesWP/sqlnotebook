@@ -11,7 +11,8 @@ export default class PageActionBar extends React.Component {
     return (
       <AppBar
         title={this.props.title}
-        iconElementLeft={<IconButton onClick={this.props.onClose}><NavigationClose /></IconButton>}
+        style={this.props.titleStyle}
+        iconElementLeft={<IconButton disabled={(this.props.close!==undefined&&this.props.close==false)} onClick={this.props.onClose}><NavigationClose /></IconButton>}
         iconElementRight={
           (this.props.children!==undefined?<IconMenu
             desktop={true}

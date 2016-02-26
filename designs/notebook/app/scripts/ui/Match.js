@@ -21,14 +21,14 @@ var Match = React.createClass({
     var location = match.line.indexOf(term);
     var parts = matchParts(match.line,term);
     return (
-      <li onClick={this.onClick}>
+      <div onClick={this.onClick}>
         <i>{pageName}</i>
-      <small> location {match.lineNumber}:{location+1}-{location+1 + term.length}</small>
-      <br/>
-      Match:
-      <br/>
-      {parts[0]}<u><b>{parts[1]}</b></u>{parts[2]}
-      </li>
+        <small> location {match.lineNumber}:{location+1}-{location+1 + term.length}</small>
+        <br/>
+        Match:
+        <br/>
+        {parts[0]}<u><b>{parts[1]}</b></u>{parts[2]}
+      </div>
     );
   }
 });

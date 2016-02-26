@@ -16,6 +16,7 @@ import PageActionBar from './ui/PageActionBar';
 
 import MenuItem from 'material-ui/lib/menus/menu-item';
 import FontIcon from 'material-ui/lib/font-icon';
+import Colors from 'material-ui/lib/styles/colors';
 
 // My components
 var Binder = require('./ui/Binder.js'),
@@ -34,7 +35,7 @@ var SqlNotebookApp = React.createClass({
     return (
       <div className={"container"}>
         <LeftNav open={this.state.open} width={300} disableSwipeToOpen={true}>
-          <PageActionBar title={"Binder"} onClose={this.onToggle}>
+          <PageActionBar title={"Binder"} onClose={this.onToggle} titleStyle={{backgroundColor:Colors.greenA400}}>
             <MenuItem leftIcon={<FontIcon className="fa fa-search"/>} primaryText="search" onClick={this.openSearch}/>
           </PageActionBar>
           <Binder open={this.state.open}/>

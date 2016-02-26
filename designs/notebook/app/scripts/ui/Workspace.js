@@ -16,18 +16,20 @@ var Page = {
 // My helpers
 var omap = require('../helpers/objItter.js').map;
 
+import Paper from 'material-ui/lib/paper';
+
 var Workspace = React.createClass({
   mixins: [Reflux.connect(WorkspaceStore,"windows")],
   render: function(){
     var pages = this.state.windows
-      .map(function(page,i){
+      .map((page,i) => {
         page.i = i;
         return page;
       })
-      .filter(function(page){
+      .filter(page => {
         return !page.closed;
       })
-      .map(function(page){
+      .map(page => {
         switch (page.type){
           case "result": return <Page.Result pageKey={page.pageKey} key={page.i} pageIndex={page.i} page={page}/>;
           case "index": return <Page.Index pageKey={page.pageKey} key={page.i} pageIndex={page.i} tabKey={page.tabKey}/>;
@@ -35,7 +37,8 @@ var Workspace = React.createClass({
           case "markdown": return <Page.Code pageKey={page.pageKey} key={page.i} pageIndex={page.i} page={page} format={"markdown"}/>;
         }
         return <Page.Code pageKey={page.pageKey} key={page.i} pageIndex={page.i} page={page} format={"sql"}/>;
-      });
+      })
+      .map(page=>{ return <li className={"page"}>{page}</li>});
     return (
       <div className="workspace">
         <ul className="workarea">{pages}</ul>

@@ -64,14 +64,14 @@ var Tab = React.createClass({
           pages = <ListItem value={-1} key={-1} primaryText={"No pages created"}/>;
         }
         return (
-            <Paper style={{margin:5}}>
+            <Paper>
               <p style={{padding:10}}>{tab.name}</p>
-              <FlatButton onClick={this.toggleMode} label="edit" primary={this.state.mode==MODE_NORMAL} secondary={this.state.mode==MODE_DELETE} icon={<FontIcon className="fa fa-edit"/>}/>
+              <FlatButton onClick={this.toggleMode} label="edit" primary={this.state.mode==MODE_DELETE} icon={<FontIcon className="fa fa-edit"/>}/>
               <List>
                 {pages}
               </List>
-              <Paper style={{padding:10}}>
-                <TextField hintText="Page Name" value={this.state.value} onChange={this.handleChange}/>
+              <Paper style={{padding:10, margin:"0 10px"}}>
+                <TextField hintText="Page Name" style={{width:"100%"}} value={this.state.value} onChange={this.handleChange}/>
                 <FlatButton disabled={this.state.value.length< 1} onClick={()=>this.createPage("sql")} label="new code page" icon={<FontIcon className="fa fa-plus"/>}/>
                 <FlatButton disabled={this.state.value.length< 1} onClick={()=>this.createPage("markdown")} label="new text page" icon={<FontIcon className="fa fa-plus"/>}/>
               </Paper>

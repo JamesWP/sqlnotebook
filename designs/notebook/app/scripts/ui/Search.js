@@ -5,6 +5,15 @@ var WorkspaceStore = require('../stores/WorkspaceStore.js');
 var PageStore = require('../stores/PageStore.js');
 var TabStore = require('../stores/TabStore.js');
 
+import PageActionBar from './PageActionBar.js';
+import MenuItem from 'material-ui/lib/menus/menu-item';
+import Paper from 'material-ui/lib/paper';
+import FontIcon from 'material-ui/lib/font-icon';
+import TextField from 'material-ui/lib/text-field';
+import List from 'material-ui/lib/lists/list';
+import ListItem from 'material-ui/lib/lists/list-item';
+
+
 var Match = require('./Match.js');
 
 var Search = React.createClass({
@@ -30,6 +39,7 @@ var Search = React.createClass({
     searchChange: function(event){
       var value = event.target.value;
       this.search(value);
+      this.setState({saved:false});
     },
     search: function(term){
       PageStore.search(term, matches=>{
@@ -47,28 +57,30 @@ var Search = React.createClass({
       const numMatches = hasMatches?matches.length:0;
 
       return (
-          <li className="page">
-              <div className="head">
-                  <b> Search {this.state.saved?(null):"*"}
-                      <small>
-                          {this.props.pageIndex}</small>
-                      <button className="close" onClick={this.close}>X</button>
-                  </b>
-                  <div className="actions">
-                      {!this.state.saved?<button onClick={this.save}>Save</button>:null}
-                  </div>
-              </div>
-                <div className="searchResults">
-                  <input onChange={this.searchChange} value={this.state.search}/>
-                  Search results
-                  <br/>
-                  {hasMatches?"Matches: " + numMatches:null}
-                  <br/>
-                  <ul>
-                  {hasMatches?matches.map((match,i)=>{return <Match key={i} match={match} onClick={()=>{this.openPage(match.pageKey)}} term={this.state.search}/>}):null}
-                  </ul>
-                </div>
-          </li>
+          <div className="page">
+            <PageActionBar
+              title={("Search " + (this.state.saved?(""):"*"))}
+              onClose={this.close}>
+              <MenuItem leftIcon={<FontIcon className="fa fa-save"/>} primaryText="Save" onClick={this.save}/>
+            </PageActionBar>
+            <div className="searchResults">
+              <TextField hintText="Search term" style={{width:"100%",margin:10}} onChange={this.searchChange} value={this.state.search}/>
+              <Paper style={{padding:10}}>
+                <b style={{float:"right"}}>{hasMatches?"Matches: " + numMatches:null}</b>
+                Search results
+                <br/>
+                <List>
+                {hasMatches?matches.map((match,i)=>{
+                  return (
+                    <ListItem key={i} onClick={()=>{this.openPage(match.pageKey)}}>
+                      <Match match={match} term={this.state.search}/>
+                    </ListItem>
+                  );
+                }):null}
+                </List>
+              </Paper>
+            </div>
+          </div>
       );
     }
 });

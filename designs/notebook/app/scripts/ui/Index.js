@@ -11,6 +11,8 @@ var WorkspaceStore = require('../stores/WorkspaceStore.js')
 var omap = require('../helpers/objItter.js').map;
 
 import PageActionBar from './PageActionBar';
+import List from 'material-ui/lib/lists/list';
+import ListItem from 'material-ui/lib/lists/list-item';
 
 var Index = React.createClass({
     mixins: [Reflux.connect(PageStore,"pages")],
@@ -27,29 +29,28 @@ var Index = React.createClass({
         var pages = omap(this.state.pages, (pkey, page) => {
           if(!page) return null;
           const hasHistory = !!page.oldContent;
+
+          let nestedItems = [];
+          if(hasHistory)
+            nestedItems = page.oldContent.map((c,i)=>{
+              return <ListItem key={i} onClick={()=>this.openPageAtVersion(pkey,i)}>{c.date.toString()}</ListItem>;
+            });
+
           return (
-              <li key={pkey}>
+              <ListItem key={pkey} nestedItems={nestedItems} onClick={()=>this.openPage(pkey)}>
                 <b>{page.name}</b><small>{page.date?page.date.toString():null}</small>
-                <button onClick={()=>this.openPage(pkey)}>open</button>
-                {hasHistory?(
-                  <ul>
-                    {page.oldContent.map((c,i)=>{
-                      return <li key={i} onClick={()=>this.openPageAtVersion(pkey,i)}>{c.date.toString()}</li>;
-                    })}
-                  </ul>
-                ):null}
-              </li>
+              </ListItem>
           );
         });
         return (
-            <li className="page">
+            <div className="page">
               <PageActionBar
                 title={(<span>Index for tab {this.props.tabKey}</span>)}
                 onClose={this.close}/>
-              <ul>
+              <List>
                 {pages}
-              </ul>
-            </li>
+              </List>
+            </div>
         );
     }
 });

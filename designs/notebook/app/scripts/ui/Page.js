@@ -17,6 +17,7 @@ import PageActionBar from './PageActionBar';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 import FontIcon from 'material-ui/lib/font-icon';
 import Divider from 'material-ui/lib/divider';
+import Paper from 'material-ui/lib/paper';
 
 const MODE_NORMAL = "NORMAL";
 const MODE_REQUEST_CONFIRM = "REQUEST_CONFIRM";
@@ -115,17 +116,15 @@ var Page = React.createClass({
         switch(this.state.mode){
             case MODE_REQUEST_CONFIRM:
             return (
-              <li className="page">
-                  <div className="head">
-                      <b>{thisPage.name} {this.state.altered?"*":null}
-                          <small> {this.props.pageIndex}</small>
-                          <small onClick={()=>this.showLinks()}> links:{linksout.length + linksin.length}</small>
-                          <button className="close" disabled={true}>X</button>
-                      </b>
-                      <div className="actions">
-                          <button onClick={this.save}>Save</button>
-                      </div>
-                  </div>
+              <div className="page">
+                <PageActionBar
+                  close={false}
+                  title={(
+                    <span>{thisPage.name} {this.state.altered?"*":null}
+                      <small> {this.props.pageIndex}</small></span>
+                    )}
+                  onClose={this.close}
+                  >{menuItems}</PageActionBar>
                   <div>
                       <b>You have unsaved changes!</b>
                       <br/>
@@ -135,30 +134,27 @@ var Page = React.createClass({
                       <br/>
                       <button onClick={()=>{this.confirmClose(false);}}>Cancel close</button>
                   </div>
-              </li>
+              </div>
             );
             case MODE_LINKS:
             return (
-              <li className="page">
-                  <div className="head">
-                      <b>{thisPage.name} {this.state.altered?"*":null}
-                          <small> {this.props.pageIndex}</small>
-                          <small onClick={()=>this.showLinks()}> links:{linksout.length + linksin.length}</small>
-                          <button className="close" disabled={true}>X</button>
-                      </b>
-                      <div className="actions">
-                          <button onClick={this.save}>Save</button>
-                      </div>
-                  </div>
+              <div className="page">
+                <PageActionBar
+                  title={(
+                    <span>{thisPage.name} {this.state.altered?"*":null}
+                      <small> {this.props.pageIndex}</small></span>
+                    )}
+                  onClose={this.close}
+                  >{menuItems}</PageActionBar>
                   <div>
                       <Links pageKey={this.props.pageKey} in={linksin} out={linksout}/>
                       <button onClick={()=>{this.closeLinks();}}>close</button>
                   </div>
-              </li>
+              </div>
             );
             default:
             return (
-                <li className="page">
+                <div className="page">
                     <PageActionBar
                       title={(
                         <span>{thisPage.name} {this.state.altered?"*":null}
@@ -166,8 +162,10 @@ var Page = React.createClass({
                         )}
                       onClose={this.close}
                     >{menuItems}</PageActionBar>
+                  <Paper style={{marginTop:10}}>
                     <Codemirror value={this.state.code} onChange={this.updateCode} options={options}/>
-                </li>
+                  </Paper>
+                </div>
             );
         }
 

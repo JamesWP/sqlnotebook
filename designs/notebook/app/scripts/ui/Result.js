@@ -115,7 +115,7 @@ var Result = React.createClass({
         }
 
         return (
-            <li className="page">
+            <div className="page">
                 <div className="head">
                     <b> Result
                         <small>
@@ -138,8 +138,7 @@ var Result = React.createClass({
                       <button onClick={()=>{this.closeLinks();}}>close</button>
                   </div>
                 )}
-
-            </li>
+            </div>
         );
     }
 });
