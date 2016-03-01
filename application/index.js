@@ -3,11 +3,7 @@ const Conf = require('./configuration.js');
 
 var app = express();
 
-var data = {
-  d:{},
-  get: function (id) { return this.d[id]; },
-  put: function (id,dat) { this.d[id] = dat; }
-};
+var data = require('./persistance');
 
 app.use(express.static('dist'));
 
@@ -18,12 +14,13 @@ app.get('/', (req, res)=>{
 
 app.get('/content/:name', function (req, res) {
   const name = req.params.name;
-  const d = data.get(name);
-  if(d!==undefined)
-    res.send(d);
-  else {
-    res.status(404).send('Not found');
-  }
+  data.get(name, d=>{
+    if(d!==undefined)
+      res.status(200).send(d);
+    else {
+      res.status(404).send('Not found');
+    }
+  });
 });
 
 app.post('/content/:name', function(req, res){
@@ -39,7 +36,7 @@ app.post('/content/:name', function(req, res){
       console.log('posted:');
       console.log(postData);
       data.put(name,postData);
-      res.send('OK');
+      res.status(200).send('OK');
   });
 });
 

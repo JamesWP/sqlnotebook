@@ -18,3 +18,4 @@ node_modules/
 *.pdf
 dist/*
 application/dist/*
+application/saves/*.json
