@@ -77,7 +77,7 @@ Requirements
 - high level system design / data flow diagram
 - technology explanation
 - learning demonstrated (extent of new things)
-
+- javascript libraries / designing material ui
 ---
 
 ## testing the project
