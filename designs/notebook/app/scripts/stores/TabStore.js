@@ -61,6 +61,15 @@ var TabStore = Reflux.createStore({
   // convenience functions
   createNewKey:function(newTabName){
     return objKeys.newKeyTo(this.tabs,newTabName);
+  },
+  getData: function(){
+    return {
+      'tabs': this.tabs
+    };
+  },
+  setData: function(data){
+    this.tabs = data.tabs;
+    this.onUpdate();
   }
 });
 

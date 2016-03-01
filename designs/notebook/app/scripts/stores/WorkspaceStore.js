@@ -107,6 +107,15 @@ var WorkspaceAction = Reflux.createStore({
   },
   onUpdate:function(){
     this.trigger(this.windows);
+  },
+  getData: function(){
+    return {
+      'windows': this.windows
+    };
+  },
+  setData: function(data){
+    this.windows = data.windows;
+    this.onUpdate();
   }
 });
 

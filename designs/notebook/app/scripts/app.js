@@ -59,5 +59,6 @@ window.sqlnotebook = {
   PageStore: require('./stores/PageStore.js'),
   WorkspaceStore: require('./stores/WorkspaceStore.js'),
   TabStore: require('./stores/TabStore.js'),
-  OpenSide: ()=>{app.setState({open:true});}
+  OpenSide: ()=>{app.setState({open:true});},
+  ContentStore : require('./stores/ContentStore')
 };

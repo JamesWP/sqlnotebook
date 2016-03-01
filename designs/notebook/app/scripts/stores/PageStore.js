@@ -196,6 +196,17 @@ var PageActions = Reflux.createStore({
   },
   createNewLinkKey:function(){
     return objKeys.newKeyTo(this.pageLinks, "l");
+  },
+  getData: function(){
+    return {
+      'pages': this.pages,
+      'pageLinks': this.pageLinks
+    };
+  },
+  setData: function(data){
+    this.pages = data.pages;
+    this.pageLinks = data.pageLinks
+    this.onUpdate();
   }
 });
 

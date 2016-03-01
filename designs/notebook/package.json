@@ -10,6 +10,7 @@
     "react-dom": "^0.14.0",
     "react-tap-event-plugin": "^0.2.2",
     "reflux": "^0.3.0",
+    "request": "^2.69.0",
     "superagent": "^1.4.0"
   },
   "devDependencies": {
