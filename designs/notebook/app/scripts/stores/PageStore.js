@@ -22,37 +22,6 @@ var PageActions = Reflux.createStore({
       from:{}, // index of link ids by from attr id:[linkid...]
       to:{} // index of link ids by to attr id:[linkid...]
     };
-    this.pageCreate("p1","Page One");
-    this.pageCreate("p2","Page Two");
-    this.pageCreate("p3","Page Three", {format:'text'});
-    this.pageCreate('codetest','TestSql');
-    this.pageSave("p1","test\ntesting\ntesting code\ncode rules")
-    this.pageSave("p3","# main title\n\n this is content\n\ttabbed content is verbatum\n## level 2 heading");
-    this.pageSave('codetest','select top 1 * from [user];');
-    this.pageCreateResult('p1r','Page one result');
-    let result = [
-      {"columns":[
-        {"name":"0","title":"uniqueID","width":100},
-        {"name":"1","title":"displayName","width":100},
-        {"name":"2","title":"userName","width":100},
-        {"name":"3","title":"password","width":100},
-        {"name":"4","title":"extentionID","width":100},
-        {"name":"5","title":"enabled","width":100},
-        {"name":"6","title":"sex","width":100},
-        {"name":"7","title":"deleted","width":100},
-        {"name":"8","title":"dob","width":100},
-        {"name":"9","title":"noCallWithin","width":100},
-        {"name":"10","title":"timeOffset","width":100}
-      ],
-      "rows":[
-        {"0":1,"1":"James P","2":"jamesp","3":"james","4":7,"5":1,"6":"m","7":0,"8":null,"9":"1900-04-11T00:00:00","10":0,"ROWNOKEY":0}
-      ]
-    }];
-    this.pageSave('p1r',result);
-    this.linkCreate('codetest','p1r', {
-      // created from link
-      type:"resultOf"
-    });
   },
   getInitialState:function(){
     return this.pages;

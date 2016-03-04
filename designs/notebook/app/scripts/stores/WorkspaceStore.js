@@ -22,9 +22,6 @@ var WorkspaceAction = Reflux.createStore({
     this.listenToMany(WorkspaceActions);
     this.windows = [];
 
-    this.openIndexPage("t1");
-    this.openPage("p1");
-    this.openSearch('test');
   },
   getInitialState:function(){
     return this.windows;
@@ -65,9 +62,10 @@ var WorkspaceAction = Reflux.createStore({
     this.onUpdate();
   },
   openPageAtVersion(pageKey,index){
-    var content = PageStore.getInitialState()[pageKey].oldContent[index];
+    var page = PageStore.getInitialState()[pageKey];
+    var content = page.oldContent[index];
     this.windows.push({
-      type: "code",
+      type: page.type,
       pageKey: pageKey,
       content: content.content
     });

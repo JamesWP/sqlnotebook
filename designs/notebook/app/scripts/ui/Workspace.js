@@ -39,7 +39,7 @@ var Workspace = React.createClass({
           default: el = <Page.Code pageKey={page.pageKey} key={page.i} pageIndex={page.i} page={page} format={"sql"}/>; break;
         }
 
-        return <li style={{listStyle:'none'}} key={page.i}>{el}</li>;
+        return <li style={{listStyle:'none', flex:1}} key={page.i}>{el}</li>;
       });
 
     return (

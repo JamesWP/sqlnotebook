@@ -15,15 +15,6 @@ var TabStore = Reflux.createStore({
   init: function() {
     this.listenToMany(TabActions);
     this.tabs = {};
-    this.tabCreate("t1","Tab One");
-    this.tabCreate("t2","Tab Two");
-    this.tabLinkPage("t1","p1");
-    this.tabLinkPage("t1","p2");
-    this.tabLinkPage("t2","p2");
-    this.tabLinkPage("t1","p3");
-    this.tabLinkPage("t1","codetest");
-
-    this.tabLinkPage('t1','p1r');
   },
   getInitialState:function(){
     return this.tabs;

@@ -78,6 +78,7 @@ Requirements
 - technology explanation
 - learning demonstrated (extent of new things)
 - javascript libraries / designing material ui
+- languages / skills report
 ---
 
 ## testing the project

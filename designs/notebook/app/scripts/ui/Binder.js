@@ -29,8 +29,7 @@ const style = {
 var Binder = React.createClass({
   mixins: [Reflux.connect(TabStore,"tabs")],
   getInitialState: function(){
-    //TODO: remove this
-    return {selectedTab:'t1',value:''};
+    return {selectedTab:false,value:''};
   },
   handleChange: function(event){
     this.setState({value: event.target.value,selectedTab:null});
@@ -52,7 +51,6 @@ var Binder = React.createClass({
     var changeTab = function(tkey){
       return function(){binder.changeTab(tkey);};
     };
-    var selTab;
     var tabs = omap(this.state.tabs,function(tkey,tab){
       return (<ListItem value={tkey} key={tkey} primaryText={tab.name}/>);
     });

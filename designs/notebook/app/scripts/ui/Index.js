@@ -6,7 +6,7 @@ var moment = require('moment');
 // Controller
 var PageStore = require('../stores/PageStore.js');
 var WorkspaceStore = require('../stores/WorkspaceStore.js')
-
+var TabStore = require('../stores/TabStore.js');
 // My helpers
 var omap = require('../helpers/objItter.js').map;
 
@@ -29,8 +29,11 @@ var Index = React.createClass({
       WorkspaceStore.closePage(this.props.pageIndex);
     },
     render: function() {
+        var ts = TabStore.getInitialState();
+        var ourTab = ts[this.props.tabKey];
         var pages = omap(this.state.pages, (pkey, page) => {
           if(!page) return null;
+          if(ourTab.pages[pkey]!==true) return null;
           const hasHistory = !!page.oldContent;
 
           let nestedItems = [];
@@ -38,7 +41,7 @@ var Index = React.createClass({
             nestedItems = page.oldContent.map((c,i)=>{
               return <ListItem
                         key={i}
-                        primaryText={c.date.toLocaleString()}
+                        primaryText={new Date(c.date).toLocaleString()}
                         leftAvatar={<Avatar icon={<FontIcon className="fa fa-play" onClick={()=>this.openPageAtVersion(pkey,i)}/>}/>}
                         />;
             });
@@ -48,11 +51,11 @@ var Index = React.createClass({
                 key={pkey}
                 nestedItems={nestedItems}
                 primaryText={page.name}
-                secondaryText={page.date?page.date.toLocaleString():null}
+                secondaryText={page.date?new Date(page.date).toLocaleString():null}
                 leftAvatar={<Avatar icon={<FontIcon className="fa fa-play" onClick={()=>this.openPage(pkey)}/>}/>}
                 />
           );
-        });
+        }).filter(x=>x!==null);
         return (
             <div className="page">
               <PageActionBar
