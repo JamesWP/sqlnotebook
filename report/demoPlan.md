@@ -79,6 +79,14 @@ Requirements
 - learning demonstrated (extent of new things)
 - javascript libraries / designing material ui
 - languages / skills report
+  - javascript ES6
+  - React js
+  - Re-Flux
+  - Web API SQL
+  - material ui
+  - Node js
+  - Compiled javascript
+  - Build process
 ---
 
 ## testing the project
