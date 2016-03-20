@@ -14,7 +14,7 @@
 
   explain the problem with example of things that the end user might need
 
-## Proposal
+## Approach  
 
   so my proposal is ...
 
@@ -26,8 +26,12 @@
 
   explain situation
 
-## Document overview
+## Report structure
   explain overview of the document
+
+    testing
+
+---
 
 # Background
 
