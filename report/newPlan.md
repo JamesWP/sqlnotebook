@@ -1,38 +1,10 @@
 # Abstract
-  With a typical developer role there are many workflow problems to solve. Outlined in this document is one possible solution to the problem of organizing all the required pieces of information required.
-  This is a problem for developers because they are often working on multiple projects concurrently and can be required to switch in an instant.
-
-  I will deal with the development of Sql server applications specifically. For the world of a Sql server developer there are many things that need to be remembered in order to complete a task: tables names, relations, column names / types.
-
-  This paper outlines a plan to design and implement a tool to aid the developer of a Sql server database project by helping to store, organize, and search all the documents and code related to the database project.
+  Web based sql ide, for documentation and code. aggregate all information for the project.
+  Notebook metaphor. easy access for all devices. keep up to date. easy to search for information and catalogue important things
+  Aims to be an integration of electronic note taking app and ide.
 
 # Introduction
-
-## set the scene
-
-  explain the problem with example of things that the end user might need
-
-## Approach  
-
-  so my proposal is ...
-
-    bang bang bang statement here
-
-  explain the project in more detail how exactly it will help the user overcome the problems that they are encountering
-
-  what they can do with my project that they cant do with current solutions
-
-  explain situation
-
-## Report structure
-  explain overview of the document
-
----
-
-# Background
-
-## Users and their problems
-  identify problems and the workflow these people are dealing with day to day, some typical scenarios
+  Users of the system, types of things they do typical scenarios
 
   Developer has multiple ongoing projects, back burner project for excess time, personal project, main project.
 
@@ -40,15 +12,64 @@
 
   This problem is not a new one and so there are many different ways to solve the problem. Below are some tools and a brief Introduction and explanation of how they help and fail to help a developer.
 
+## set the scene
+
+  explain the problem with example of things that the end user might need
+  example ideal situation for use of the application
+
+## Approach  
+
+  solution is "short description of solution"
+
+  how problems are going to be identified
+  how solutions might be found for problems
+  how a comparison might be drawn for different approaches to ensure correct selection
+
+## Report structure
+  explain overview of the document
+  Introduction
+  background
+  problem identification
+  requirements from problems
+  solutions for requirements
+  evaluation of product
+
+---
+
+# Background
+
+## Analysis of existing solutions
+
+  Analyst different solutions for SQL IDE's and also note taking applications. drawing positives and negatives from each.
+
 ## Problems
-  Identify current solutions on the market for this. **identify problems** with the current solutions and how they help the users to complete tasks.
 
-    Problems will be identified here
+## Problem #1 Keeping notes of important things
+  Problem is that each thing a developer works on has its own set of important details that need to be remembered when working on the solution
 
-## Problem 1
-  Some of these problems will be identified with the help of real world solutions identified and evaluated here
-## Problem 2
-## Problem 3
+  There is no set list of things that we can enumerate for all projects. No unique solution
+
+  Free form notes need to be used for notes.
+
+## Problem #2 Notes are only useful when they are read
+  The notes / code stored needs to be accessible for developers or this defeats the purpose of storing the information in the first place.
+
+  The notes as discussed don't have a structure and so a helpful search is difficult to create. Most solutions just offer full text search of the data.
+
+  The notes might have had several revisions over time and might need the information accessible from the past.
+
+## Problem #3 Notes that include code are often not updated
+  The notes that store code are often not in an executable format. so when the dependancies of the stored code are changed the code becomes outdated and of limited use to future developers.
+
+  (Example)
+
+## Problem #4 Database systems: data always changing
+  The data in database systems is always changing, when the system was written the data might have looked significantly different to what it is now. This
+  makes things hard to compare as time goes on.
+
+## Problem #5 System access
+  The developers need easy access to the information and the database from anywhere.
+  Current solutions for IDE's are often system specific and don't offer good cross platform compatibility
 
 ## Summary of identified problems
   The common issue that makes this problem hard is that it is an unsupported (constantly changing) workflow within the tools they currently use. **identify problems**
@@ -67,7 +88,21 @@
     it is to the problem
 
 ## Use cases of the system
-  diagram of the use cases
+### Use case #1
+  Developer wants to document information about a development.
+
+### Use case #2
+  Developer needs to view all documents regarding a project stored in the system.
+
+### Use case #3
+  Developer needs to find reference to a particular item within the system but is unfamiliar with the specific location or other detail
+
+### Use case #4
+  Developer has to find specific details of a system previously worked on in order to maintain it.
+
+### Use case #5
+  Developer wants to view and compare previous versions of some code within the database
+
 
 ## Requirements organization and priority
 
