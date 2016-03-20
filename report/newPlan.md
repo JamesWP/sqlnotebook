@@ -10,8 +10,6 @@
 
 ## set the scene
 
-    AAAF testing commenting the report
-
   explain the problem with example of things that the end user might need
 
 ## Approach  
@@ -28,8 +26,6 @@
 
 ## Report structure
   explain overview of the document
-
-    testing
 
 ---
 
