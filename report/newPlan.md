@@ -38,11 +38,15 @@
 
 # Background
 
+> AAAF I think you should start with the sequence no-notes, paper-notebook,electronic-notebook, comments-on-code and then say that an IDE embedded in a notebook is a candidate solution to the issues raised.
+
 ## Analysis of existing solutions
 
   Analyst different solutions for SQL IDE's and also note taking applications. drawing positives and negatives from each.
 
 ## Problems
+
+> AAAF Among these, there is also cross-referencing and in particular cross-referencing that includes code
 
 ## Problem #1 Keeping notes of important things
   Problem is that each thing a developer works on has its own set of important details that need to be remembered when working on the solution
@@ -88,6 +92,9 @@
     it is to the problem
 
 ## Use cases of the system
+
+> AAAF I think you should also have a use case where the developer needs to be aware of why things are as they are now, i.e., which events (presumably documented as notes and indexed) have led to the system being as it currently is. Also, a use case where the notes and code allow you to do impact analysis, i.e., if I change this, do I create havoc in the system or is this change punctual, local and self-contained?
+
 ### Use case #1
   Developer wants to document information about a development.
 
