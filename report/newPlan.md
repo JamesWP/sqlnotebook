@@ -1,40 +1,23 @@
 # Abstract
-  Web based sql ide, for documentation and code. aggregate all information for the project.
-  Notebook metaphor. easy access for all devices. keep up to date. easy to search for information and catalogue important things
-  Aims to be an integration of electronic note taking app and ide.
+  A new way to organize the code and documentation for a SQL database application.
+  Having both the functionality of a digital note taking application, and the
+  ability to function as an IDE for sql developers makes "SqlNotebook" a new way
+  to help overcome the everyday problems for developers.
+
+  The application aims to be an aggregate of all the information developers need and also offers ways of keeping this information up to date. Using the metaphor of a notebook, SqlNotebook does not only store the documentation and specification of a function but also the definition, previous results and versions. Also provided are ways to view indexes of files and search for items of interest.
 
 # Introduction
-  Users of the system, types of things they do typical scenarios
 
-  Developer has multiple ongoing projects, back burner project for excess time, personal project, main project.
+  The application is intended to be used by database application developers. These developers are the primary users of the application and their days consist of many different types of tasks from developing new applications, new features, and maintaining old applications and services. These are just a few of the most common, however in general they could be asked to complete anything database related. This poses problems when creating software for these developers to use; while they require places to document code and other items they don't do so in the same way every time or indeed do so with a regimented structure so the tools they use must support there individual ways of working.
+  However they do still need ways of helping them to manage the information.
 
-  However disruptions can happen at any time, for example interruption from a support job on an older project. i.e. there is an issue with a report generating incorrect results. Must switch to project that hasn't been worked on in possibly months. Developer needs access to the high level overview of the system to narrow down the issue raised. Once the issue has been identified the solution needs to be tested and then the fix needs documenting for the next developer to pick up.
+  There are other problems to consider when trying to create such an application. For example, a developer might be working on several projects at the same time and can often need to switch between them at a moments notice. This requires a context switch from the developer to finish the current task or take it to a place when they can switch to the new task at hand. Making this process as simple as possible is a winning feature for an organizational system such as SqlNotebook.
 
-  This problem is not a new one and so there are many different ways to solve the problem. Below are some tools and a brief Introduction and explanation of how they help and fail to help a developer.
-
-## set the scene
-
-  explain the problem with example of things that the end user might need
-  example ideal situation for use of the application
+  The above is just an introduction to the users and a little bit about the types of problems and use cases for the project. Throughout the rest of this report there will be some more details of the specific problems that the application will solve and the different approaches available to solve them.
 
 ## Approach  
 
-  solution is "short description of solution"
-
-  how problems are going to be identified
-  how solutions might be found for problems
-  how a comparison might be drawn for different approaches to ensure correct selection
-
-## Report structure
-  explain overview of the document
-  Introduction
-  background
-  problem identification
-  requirements from problems
-  solutions for requirements
-  evaluation of product
-
----
+  The problems that the application hopes to address will be a collection of things that occur in every day life as a developer and other problems identified with existing tools available. These problems that are identified will then be turned into concrete requirements for the project and then this will form the basis for the solution.
 
 # Background
 
@@ -110,14 +93,40 @@
 ### Use case #5
   Developer wants to view and compare previous versions of some code within the database
 
-
-## Requirements organization and priority
+## Development priority of requirements
+  Discussion of importance of requirements identified above, put into order and possibly identify partial fulfillment ideas
 
 # Design
-  ideas on how to realize the requirements
-  identify current solutions to some of the problems and how these will be used / not used in the project
-  I-Python
-  hard design ideas diagrams etc..
+
+## Structure of the information in the solution
+Ideas on how to organize the data stored in the system:
+  - List of files
+  - Folder structure, i.e. Explorer / Finder
+  - Simplified folder structure, limited number of levels
+  - Graph of files
+
+  Pros and cons for each approach
+
+  Reason for selecting the Simplified folder structure and how this became the notebook
+
+Search capability in the system:
+  - Simple text search
+  - Full text index
+  - Extraction of terms
+
+  Pros and cons of above options
+
+  Reasons for selecting simple text search, and how the other options might come into play later.
+
+Type of user interface
+  - Native solution for operating system
+  - Mobile solution for Android / OSX
+  - Browser based solution
+  - Command line solution
+
+  Pros and cons of the above options
+
+  Reason for selecting
 
 
 ## Choice of medium
