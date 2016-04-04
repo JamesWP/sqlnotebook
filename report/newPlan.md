@@ -21,11 +21,50 @@
 
 # Background
 
-> AAAF I think you should start with the sequence no-notes, paper-notebook,electronic-notebook, comments-on-code and then say that an IDE embedded in a notebook is a candidate solution to the issues raised.
+  The need for documentation? notes?
+
+  There are many different ways to document code they range from completely offline to completely digital and many different methods for integrating code. The most simple offline approaches consist of simple notepad pages with notes and diagrams. This offers a totally freeform approach to note taking as with pen and paper there is no limit to what you can make notes about. Tables diagrams and hand written pseudo code can be good for some circumstances but for others we have digital documents that need to form part of the notes along with written comments, This leads to problems of printing and loosing loose pages.
+
+  There are also many solutions for electronic or digital notes, those taken on a computer. [Evernote](https://evernote.com) is a popular choice for notes and offers a wide range of platforms for note creation however it is not designed with code documentation in mind specifically. While it is a very good solution for taking notes the lack of specific features aimed at developers eg version control etc makes it difficult to use in this way.
+
+  The above solutions are not tailored to suit the specific task of making notes for sql developers. The existing tools used by developers can be used in some capacity to both develop new code and help document it for future readers. Commenting code is often the closest notes get to the code they are detailing well commented code can help developers get to know and remember the code they were writing in the past or to pass on details from programmer to programmer. Comments on code can often not last the test of time however as they don't force you to update your note when the code they refer to changes. For example over time the function might offer more options and change from its original purpose. This is the reason comments are not always taken to be the truth and can lead to confusion and bugs in the worst case.
+
+  The functionality of an IDE combined with that of an organized note taking application would ....
+
+> JP need to finish this or move this somewhere else
 
 ## Analysis of existing solutions
 
+  The different applications on offer vary from exact programming language and operating system. They have useful features and also each have there own downsides.
+
   Analyst different solutions for SQL IDE's and also note taking applications. drawing positives and negatives from each.
+
+### Microsoft SQL Server Management Studio
+
+  An official offering for the Microsoft SQL Server Database server.
+  Has the ability to have multiple connections to servers and many open files in an IDE powered with the Microsoft Visual Studio Shell.
+  Offers little to no management of files other than the ability to open files from the filesystem. As with many database servers the functions and procedures are stored within the databases and so any files on the local system might not be in sync with the ones on the server.
+  The application is a native windows application and offers no alternatives for other operating systems. The connections offered are the same as for the database itself via TCP, Shared memory, named pipes etc. This poses many problems for working when not on the same network and forces the users to be using Microsofts own operating system.
+
+
+### MySQL Workbench
+  The MySQL Workbench offers a multi-platform solution for accessing a MySql database. Also on offer is a model management tool for mapping out a logical model of the database and relations this provides a way to easily view a high level overview and make useful annotations that go above and beyond simple comments written separately.
+
+  The Workbench also is the first example of a tool to offer multi-platform capability. Providing more ways for the users of an application helps integrate a tool into the workflow of the developer, having to switch between operating systems because your database management software is not offered on the same work machine as your front end development environment
+
+### phpMyAdmin
+  The alternative to the official MySqlWorkbench is an open source web based solution for easy access to the database from anywhere you have an internet connection. The tool is a PHP application and such needs a hosting environment in order to be used. The application, once running has a secure login system with the ability to view and edit data in the system.
+
+  However the tool offers little in the way of editing for scripts and database code. Bulk manipulation of data is not offered in the application but instead through the export of multiple different file types. 
+
+  Other unique features are automatic linking of data through the interpretation of foreign keys within the existing database.
+
+  Unlike the MySql Workbench there is no designer for models and all changes are done to the database "live" there is no design and publish as offered in other solutions.
+
+
+### IPython / Jupyter
+  This application differs from the others above as it is not a SQL IDE and such it doesn't show any specific features for SQL code in particular however the integration between the code and the text in the editor
+
 
 ## Problems
 
