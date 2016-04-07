@@ -55,7 +55,7 @@
 ### phpMyAdmin
   The alternative to the official MySqlWorkbench is an open source web based solution for easy access to the database from anywhere you have an internet connection. The tool is a PHP application and such needs a hosting environment in order to be used. The application, once running has a secure login system with the ability to view and edit data in the system.
 
-  However the tool offers little in the way of editing for scripts and database code. Bulk manipulation of data is not offered in the application but instead through the export of multiple different file types. 
+  However the tool offers little in the way of editing for scripts and database code. Bulk manipulation of data is not offered in the application but instead through the export of multiple different file types.
 
   Other unique features are automatic linking of data through the interpretation of foreign keys within the existing database.
 
@@ -63,42 +63,75 @@
 
 
 ### IPython / Jupyter
-  This application differs from the others above as it is not a SQL IDE and such it doesn't show any specific features for SQL code in particular however the integration between the code and the text in the editor
+  This application differs from the others above as it is not a SQL IDE and such it doesn't show any specific features for SQL code in particular however the integration between the code and the text in the editor is done in a very easy to use way.
 
+  The IPython notebook is split into sections or cells. each cell has a type, either a code cell or title or markdown cell. Markdown is a simple written markup language for textual documents. Markdown provides simple ways to create headings and lists paragraphs while balancing this with simple easy to read minimal formatting.
+
+    # Heading level 1
+    Paragraph content here
+
+    ### Heading level 3
+
+    Below is a list
+    * lists are created
+    * like this
+    * or numerically
+
+    ### new list
+    1 like
+    2 this
+
+  The mix of executable code within the text notes provides a unique experience of the ability to see and tweak code and have a well formatted explanation of the code.
+
+  Interactive code and results as done in an IPython notebook provide a quick way to see the results of the code. This allows and promotes the testing and exploration of the code and can help the developer to understand exactly what effects each part of the code has on the end result.
+
+  The notebooks reside on files on the local disk of the system, much like any other file. As such the organization of the files is left up to you the creator to file them in folders etc.
+
+  The flexibility comes at a cost however, because while you can file the notebooks anywhere you want, where to file them is done by you in your file manager.
 
 ## Problems
 
-> AAAF Among these, there is also cross-referencing and in particular cross-referencing that includes code
+### Problem #1 Keeping notes of important things
+  As developers work on their projects and as these projects evolve there become an increasing number of things that need to be understood in order to develop / maintain the project.
+  The problem is to provide an easy flexible way to make notes on different topics and allow access to the notes in an organized way.
 
-## Problem #1 Keeping notes of important things
-  Problem is that each thing a developer works on has its own set of important details that need to be remembered when working on the solution
+### Problem #2 Notes are only useful when they are read
+  The notes / code stored need to be accessible for developers or this defeats the purpose of storing the information in the first place.
 
-  There is no set list of things that we can enumerate for all projects. No unique solution
-
-  Free form notes need to be used for notes.
-
-## Problem #2 Notes are only useful when they are read
-  The notes / code stored needs to be accessible for developers or this defeats the purpose of storing the information in the first place.
-
-  The notes as discussed don't have a structure and so a helpful search is difficult to create. Most solutions just offer full text search of the data.
+  The notes as discussed don't have an implicit structure and so a helpful search is difficult to create. Most solutions just offer full text search of the data.
 
   The notes might have had several revisions over time and might need the information accessible from the past.
 
-## Problem #3 Notes that include code are often not updated
+### Problem #3 Notes that include code are often not updated
   The notes that store code are often not in an executable format. so when the dependancies of the stored code are changed the code becomes outdated and of limited use to future developers.
 
-  (Example)
+  This is a problem because the code is only useful in a note when it is up to date and bug free, often at the time of writing it is correct but as the system changes the code can become out of date.
 
-## Problem #4 Database systems: data always changing
+  The problem is how to ensure or help the user to keep this code up to date within the note.
+
+### Problem #4 Database systems: data always changing
   The data in database systems is always changing, when the system was written the data might have looked significantly different to what it is now. This
   makes things hard to compare as time goes on.
 
-## Problem #5 System access
+  The problem is how to ensure that even if the underlying data is changed, the note and code within is still useful for other developers in the future.
+
+### Problem #5 System access
   The developers need easy access to the information and the database from anywhere.
-  Current solutions for IDE's are often system specific and don't offer good cross platform compatibility
+  Current solutions for IDE's are often system specific and don't offer good cross platform compatibility.
+
+  The problem is providing access to the data and system from whatever system, and wherever the developer is in a secure way.
+
+### Problem #6 Cross referencing
+  The document writers are writing multiple notes for each part of the project and as such there will be links within the document by way of referring to something written elsewhere. The ability to refer to other sections in other documents is key in order to provide the reader all the information in order to understand the page.
 
 ## Summary of identified problems
-  The common issue that makes this problem hard is that it is an unsupported (constantly changing) workflow within the tools they currently use. **identify problems**
+  The problems identified above fall into different categories:
+
+  * organization of notes
+  * sql specific problems
+  * finding relevant notes
+
+  Each of the above categories of problems could be tackled in many different ways. The next stage in the development of a complete solution is to identify some concrete requirements and use cases for the application and discuss the different approaches available to us in order to solve them. Each different approach will have its own downsides and these need to be properly analyses and evaluated if a useful solution is to be created.
 
 # Requirements
   Formalize requirements based on the problems in background
