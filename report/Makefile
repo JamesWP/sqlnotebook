@@ -5,7 +5,7 @@
 
 # The first rule in a Makefile is the one executed by default ("make"). It
 # should always be the "all" rule, so that "make" and "make all" are identical.
-all: report.pdf
+all: 
 
 # CUSTOM BUILD RULES
 
@@ -34,7 +34,7 @@ report.pdf: report.tex
 
 clean:
 	latexmk -CA
-	rm -f newPlan.pdf
 
-newPlan.pdf: clean newPlan.md
-	pandoc newPlan.md --latex-engine=pdflatex -o newPlan.pdf -N -Vdocumentclass=report
+%.pdf:  %.md
+	rm -f $@
+	pandoc $< --latex-engine=pdflatex -o $@ -N -Vdocumentclass=report
