@@ -1,10 +1,11 @@
 # Requirements
 
-  The existing solutions
-
+  The existing solutions have provided a basis for identifying the potential problems the system must overcome. Along with other sources and other base requirements a set of more formal requirements are listed below.
 
 ### Requirement 1
   The application must store notes about the application in various separate "files" within the system
+
+  brief reason for why this is a requirement
 ### Requirement 2
   The "files" stored within the system must be able to store code and also notes in a format more easily read by humans.
 ### Requirement 3
@@ -84,6 +85,14 @@
   This approach still offers the users free reign over the organization and naming of each file in the system however it also provides the ability to focus on single parts of the tree at once.
 
   *images of folder trees*
+
+  This organization into folders can take time to do and can be done in many ways. Each project might have its own collection of top level folders and in each project (unless managed correctly) there could exist a different way of creating / naming the folders. This problem of uniformity crops up in many places within organization and in general the more uniform the structure the less the user has to remember for each case and the less brain power needs to be spent understanding it.
+
+  There is another problem with a simple tree folder structure, each file in the folder tree can only be in one place at once. Some files could be ambiguously belong in multiple places at once. This can make finding these files take twice as much time. Each ambiguously located file that needs to be found needs to be searched for in (worst case) all the locations it could be in.
+
+  Both the two above problems are lessened by putting sensible limits on the depth of the folder structure. The below approach discusses such a solution.
+
+##  Simplified folder structure
 
   - Simplified folder structure, limited number of levels
   - Graph of files
