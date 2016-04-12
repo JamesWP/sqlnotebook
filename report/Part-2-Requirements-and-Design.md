@@ -168,9 +168,44 @@
 
   There are multiple ways to provide search functionality within a document management system some of which are suitable for the application and some that are not. The below is a summary of a few of the options and an evaluation of each.
 
-### Simple text search
+  Ideally the functionality required is that a user can submit a query for some content, the files in the system is searched for the specified items and the results are shown. This part of the searching experience will be the same for all the discussed methods. However the parts that differ in the compared methods are:
+    * the format of the users query (plain text or other).
+    * the searching procedures
+    * the performance
+    * the presentation of results
+
+### Simple text search / serial scanning
+
+  The simplest method for searching is taking a simple section of text from the user, the search term, and then searching for the occurrences of the term in each file and for each result displaying the name of the file, and the position within the document.
+
+  Example:
+
+      search: "test"
+      results:
+      - File A, line 13, chars 34-38
+        - ... the users will then report on *test* ing ...
+      - File A, line 13, chars 10-13
+        - Chapter 2: *Test* ing ...
+
+  This technique is simple and for small amounts of files and content is quick to compute. However due to the fact that the algorithm is loosely linear in the number of files to search through, this would be impractical for large amounts of files.
+
+  *cite wikipedia: https://en.wikipedia.org/wiki/Full_text_search#Indexing*
+  When dealing with a small number of documents, it is possible for the full-text-search engine to directly scan the contents of the documents with each query, a strategy called "serial scanning."
+
 ### Full text index
-### Extraction of terms
+
+  When a simple method for searching through all the files becomes too slow, an alternative is to create a concordance *cite https://en.wikipedia.org/wiki/Concordance_(publishing)* this is a table of words in a publication (here note) and where the words appear within the document. by using this concordance instead of searching the text directly, the application is able to search a smaller amount of data and hence speed up the search process.
+
+  This requires that there is a pre-processing step before a search can be completed. This needs to be recalculated for each time a user changes a document so that all subsequent queries can find the new content.
+
+  This is the tradeoff with the more complex methods for searching.
+
+### Extraction of keywords
+
+  Another method of searching is by only indexing a select few words per note. This limited idea of words is then searched instead of a full index.
+  Either a list of keywords is created and left static or machine learning algorithms learn the important words within the page and only those words are indexed.
+
+  This is however only applicable when the users search terms can be limited as such. In the case of a note taking application there is limited use of a search process that only finds some words of the documents stored.
 
 ### Pros and cons of above options
 
