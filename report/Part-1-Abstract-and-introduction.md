@@ -8,7 +8,7 @@
 
 # Introduction
 
-  Developers use documentation to aid there understanding of code, however the documentation is often constructed and viewed on paper or in a web browser [(cite javadoc here)](http://www.oracle.com/technetwork/articles/java/index-jsp-135444.html) While the use of documentation tools provides a good overview of the code, it is not the be all and end all of the notes surrounding the code. Developers can't rely on the documentation alone, they must also have an understanding of the other components of the system and their interaction.
+  Developers use documentation to aid their understanding of code, however the documentation is often constructed and viewed on paper or in a web browser [for example, (cite javadoc here)](http://www.oracle.com/technetwork/articles/java/index-jsp-135444.html) While the use of documentation tools provides a good overview of the code, it is not the be all and end all of the notes surrounding the code. Developers can't rely on the documentation alone, they must also have an understanding of the other components of the system and their interaction.
 
   This is also true of database applications. The database applications are often the store for the information in the system and provide a center for the business logic for the application. They often are at the center of large applications and as a result they can be complicated.
 
@@ -129,37 +129,37 @@
 
 ## Problems
 
-### Problem #1 Keeping notes of important things
+### Problem 1 Keeping notes of important things
   As developers work on their projects and as these projects evolve there become an increasing number of things that need to be understood in order to develop / maintain the project.
   The problem is to provide an easy flexible way to make notes on different topics and allow access to the notes in an organized way.
 
-### Problem #2 Notes are only useful when they are read
+### Problem 2 Notes are only useful when they are read
   The notes / code stored need to be accessible for developers or this defeats the purpose of storing the information in the first place.
 
   The notes as discussed don't have an implicit structure and so a helpful search is difficult to create. Most solutions just offer full text search of the data.
 
   The notes might have had several revisions over time and might need the information accessible from the past.
 
-### Problem #3 Notes that include code are often not updated
+### Problem 3 Notes that include code are often not updated
   The notes that store code are often not in an executable format. so when the dependancies of the stored code are changed the code becomes outdated and of limited use to future developers.
 
   This is a problem because the code is only useful in a note when it is up to date and bug free, often at the time of writing it is correct but as the system changes the code can become out of date.
 
   The problem is how to ensure or help the user to keep this code up to date within the note.
 
-### Problem #4 Database systems: data always changing
+### Problem 4 Database systems: data always changing
   The data in database systems is always changing, when the system was written the data might have looked significantly different to what it is now. This
   makes things hard to compare as time goes on.
 
   The problem is how to ensure that even if the underlying data is changed, the note and code within is still useful for other developers in the future.
 
-### Problem #5 System access
+### Problem 5 System access
   The developers need easy access to the information and the database from anywhere.
   Current solutions for IDE's are often system specific and don't offer good cross platform compatibility.
 
   The problem is providing access to the data and system from whatever system, and wherever the developer is in a secure way.
 
-### Problem #6 Cross referencing
+### Problem 6 Cross referencing
   The document writers are writing multiple notes for each part of the project and as such there will be links within the document by way of referring to something written elsewhere. The ability to refer to other sections in other documents is key in order to provide the reader all the information in order to understand the page.
 
 ## Summary of identified problems

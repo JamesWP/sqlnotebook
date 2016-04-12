@@ -79,49 +79,113 @@
   This is not an ideal way to view files for a single section of a system. Typically you are working with a single project at once and within that usually not all parts but a limited subset.
   This problem could also be viewed as a positive because in the times that you do need to access files across multiple projects at once, i.e. in the use case when the developer needs to switch to another project quickly, the developer can already see the entire list of files.
 
-##  Folder structure, i.e. Explorer / Finder
+###  Folder structure, i.e. Explorer / Finder
   There are already existing methods for storing files into folders or directories. Most mainstream operating systems use a hearty of folders to contain files and more folders. This acts like a tree, each leaf is a file and each subtree is a folder.
 
   This approach still offers the users free reign over the organization and naming of each file in the system however it also provides the ability to focus on single parts of the tree at once.
 
-  *images of folder trees*
+    - Project A/
+      - Overview/
+        - Project summary
+        - Change log
+      - Users/
+        - User login module
+        - User login module version 2
+    - Project B/
+      - Overview/
+        - Project summary
 
   This organization into folders can take time to do and can be done in many ways. Each project might have its own collection of top level folders and in each project (unless managed correctly) there could exist a different way of creating / naming the folders. This problem of uniformity crops up in many places within organization and in general the more uniform the structure the less the user has to remember for each case and the less brain power needs to be spent understanding it.
 
   There is another problem with a simple tree folder structure, each file in the folder tree can only be in one place at once. Some files could be ambiguously belong in multiple places at once. This can make finding these files take twice as much time. Each ambiguously located file that needs to be found needs to be searched for in (worst case) all the locations it could be in.
 
-  Both the two above problems are lessened by putting sensible limits on the depth of the folder structure. The below approach discusses such a solution.
+  Both the two above problems are lessened by putting sensible limits on the depth of the folder structure. The reason for this is discussed below.
 
-##  Simplified folder structure
+###  Simplified folder structure
 
-  - Simplified folder structure, limited number of levels
-  - Graph of files
+  In a simplified folder structure there is a limited number of levels that can exist. If viewed as a tree it is a tree that contains a limited depth and contains leaf nodes (here notes) at the bottom level of the tree.
 
-  Pros and cons for each approach
+  This simplified structure can help make the choice of folders at each level more apparent for the user. They have a more limited choice of where to place folder and files and as such the impact problems of a full folder structure as discussed above are lessened.
 
-  Reason for selecting the Simplified folder structure and how this became the notebook
+  This technique also implicitly limits the user to a set number of levels. This (although simplifying) imposes that some files that might have been better suited to live together inside a folder have to be placed within the parent folder.
 
-Search capability in the system:
-  - Simple text search
-  - Full text index
-  - Extraction of terms
+### Tagged files
 
-  Pros and cons of above options
+  In a tagged file organizational system, files are not placed in folders but instead have each an associated set of "tags" each of these tags has a name and can be applied to many files.
 
-  Reasons for selecting simple text search, and how the other options might come into play later.
+  For an example you might have the following set of files and their tags:
 
-Type of user interface
-  - Native solution for operating system
-  - Mobile solution for Android / OSX
-  - Browser based solution
-  - Command line solution
+    - Project summary {Project A, overview}
+    - User login module {Project A, Users}
+    - Overview {Project A, overview}
+    - Project summary {Project B, overview}
 
-  Pros and cons of the above options
+  The user can then find the subset of files they are interested in by filtering for the items that have all the tags they specify:
 
-  Reason for selecting
+    Filter: file has all {Project A, overview}
+    Result:
+    - Project summary {Project A, overview}
+    - Overview {Project A, overview}
+
+    Filter: file has overview
+    Result:
+    - Project summary {Project A, overview}
+    - Overview {Project A, overview}
+    - Project summary {Project B, overview}
+
+  Note that this can be viewed as a more general version of the folder structure discussed in section *insert folder structure section ref here* by adding a single tag to each file with the path of the folder that contains it. However this is not an ideal tagging for files
 
 
-## Choice of medium
+
+  Citation:
+
+    @article {ASI:ASI22906,
+      author = {Bergman, Ofer and Gradovitch, Noa and Bar-Ilan, Judit and Beyth-Marom, Ruth},
+      title = {Folder versus tag preference in personal information management},
+      journal = {Journal of the American Society for Information Science and Technology},
+      volume = {64},
+      number = {10},
+      issn = {1532-2890},
+      url = {http://dx.doi.org/10.1002/asi.22906},
+      doi = {10.1002/asi.22906},
+      pages = {1995--2012},
+      keywords = {personal information systems},
+      year = {2013},
+    }
+
+
+
+### Choice of file organization
+
+  The simplified folder structure was picked because of the balance between the flexible organization of the tagging system and the simplistic file list.
+  The simplified folder structure proved to be simple to implement and use within the system
+
+  *images of the final version*
+
+## Search capability in the system
+
+  The requirements gathering process clearly identified in multiple places the need for the system to provide a quick and simple search function in order for developers to find the files that they need.
+
+  There are multiple ways to provide search functionality within a document management system some of which are suitable for the application and some that are not. The below is a summary of a few of the options and an evaluation of each.
+
+### Simple text search
+### Full text index
+### Extraction of terms
+
+### Pros and cons of above options
+
+### Reasons for selecting simple text search
+  and how the other options might come into play later.
+
+## Type of user interface
+### Native solution for operating system
+### Mobile solution for Android / OSX
+### Browser based solution
+### Command line solution
+### Pros and cons of the above options
+### Reason for selecting
+
+## Choice of platform
   arguments on the different choices for the medium of the application. native application for OSX / Windows / Web application
 
   for each there will be a positive / negatives
