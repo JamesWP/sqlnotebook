@@ -202,23 +202,67 @@
 
 ### Extraction of keywords
 
-  Another method of searching is by only indexing a select few words per note. This limited idea of words is then searched instead of a full index.
+  Another method of searching is by analysis of keywords only. Indexing a select few words per note means smaller indexes and faster searches.
   Either a list of keywords is created and left static or machine learning algorithms learn the important words within the page and only those words are indexed.
 
-  This is however only applicable when the users search terms can be limited as such. In the case of a note taking application there is limited use of a search process that only finds some words of the documents stored.
+  This is however only applicable when the user's search terms can be limited as such. For example if the user searches for a table name that is contained within a file in the application, it will only be found if the table name is in the keywords list.
+  In the case of a note taking application there is limited use of a search process that only finds some words of the documents stored. However such indexes can help to find preliminary results for a query, or even to provide caches of common queries.
 
-### Pros and cons of above options
+### Edit distance
+
+> JP maybe discuss fuzzy search
 
 ### Reasons for selecting simple text search
-  and how the other options might come into play later.
+  The numerous ways to search the text within a collection of documents each provide there own ways to provide the results. While many of the different search methods are concerned with the performance of a search and their accuracy in terms of the results, the most basic search discussed the Simple text search *link above section* as discussed can offer the features needed by most users of the application.
+
+  There are many other features that can be added to the functionality provided by the Simple text search *link* however these can be added as an extension to the program after the initial release.
 
 ## Type of user interface
+  The different types of user interface that designers can choose from when designing applications can be categorized into a few main categories:
+
+    - Command line
+    - GUI / WIMPS
+
+   For visualizing text, popular command line applications for editing text like Vim or Emacs do exist however, the richer environment of a GUI application is predominately preferred with its ability to customize fonts and other such attributes of the layout and style. They also provide a better experience for users with the use of menus etc. These can provide a more simple to use application than an alternate command line program with many shortcuts to memorize.
+
+   There are many different types of GUI application that can be built and an important decision that needs to be made before selecting the layout of the application is what platform to build the application on.
+
 ### Native solution for operating system
-### Mobile solution for Android / OSX
+  The first platform option is developing a desktop first application native in a selected operating system. This would require selecting one of the native windowing API's for the operating system. Some of these API's are cross platform enabled for example see [qt](http://www.qt.io/) for a popular choice. Some more polished and more integrated with the selected operating system for example Apple's own windowing API is [Cocoa](https://en.wikipedia.org/wiki/Cocoa_(API))
+
+  The advantages of using the operating system's manufacturer built API is one of support from the company and choice of open source vs proprietary. As one of the requirements is that the system should be accessible the proprietary method is not an option for a time constrained development like this. In order to complete a cross platform version using operating system specific (non cross platform) API's would mean a rewrite of the GUI code for each operating system that was to be supported.
+  The advantages of using the operating system's manufacturer built API is one of support from the company and choice of open source vs proprietary. As one of the requirements is that the system should be accessible the proprietary method is not an option for a time constrained development like this. In order to complete a cross platform version using operating system specific (non cross platform) API's would mean a rewrite of the GUI code for each operating system that was to be supported.
+
+### Mobile solution for Android / IOS
+  The production of a mobile application for either the Android or IOS markets would be done with either two versions of the application as discussed with the desktop versions above, or there are tools like [Xamarin](https://www.xamarin.com/platform)
+
+    "Deliver native Android, iOS, and Windows apps, using existing skills,
+    teams, and code."
+    *cite xamerin*
+
+  This allows for applications to be built for a variety of mobile platforms with a single code base in C#. The ability to "write once run anywhere" is a big selling point for Xamarin and others like it. However it would still restrict users into using mobile only.
+
 ### Browser based solution
-### Command line solution
-### Pros and cons of the above options
-### Reason for selecting
+  With modern advances in browser technology it has become more feasible to create full desktop replacement applications as website-applications. These websites are truly cross platform, they can be viewed on any platform with access to a web browser. Desktop OS or mobile OS alike can all use one of a multitude of recent browsers from many vendors.
+    - Chrome  (Windows, Mac OSX, IOS, Android)
+    - Safari  (Mac OSX, IOS, Windows)
+    - Opera   (Windows, Mac OSX, IOS {opera-mini}, Android {opera-mini})
+    - Firefox (Windows, Mac OSX, IOS, Android)
+
+  There are many different libraries on offer to help develop applications with javascript. However it is still possible to create more traditional client-server applications and have just a simple lightweight javascript free front end. These applications tend to be slower and more cumbersome to use because of there need to communicate every action with a server over http.
+
+  An alternative to the more traditional client-server architecture is the now more popular single page javascript application. This merges the lines between the user perceived differences of the desktop and browser experience.
+
+  A single page javascript application is a single web page that functions like a normal application. Buttons and other interactivity is similar to what is provided in a desktop application. External data is gathered in background http calls (called Ajax requests) 
+
+
+  *cite*
+
+  Single Page Web Applications
+  By Michael S. Mikowski and Josh C. Powell
+
+### Reason for selecting browser
+### Future react native
 
 ## Choice of platform
   arguments on the different choices for the medium of the application. native application for OSX / Windows / Web application
