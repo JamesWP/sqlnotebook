@@ -288,8 +288,38 @@
 ## Choice of interface - Notebook metaphor
   The interface of any application need to be simple and easy to understand. the more complicated the interface the more brainpower needs to be dedicated to using it. The most successful user interfaces provide simple intuitive ways for uses to do the actions they require.
 
+    Metaphors are the fundamental concepts, terms, and images
+    by which information is easily recognized, understood, and
+    remembered.
+    - Metaphor Design for User Interfaces, Marcus, Aaron
+  *cite*
+    @inproceedings{Marcus:1998:MDU:286498.286577,
+      author = {Marcus, Aaron},
+      title = {Metaphor Design for User Interfaces},
+      booktitle = {CHI 98 Cconference Summary on Human Factors in Computing Systems},
+      series = {CHI '98},
+      year = {1998},
+      isbn = {1-58113-028-7},
+      location = {Los Angeles, California, USA},
+      pages = {129--130},
+      numpages = {2},
+      url = {http://doi.acm.org/10.1145/286498.286577},
+      doi = {10.1145/286498.286577},
+      acmid = {286577},
+      publisher = {ACM},
+      address = {New York, NY, USA},
+      keywords = {Web, consumers, culture, diversity, graphic design, icons, information design, metaphors, multi-media, productivity tools, rhetoric, semantics, semi-otics, symbols, user interfaces, visible language},
+    }
+
+  The metaphor chosen for the application is the notebook. A physical notebook has pages, tabs etc... These are easily understood by anyone who knows what a notebook is. We can extend the notion of a notebook with concepts from the wider world of books with indexes and contents pages.
+
+  The application will take from this notion of the "notebook metaphor" and from there the application interface will be designed.
+
+  *notebook image mapped to uml diagram of application*
 
 ## Detachment of the SQL interface through custom web API
   Selecting the browser poses some specific problems for a SQL IDE. A SQL IDE needs to have access to the SQL server in order to execute queries and retrieve results. There is no support in any of the mainstream browsers for direct integration with a SQL server database, although they do have limited support *cite web sql* for in browser databases.
 
-  This therefore requires the production of some middleware to connect the database to the application. The commonly used method for transferring data in the browser is via a JSON web API.
+  This therefore requires the production of some middleware to connect the database to the application. The commonly used method for transferring data in the browser is via a JSON web API. There are many methods for connecting to a SQL server database however, the Microsoft documentation *cite* https://msdn.microsoft.com/en-us/library/ms162132.aspx contains C#, VB, C++ documentation and libraries for querying the database. I have experience using the C# conneciton methods before and with this in mind the middleware was chosen to be a C# website providing a mapping from JSON to the database.
+
+  *diagram of connection*
