@@ -253,8 +253,9 @@
 
   An alternative to the more traditional client-server architecture is the now more popular single page javascript application. This merges the lines between the user perceived differences of the desktop and browser experience.
 
-  A single page javascript application is a single web page that functions like a normal application. Buttons and other interactivity is similar to what is provided in a desktop application. External data is gathered in background http calls (called Ajax requests) 
+  A single page javascript application is a single web page that functions like a normal application. The application have all the features of a desktop application, they can make use of windows, buttons, and animations etc...
 
+  External data is gathered in background http calls (called Ajax requests) and does not necessitate a full page reload. The absence of these full reloads and the flash of white as the page loads give the user a much better experience.
 
   *cite*
 
@@ -262,22 +263,33 @@
   By Michael S. Mikowski and Josh C. Powell
 
 ### Reason for selecting browser
-### Future react native
 
-## Choice of platform
-  arguments on the different choices for the medium of the application. native application for OSX / Windows / Web application
+  For the application being built the choice of platform is between a cross platform library for a native desktop application and a web based solution. For reasons of experience with technology and programming languages developing for the browser was selected as the platform.
 
-  for each there will be a positive / negatives
+  The browser application will be accessible from any platform and device and provides an easy way to update the application in the future.
 
-  Ending with a reason for selecting Web
+  There are many different libraries that can help when building a javascript application in the browser. The libraries have some things in common and other unique points that set them apart from each other. Most of the libraries cover the standard principles of MVC "Model View Controller" or some similar variant thereof. See [here](https://en.wikipedia.org/wiki/List_of_JavaScript_libraries#Web-application_related_.28MVC.2C_MVVM.29) for a community populated list on wikipedia.
 
-## System diagram and data flow diagrams
-  the diagrams will show the layout of the different components of the system and their interface. Sequence diagrams might be introduced for clarity here.
+### Javascript MVC library - React.js
+  React.js is a fairly new open source library from facebook.
 
-## Choice of the notebook metaphor
+    A JAVASCRIPT LIBRARY FOR BUILDING USER INTERFACES
 
-  explanation of the notebook metaphor and how it relates to user experience.
+    *cite React.js website*
+    https://facebook.github.io/react/
+
+  React.js brings the notions of pure functions to the problem of creating and updating views. In React.js the headache of updating the view when something happens in the application is handled automatically. This is accomplished by having the view hierarchy be a result of applying a pure function of the application state. This has the important consequence of removing the need for the developer to tell the application how an action should update the UI. The developer only needs to update the state and React.js will work out what needs to change by calculating the difference in the old and new view hierarchies.
+
+### Future React Native
+  React.js has a new related project created by the same team called React Native. React Native takes the principles of React.js and with slight tweaks to the code the same code can run as a native application on both IOS and Android.
+
+  This would provide a way to get the application onto mobile devices in a native environment the users wouldn't even know that the application was even running in the browser.
+
+## Choice of interface - Notebook metaphor
+  The interface of any application need to be simple and easy to understand. the more complicated the interface the more brainpower needs to be dedicated to using it. The most successful user interfaces provide simple intuitive ways for uses to do the actions they require.
+
 
 ## Detachment of the SQL interface through custom web API
+  Selecting the browser poses some specific problems for a SQL IDE. A SQL IDE needs to have access to the SQL server in order to execute queries and retrieve results. There is no support in any of the mainstream browsers for direct integration with a SQL server database, although they do have limited support *cite web sql* for in browser databases.
 
-  any alternative will be listed here and why i chose to implement my own
+  This therefore requires the production of some middleware to connect the database to the application. The commonly used method for transferring data in the browser is via a JSON web API.
