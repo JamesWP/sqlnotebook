@@ -1,3 +1,16 @@
+    Title
+
+  University of Manchester, School of computer science.
+
+  Third year project: Combining a SQL IDE with a documentation tool.
+
+  James Peach
+
+  Project supervisor: Alvaro. A. A. Fernandes.
+
+    Acknowledgements
+
+  This project was developed at the University of Manchester, I would like to thank my tutor Alvaro for his help and support throughout all of these years and for his patience through the lengthy discussions on those occasions where my understanding needed expanding.
 
     Abstract
 
