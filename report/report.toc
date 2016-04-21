@@ -1,0 +1,76 @@
+\contentsline {chapter}{\numberline {1}Introduction}{3}{chapter.1}
+\contentsline {section}{\numberline {1.1}Project goal}{3}{section.1.1}
+\contentsline {section}{\numberline {1.2}The users}{3}{section.1.2}
+\contentsline {section}{\numberline {1.3}Overview of the report}{4}{section.1.3}
+\contentsline {chapter}{\numberline {2}Background}{5}{chapter.2}
+\contentsline {section}{\numberline {2.1}Analysis of existing solutions}{5}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Microsoft SQL Server Management Studio}{6}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}MySQL Workbench}{6}{subsection.2.1.2}
+\contentsline {subsection}{\numberline {2.1.3}phpMyAdmin}{6}{subsection.2.1.3}
+\contentsline {subsection}{\numberline {2.1.4}IPython / Jupyter}{6}{subsection.2.1.4}
+\contentsline {section}{\numberline {2.2}Problems}{7}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Problem 1 Keeping notes of important things}{7}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Problem 2 Notes are only useful when they are read}{7}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}Problem 3 Notes that include code are often not updated}{8}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.2.4}Problem 4 Database systems: data always changing}{8}{subsection.2.2.4}
+\contentsline {subsection}{\numberline {2.2.5}Problem 5 System access}{8}{subsection.2.2.5}
+\contentsline {subsection}{\numberline {2.2.6}Problem 6 Cross referencing}{8}{subsection.2.2.6}
+\contentsline {section}{\numberline {2.3}Summary of identified problems}{8}{section.2.3}
+\contentsline {chapter}{\numberline {3}Requirements}{9}{chapter.3}
+\contentsline {section}{\numberline {3.1}TO BE WRITTEN}{9}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Requirement 1}{9}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Requirement 2}{9}{subsection.3.1.2}
+\contentsline {subsection}{\numberline {3.1.3}Requirement 3}{9}{subsection.3.1.3}
+\contentsline {subsection}{\numberline {3.1.4}Requirement 4}{9}{subsection.3.1.4}
+\contentsline {subsection}{\numberline {3.1.5}Requirement 5}{10}{subsection.3.1.5}
+\contentsline {subsection}{\numberline {3.1.6}Requirement 6}{10}{subsection.3.1.6}
+\contentsline {subsection}{\numberline {3.1.7}Requirement 7}{10}{subsection.3.1.7}
+\contentsline {subsection}{\numberline {3.1.8}Requirement 8}{10}{subsection.3.1.8}
+\contentsline {subsection}{\numberline {3.1.9}Requirement 9}{10}{subsection.3.1.9}
+\contentsline {section}{\numberline {3.2}Use cases of the system}{10}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Use case 1}{10}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Use case 2}{10}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Use case 3}{10}{subsection.3.2.3}
+\contentsline {subsection}{\numberline {3.2.4}Use case 4}{10}{subsection.3.2.4}
+\contentsline {subsection}{\numberline {3.2.5}Use case 5}{11}{subsection.3.2.5}
+\contentsline {subsection}{\numberline {3.2.6}Use case 6}{11}{subsection.3.2.6}
+\contentsline {subsection}{\numberline {3.2.7}Use case 7}{11}{subsection.3.2.7}
+\contentsline {chapter}{\numberline {4}Design}{12}{chapter.4}
+\contentsline {section}{\numberline {4.1}Structure of the information in the solution}{12}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}List of files}{12}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Folder structure, i.e.\nobreakspace {}Explorer / Finder}{12}{subsection.4.1.2}
+\contentsline {subsection}{\numberline {4.1.3}Simplified folder structure}{13}{subsection.4.1.3}
+\contentsline {subsection}{\numberline {4.1.4}Tagged files}{13}{subsection.4.1.4}
+\contentsline {subsection}{\numberline {4.1.5}Choice of file organization}{14}{subsection.4.1.5}
+\contentsline {section}{\numberline {4.2}Search capability in the system}{14}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Simple text search / serial scanning}{15}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Full text index}{15}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Extraction of keywords}{15}{subsection.4.2.3}
+\contentsline {subsection}{\numberline {4.2.4}Edit distance}{16}{subsection.4.2.4}
+\contentsline {subsection}{\numberline {4.2.5}Reasons for selecting simple text search}{16}{subsection.4.2.5}
+\contentsline {section}{\numberline {4.3}Type of user interface}{16}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Native solution for operating system}{16}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Mobile solution for Android / IOS}{17}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}Browser based solution}{17}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {4.3.4}Reason for selecting browser}{17}{subsection.4.3.4}
+\contentsline {subsection}{\numberline {4.3.5}Javascript MVC library - React.js}{18}{subsection.4.3.5}
+\contentsline {subsection}{\numberline {4.3.6}Future React Native}{18}{subsection.4.3.6}
+\contentsline {section}{\numberline {4.4}Choice of interface - Notebook metaphor}{18}{section.4.4}
+\contentsline {section}{\numberline {4.5}Detachment of the SQL interface through custom web API}{19}{section.4.5}
+\contentsline {chapter}{\numberline {5}Implementation}{20}{chapter.5}
+\contentsline {section}{\numberline {5.1}Middleware}{20}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}Design the API}{21}{subsection.5.1.1}
+\contentsline {section}{\numberline {5.2}Javascript application}{21}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}React.js development}{22}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Storage of data}{22}{subsection.5.2.2}
+\contentsline {subsection}{\numberline {5.2.3}Data store interface}{22}{subsection.5.2.3}
+\contentsline {subsection}{\numberline {5.2.4}Components}{23}{subsection.5.2.4}
+\contentsline {chapter}{\numberline {6}Evaluation and Future developments}{24}{chapter.6}
+\contentsline {section}{\numberline {6.1}Testing the project}{24}{section.6.1}
+\contentsline {section}{\numberline {6.2}Evaluation}{24}{section.6.2}
+\contentsline {section}{\numberline {6.3}Future developments}{25}{section.6.3}
+\contentsline {subsection}{\numberline {6.3.1}Multiple database engines}{25}{subsection.6.3.1}
+\contentsline {subsection}{\numberline {6.3.2}Query explanation}{25}{subsection.6.3.2}
+\contentsline {subsection}{\numberline {6.3.3}Different result formats}{25}{subsection.6.3.3}
+\contentsline {subsection}{\numberline {6.3.4}Resizable windows}{25}{subsection.6.3.4}
+\contentsline {chapter}{\numberline {7}Conclusion}{26}{chapter.7}
