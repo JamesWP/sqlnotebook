@@ -1,12 +1,22 @@
+\RequirePackage[l2tabu, orthodox]{nag}
 \documentclass[]{report}
 \usepackage[utf8]{inputenc}
-\usepackage{hyperref}
-\usepackage{xcolor}
-\hypersetup{linkbordercolor=black,linkcolor=black,pdfborderstyle={/S/U/W 1},pageanchor=false}
+
 \usepackage[affil-it]{authblk}
 \usepackage{etoolbox}
 \usepackage{lmodern}
 \usepackage[a4paper]{geometry}
+\usepackage{graphicx}
+\usepackage{microtype}
+
+
+\usepackage[backend=biber,style=numeric,sorting=ynt]{biblatex}
+
+% hyperref loaded at end, only cleverref loaded after
+\usepackage{hyperref}
+\usepackage{xcolor}
+\hypersetup{linkbordercolor=black,pdfborderstyle={/S/U/W 1},pageanchor=false}
+\usepackage{cleveref} % use \cref to make references
 
 \patchcmd{\abstract}{\titlepage}{}{}{}
 \patchcmd{\endabstract}{\endtitlepage}{}{}
@@ -23,6 +33,7 @@
 
 \date{April 20, 2016}    % type date between braces
 
+\addbibresource{bibliography.bib}
 
 \begin{document}
 
@@ -41,4 +52,9 @@
 \input{./Report-Chapters/Chapter-5-Implementation}
 \input{./Report-Chapters/Chapter-6-Evaluation}
 \input{./Report-Chapters/Chapter-7-Conclusion}
+
+\medskip
+
+\printbibliography
+
 \end{document}

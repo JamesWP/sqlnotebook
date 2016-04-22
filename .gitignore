@@ -19,3 +19,17 @@ node_modules/
 dist/*
 application/dist/*
 application/saves/*.json
+
+report/report.toc
+
+report/report.toc
+
+report/report.bbl
+
+report/report.bcf
+
+report/report.blg
+
+report/report.run.xml
+
+report/report.toc
