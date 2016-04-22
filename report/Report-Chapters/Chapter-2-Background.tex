@@ -1,6 +1,11 @@
 \chapter{Background}\label{background}
 
-What is the need for documentation and notes?
+In this chapter the reason for a documentation tool is outlined and some
+existing solutions are described. Each existing solution will be analyses for
+its strengths and weaknesses.
+
+If code is written without comments or detail about what is to be
+achieved then, it is possible that in the future, when the code is read again that the original intent is lost. The decisions the developer made about the implemented solution have been lost.
 
 There are many different ways to document code they range from
 completely offline to completely digital and many different methods for
@@ -8,44 +13,38 @@ integrating code. The most simple offline approaches consist of simple
 notepad pages with notes and diagrams. This offers a totally freeform
 approach to note taking as with pen and paper there is no limit to what
 you can make notes about. Tables diagrams and hand written pseudo code
-can be good for some circumstances but for others we have digital
-documents that need to form part of the notes along with written
-comments, This leads to problems of printing and loosing loose pages.
+can be easily drawn and annotated. While this is suitable for some circumstances it isn't for others. For example if you had an email you wanted to include in your notes it would have to be printed and filed in the notes. This leads to problems of printing and loosing loose pages.
 
-There are also many solutions for electronic or digital notes, those
-taken on a computer. \textit{Evernote}\cite{Evernote} is a popular choice for notes and
-offers a wide range of platforms for note creation however it is not
-designed with code documentation in mind specifically. While it is a
-very good solution for taking notes as is evident in the number of users
-\emph{cite Evernote success}. the lack of specific features aimed at
-developers eg version control etc makes it difficult to use in this way.
+One solution for this problem is the many solutions for electronic or digital
+notes. \textit{Evernote}\cite{evernote} is a popular choice for notes and offers
+a wide range of platforms for note creation however it is not designed with code
+documentation in mind specifically. While it is a very good solution for taking
+notes as is evident in the number of users\footnote{The current raking of
+Evernote by Alexa is 397
+\href{http://www.alexa.com/siteinfo/evernote.com}{http://www.alexa.com/siteinfo/evernote.com}}.
+the lack of specific features aimed at developers for example, version control.
+This makes it difficult to use in this way.
 
-The above solutions are not tailored to suit the specific task of making
-notes for sql developers. The existing tools used by developers can be
-used in some capacity to both develop new code and help document it for
-future readers. Commenting code is often the closest notes get to the
-code they are detailing. Well commented code can help developers get to
-know and remember the code they were writing in the past or to pass on
-details from programmer to programmer. Comments on code can often not
-last the test of time \emph{cite example of out of date comments} as
-they don't force you to update your note when the code they refer to
-changes. For example over time the commented function might offer more
-options and change from its original purpose. This is the reason
-comments are not always taken to be the truth and can lead to confusion
-and bugs in the worst case. \emph{find example of out of date comment}
+The above solutions are not tailored to suit the specific task of making notes
+for sql developers. Tools used by developers can both develop new code and help
+document it for future readers. Commenting code is often the closest notes get
+to the code. Well commented code can help developers to both remember the code
+they wrote in the past and understand new code. Comments provide an excellent
+opportunity to pass details of previous attempts from programmer to programmer.
 
-\section{Analysis of existing
-solutions}\label{analysis-of-existing-solutions}
+Comments on code can often not last the test of time as they don't force you to
+update your note when the code they refer to changes. For example, over time the
+commented function might offer more options or deviate from its original
+purpose. Unless the developer remembers to update the comment then, over time, this could lead to confusion.
 
-The different applications on offer vary from exact programming language
-and operating system. They have useful features and also each have there
-own downsides.
+\section{Analysis of existing solutions}\label{analysis-of-existing-solutions}
 
-Analyst different solutions for SQL IDE's and also note taking
-applications. drawing positives and negatives from each.
+The different applications vary from exact programming language and
+operating system. They each have positives and negatives.
 
-\subsection{Microsoft SQL Server Management
-Studio}\label{microsoft-sql-server-management-studio}
+Each is analyzed below with a brief overview of the functionality provided and details on specific positives and negatives. After the analysis of the existing solutions the problems will be summarized before requirements are set out.
+
+\subsection{Microsoft SQL Server Management Studio}\label{microsoft-sql-server-management-studio}
 
 \emph{citation needed}
 
