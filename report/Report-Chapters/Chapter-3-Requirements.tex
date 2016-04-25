@@ -4,60 +4,80 @@ The existing solutions have provided a basis for identifying the
 potential problems the system must overcome. Along with other sources
 and other base requirements a set of more formal requirements are listed
 below.
-\section{TO BE WRITTEN}
+\section{Requirements}
 
-  stuff to go here
+The requirements will be detailed below, along with a brief reason for the importance.
 
-\subsection{Requirement 1}\label{requirement-1}
+\begin{requirement}
+The application must store notes about the project in various
+separate ``files'' within the system. The files can take on any form however it is required that they are separate entities.
 
-The application must store notes about the application in various
-separate ``files'' within the system
+The files must exist in separate items so that each can have a well defined topic. This will aid the user in placing notes in the correct locations.
+\end{requirement}
 
-brief reason for why this is a requirement
-
-\subsection{Requirement 2}\label{requirement-2}
+\begin{requirement}
 The ``files'' stored within the system must be able to store code and also
-notes in a format more easily read by humans.
+notes in a format easily read.
 
-\subsection{Requirement 3}\label{requirement-3}
-The application should be easily accessible from multiple operating systems
-not necessarily Microsoft Windows.
+For example these files should have the ability to contain syntax highlighted code and also headings lists.
+\end{requirement}
 
-\subsection{Requirement 4}\label{requirement-4}
-The application should have the ability to view the results of queries executed on the
-system in table form.
+\begin{requirement}
+The application should be easily accessible from multiple operating systems.
 
-(Optional) The ability to detect the type of result and view it in a
+The targeted operating systems should include Windows, Popular flavors of linux, and Mac OSX.
+\end{requirement}
+
+\begin{requirement}
+The application should have the ability to view the results of queries executed
+on the system in table form.
+
+This is the de-facto representation of the results from a SQL query, although it may be possible to view the results as plain text, the requirement is to display them in tabular form.
+\end{requirement}
+
+\begin{requirement}{(Optional)}
+The ability to detect the type of result and view it in a
 more suitable form. The more suitable form could be anything from a
 graph to folder structure to a specific viewer for xml documents.
 
-\subsection{Requirement 5}\label{requirement-5}
+This could be implemented in a way that automatically selects the best result format for the results. However, this could also be completed with a manual selection of the result type that changes the display format.
+\end{requirement}
 
+\begin{requirement}
 The application should have a mechanism for organizing related files in
 a hierarchy. Files that are about a part of the system should be stored
 in the same place in the system.
 
-\subsection{Requirement 6}\label{requirement-6}
+This requirement is non specific so as to not restrict the possible implementations. The need to organize files is an old requirement of many existing systems both specifically related to code and in general. The number of different methods for providing organization is vast.
+\end{requirement}
+
+\begin{requirement}
 The application should save the previous versions of the files stored within. These
 versions should allow editing and saving over newer versions if needed.
+\end{requirement}
 
-\subsection{Requirement 7}\label{requirement-7}
+\begin{requirement}
 The application should allow for multiple files to
 be open at once and viewed at the same time. This can be done in a free
 sized window mode or windows listed vertically or horizontally.
+\end{requirement}
 
-\subsection{Requirement 8}\label{requirement-8}
+\begin{requirement}
 The application should allow for searching for strings in
 files.
+\end{requirement}
 
-(Optional) The ability to view in each of the search results, where the
+\begin{requirement}{(Optional)}
+The ability to view in each of the search results, where the
 matched text is. And the ability to open the file from the search
 results.
+\end{requirement}
 
-\subsection{Requirement 9}\label{requirement-9}
+\begin{requirement}
 The application should allow for the easy
 comparison of the results of the queries. Historic results of the
 queries should be shown as a diff or side by side with newly executed
+\end{requirement}
 
 \section{Use cases of the system}\label{use-cases-of-the-system}
 

@@ -28,8 +28,8 @@
 \renewcommand{\thefootnote}{\roman{footnote}}
 
 
+% problem env
 \newcounter{problemctr}
-
 \newenvironment{problem}[1][]{%      define a custom environment
   \refstepcounter{problemctr}% increment the environment's counter
 
@@ -38,6 +38,38 @@
 
   \noindent
   \textbf{Problem \arabic{problemctr} #1}% or \textbf, \textit, ...
+  \newline%
+  \newline%
+  \noindent
+}{\par\bigskip}%          create a vertical offset to following material
+
+
+% requirement env
+\newcounter{requirementctr}
+\newenvironment{requirement}[1][]{%      define a custom environment
+  \refstepcounter{requirementctr}% increment the environment's counter
+
+  \addcontentsline{toc}{subsection}{Requirement \arabic{requirementctr}}%
+  \bigskip\noindent%         create a vertical offset to previous material
+
+  \noindent
+  \textbf{Requirement \arabic{requirementctr} \textit{#1}}% or \textbf, \textit, ...
+  \newline%
+  \newline%
+  \noindent
+}{\par\bigskip}%          create a vertical offset to following material
+
+
+% usecase env
+\newcounter{usecasectr}
+\newenvironment{usecase}[1][]{%      define a custom environment
+  \refstepcounter{usecasectr}% increment the environment's counter
+
+  \addcontentsline{toc}{subsection}{Use-Case \arabic{usecasectr}}%
+  \bigskip\noindent%         create a vertical offset to previous material
+
+  \noindent
+  \textbf{Use-Case \arabic{usecasectr} #1}% or \textbf, \textit, ...
   \newline%
   \newline%
   \noindent
@@ -65,9 +97,9 @@
 \tableofcontents
 
 
-\input{./Report-Chapters/Chapter-1-Introduction}
-\input{./Report-Chapters/Chapter-2-Background}
-%\input{./Report-Chapters/Chapter-3-Requirements}
+%\input{./Report-Chapters/Chapter-1-Introduction}
+%\input{./Report-Chapters/Chapter-2-Background}
+\input{./Report-Chapters/Chapter-3-Requirements}
 %\input{./Report-Chapters/Chapter-4-Design}
 %\input{./Report-Chapters/Chapter-5-Implementation}
 %\input{./Report-Chapters/Chapter-6-Evaluation}
