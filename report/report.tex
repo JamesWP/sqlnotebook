@@ -8,9 +8,10 @@
 \usepackage[a4paper]{geometry}
 \usepackage{graphicx}
 \usepackage{microtype}
-
-
-\usepackage[backend=biber,style=numeric,sorting=ynt]{biblatex}
+\usepackage{csquotes}
+\usepackage{wrapfig}
+\usepackage[british]{babel}
+\usepackage[backend=biber,style=numeric]{biblatex}
 
 % hyperref loaded at end, only cleverref loaded after
 \usepackage{hyperref}
@@ -25,6 +26,25 @@
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
 \renewcommand{\thefootnote}{\roman{footnote}}
+
+
+\newcounter{problemctr}
+
+\newenvironment{problem}[1][]{%      define a custom environment
+  \refstepcounter{problemctr}% increment the environment's counter
+
+  \addcontentsline{toc}{subsection}{Problem \arabic{problemctr}}%
+  \bigskip\noindent%         create a vertical offset to previous material
+
+  \noindent
+  \textbf{Problem \arabic{problemctr} #1}% or \textbf, \textit, ...
+  \newline%
+  \newline%
+  \noindent
+}{\par\bigskip}%          create a vertical offset to following material
+
+
+
 
 \title{Third year project\\Combining a SQL IDE with a documentation tool}
 \author{James Peach}
@@ -47,11 +67,11 @@
 
 \input{./Report-Chapters/Chapter-1-Introduction}
 \input{./Report-Chapters/Chapter-2-Background}
-\input{./Report-Chapters/Chapter-3-Requirements}
-\input{./Report-Chapters/Chapter-4-Design}
-\input{./Report-Chapters/Chapter-5-Implementation}
-\input{./Report-Chapters/Chapter-6-Evaluation}
-\input{./Report-Chapters/Chapter-7-Conclusion}
+%\input{./Report-Chapters/Chapter-3-Requirements}
+%\input{./Report-Chapters/Chapter-4-Design}
+%\input{./Report-Chapters/Chapter-5-Implementation}
+%\input{./Report-Chapters/Chapter-6-Evaluation}
+%\input{./Report-Chapters/Chapter-7-Conclusion}
 
 \medskip
 
