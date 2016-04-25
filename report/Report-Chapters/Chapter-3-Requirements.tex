@@ -48,48 +48,53 @@ The application should have a mechanism for organizing related files in
 a hierarchy. Files that are about a part of the system should be stored
 in the same place in the system.
 
-This requirement is non specific so as to not restrict the possible implementations. The need to organize files is an old requirement of many existing systems both specifically related to code and in general. The number of different methods for providing organization is vast.
+This requirement is non specific so as to not restrict the choice of possible implementations. The need to organize files is an old requirement. Many existing systems both specifically related to code and in general have mechanisms in place for this.
 \end{requirement}
 
 \begin{requirement}
-The application should save the previous versions of the files stored within. These
-versions should allow editing and saving over newer versions if needed.
+The application should save the previous versions of the files stored within. These versions should allow editing and saving over newer versions if needed.
+
+Developers often have to revise code and often new features are added to existing systems. The ability to see previous versions of code is necessary in order to provide adequate context to developers.
 \end{requirement}
 
 \begin{requirement}
 The application should allow for multiple files to
 be open at once and viewed at the same time. This can be done in a free
 sized window mode or windows listed vertically or horizontally.
+
+The ability to work on multiple files at the same time will help the developer to remember the details of the different tasks without the possibility to forget one entirely.
 \end{requirement}
 
 \begin{requirement}
-The application should allow for searching for strings in
-files.
+The application should allow for searching for strings in files.
+
+When searching through documents the ability to find a single occurrence of a word or phrase in many documents can drastically decrease the time needed to continue working. When trying to complete an action, the time taken to find a file needed, determines the chance of forgetting the task.
 \end{requirement}
 
 \begin{requirement}{(Optional)}
-The ability to view in each of the search results, where the
-matched text is. And the ability to open the file from the search
-results.
+The ability to view, in each of the search results, where the search phrase was found. And the ability to open the file from the search result.
+
+When searching, the context around the match is often very important and can help identify the right instance of the phrase. Because when searching, in most cases the searcher is only interested in one location of the phrase.
 \end{requirement}
 
 \begin{requirement}
-The application should allow for the easy
-comparison of the results of the queries. Historic results of the
-queries should be shown as a diff or side by side with newly executed
+The application should allow for the easy comparison results. Historic results of the queries should be shown as a diff or side by side with newly executed results.
+
+Within the database, the data can change frequently. The ability to save previous versions of the results of the queries and then compare them with new versions can have many different uses. For example a query might not be as performant as required. The developer will need some method to verify that the results from before the changes is the same as the optimized version.
 \end{requirement}
 
 \section{Use cases of the system}\label{use-cases-of-the-system}
 
-The use cases of the system will detail how the system is to be used by
-its users. The primary users of the system as discussed is the
-developers of the projects themselves. This restriction of the users of
-the system and their interaction with it makes the system more simple to
-design as there are less interaction to model in the system.
+The use cases of the system will detail how the system is intended to be used. The specific and important use cases will give context to the requirements.
+
+The primary users of the system as discussed are the developers of the projects
+themselves. The uses will be performing some tasks more than others and some will have more of an impact on the use of the application than others. The important use cases are captured below to aid development and evaluation.
 
 \subsection{Use case 1}\label{use-case-1}
 
-Developer wants to document information about a development.
+Developer wishes to document information about a development.
+
+The correct file must be found in an existing project and amended with details of the new development.
 
 \subsection{Use case 2}\label{use-case-2}
 
@@ -123,6 +128,9 @@ The developer wants to find the places a particular entity is used
 within the system to better understand how the changes planned could
 effect the system as a whole. AKA (impact
 analysis){[}https://en.wikipedia.org/wiki/Change\_impact\_analysis{]}. *
-cite impact analysis* \#\# Development priority of requirements
+cite impact analysis*
+
+\subsection{ Development priority of requirements}
+
 Discussion of importance of requirements identified above, put into
 order and possibly identify partial fulfillment ideas
