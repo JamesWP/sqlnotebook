@@ -1,26 +1,24 @@
 \chapter{Design}\label{design}
 
-The design of the application will draw from the above requirement and
+The design of the application will draw from the above requirements and
 the associated use cases to form a final application. There are many
-decisions that impact the delivery of the final project they are details
-in this chapter and the respective different options are detailed and
-evaluated.
+decisions to be made when designing an application, each decision needs to be solved in the best way possible given the conditions and the available solutions and development time.
 
-\section{Structure of the information in the
-solution}\label{structure-of-the-information-in-the-solution}
+In this chapter some design problems are listed and a discussion is provided for each on a selection of solutions. Each candidate solution is evaluated and compared to other solutions, and a summary of the chosen approach is given in conclusion.
 
-The application will store the notes and code of the developers, however
-there are many different ways to store these files. Here is a few of the
-different ways to store this information with pros and cons for each:
+\section{Structure of the information in the solution}\label{structure-of-the-information-in-the-solution}
+
+The application will store notes and code (files) created by the user, however
+there are many different ways to store these files. Here are a few of the
+different ways to store this information with some positive and negatives of each approach.
 
 \subsection{List of files}\label{list-of-files}
 
-The application could store the notes as simple files in the system in a
-list. Similar to a flat single folder structure. Each file would have a
-name and other attributes like last edited. This method is the most
-simple of the below however it requires the user to name the files with
-discipline if they want it to remain organized. For example the
-following is an idea of how this may look.
+The application could store the notes as a list of simple files in the system.
+Each file would have a name and a collection of other attributes: date created,
+date modified. This method is the most simple of solutions discussed here however, it does rely on the user to correctly name the files with discipline. If this is done correctly then the list of files solution could be viable.
+
+For example, the following is an idea of how this might look.
 
 \begin{verbatim}
     - Project A - Overview - Project summary
@@ -30,200 +28,208 @@ following is an idea of how this may look.
     - Project B - Overview - Project summary
     - ...
 \end{verbatim}
+Each line in the above example is a file and each has been named with a logical structure of $ PROJECT - CATEGORY - NAME $
 
-This is not an ideal way to view files for a single section of a system.
-Typically you are working with a single project at once and within that
-usually not all parts but a limited subset. This problem could also be
-viewed as a positive because in the times that you do need to access
-files across multiple projects at once, i.e.~in the use case when the
-developer needs to switch to another project quickly, the developer can
-already see the entire list of files.
+For many reasons this is not an ideal way to view files for a single section of a system. Typically developers work with a single project at once and within that project only a limited subset. This means when the developer has to navigate to a particular file in the system they have to find just one file in what can be a large list.
 
-\subsection{Folder structure, i.e.~Explorer /
-Finder}\label{folder-structure-i.e.explorer-finder}
+
+As a positive consequence of choosing a simple list, the times in which need to
+access files across multiple projects. For example in a use case where the developer
+needs to switch between projects frequently, the developer can see the
+entire list of files without the need to change between folders.
+
+\subsection{Folder structure}\label{folder-structure-i.e.explorer-finder}
 
 There are already existing methods for storing files into folders or
-directories. Most mainstream operating systems use a hearty of folders
-to contain files and more folders. This acts like a tree, each leaf is a
-file and each subtree is a folder.
+directories. Most mainstream operating systems use a hierarchy of
+folders\footnote{Windows has Explorer, and OSX has Finder} to contain files
+and more folders. This acts like a tree, each leaf is a file and each subtree
+is a folder.
 
 This approach still offers the users free reign over the organization
-and naming of each file in the system however it also provides the
+and naming of each file in the system, however, it also provides the
 ability to focus on single parts of the tree at once.
 
 \begin{verbatim}
-- Project A/
-  - Overview/
-    - Project summary
-    - Change log
-  - Users/
-    - User login module
-    - User login module version 2
-- Project B/
-  - Overview/
-    - Project summary
+    - Project A/
+      - Overview/
+        - Project summary
+        - Change log
+      - Users/
+        - User login module
+        - User login module version 2
+    - Project B/
+      - Overview/
+        - Project summary
 \end{verbatim}
 
-This organization into folders can take time to do and can be done in
-many ways. Each project might have its own collection of top level
-folders and in each project (unless managed correctly) there could exist
-a different way of creating / naming the folders. This problem of
-uniformity crops up in many places within organization and in general
-the more uniform the structure the less the user has to remember for
-each case and the less brain power needs to be spent understanding it.
+In the example above the items ending with / are the folders (subtrees) and the
+other items are the files (leaf nodes).
 
-There is another problem with a simple tree folder structure, each file
-in the folder tree can only be in one place at once. Some files could be
-ambiguously belong in multiple places at once. This can make finding
-these files take twice as much time. Each ambiguously located file that
-needs to be found needs to be searched for in (worst case) all the
-locations it could be in.
+This organization into folders can take time to complete and can be done in many
+different ways. Within each project, unless managed correctly, there could exist
+different ways of creating / naming the folders. This problem of uniformity
+crops up in many places within the topic of organization and in general, the
+more uniform the structure, the less the user has to remember for each case and
+the less brain power needs to be spent understanding it.
+
+There is another problem with a simple tree folder structure, each file in the
+folder tree can only exist in one place at once. %
+%
+\footnote{This can however be solved, as with the unix file system for example.
+Symbolic links can allow for files to exist in multiple places at once. }%
+%
+Some files could be ambiguously belong in multiple places at once. This can make
+finding these files take longer. Each ambiguously located file that needs to be
+found needs to be searched for in (worst case) all the locations it could be in.
 
 Both the two above problems are lessened by putting sensible limits on
 the depth of the folder structure. The reason for this is discussed
 below.
 
-\subsection{Simplified folder
-structure}\label{simplified-folder-structure}
+\subsection{Simplified folder structure}\label{simplified-folder-structure}
 
-In a simplified folder structure there is a limited number of levels
-that can exist. If viewed as a tree it is a tree that contains a limited
-depth and contains leaf nodes (here notes) at the bottom level of the
-tree.
+In a simplified folder structure, there are a limited number of levels that can
+exist. If viewed as a tree it would have limited depth and contains leaf nodes
+(here notes) at the bottom level of the tree.
 
 This simplified structure can help make the choice of folders at each
-level more apparent for the user. They have a more limited choice of
-where to place folder and files and as such the impact problems of a
-full folder structure as discussed above are lessened.
+level more apparent for the user. They have limited choice of
+where to place folders and files and as such, the ambiguity problems of a
+full folder structure are lessened.
 
 This technique also implicitly limits the user to a set number of
-levels. This (although simplifying) imposes that some files that might
-have been better suited to live together inside a folder have to be
-placed within the parent folder.
+levels. This, although limiting, reduces the number of cases where files have
+ more than one obvious location.
 
 \subsection{Tagged files}\label{tagged-files}
 
 In a tagged file organizational system, files are not placed in folders
-but instead have each an associated set of ``tags'' each of these tags
+but instead have each an associated set of ``tags''. Each of these tags
 has a name and can be applied to many files.
 
-For an example you might have the following set of files and their tags:
+For example, you might have the following set of files and their tags:
 
 \begin{verbatim}
-- Project summary {Project A, overview}
-- User login module {Project A, Users}
-- Overview {Project A, overview}
-- Project summary {Project B, overview}
+    - Project summary {Project A, overview}
+    - User login module {Project A, Users}
+    - Overview {Project A, overview}
+    - Project summary {Project B, overview}
 \end{verbatim}
 
-The user can then find the subset of files they are interested in by
-filtering for the items that have all the tags they specify:
+The user can then find subsets of files they are interested in by
+filtering for the items that have the tags specified:
 
 \begin{verbatim}
-Filter: file has all {Project A, overview}
-Result:
-- Project summary {Project A, overview}
-- Overview {Project A, overview}
+    Filter: file has all {Project A, overview}
+    Result:
+    - Project summary {Project A, overview}
+    - Overview {Project A, overview}
 
-Filter: file has overview
-Result:
-- Project summary {Project A, overview}
-- Overview {Project A, overview}
-- Project summary {Project B, overview}
+    Filter: file has overview
+    Result:
+    - Project summary {Project A, overview}
+    - Overview {Project A, overview}
+    - Project summary {Project B, overview}
 \end{verbatim}
 
-Note that this can be viewed as a more general version of the folder
-structure discussed in section \emph{insert folder structure section ref
-here} by adding a single tag to each file with the path of the folder
-that contains it. However this is not an ideal tagging for files
+Note the folder structure as discussed above
+\ref{folder-structure-i.e.explorer-finder} can be represented with a tagged list
+of files. This can be achieved by adding a single tag to each file with the path
+of the folder that contains it. However the tagging system allows for more
+flexibility by allowing multiple tags to exist on the same file.
 
-Citation:
+For some applications, a tagged file system can be both faster and more simple
+to understand for the users\cite{ASI:ASI22906}
 
-\begin{verbatim}
-@article {ASI:ASI22906,
-  author = {Bergman, Ofer and Gradovitch, Noa and Bar-Ilan, Judit and Beyth-Marom, Ruth},
-  title = {Folder versus tag preference in personal information management},
-  journal = {Journal of the American Society for Information Science and Technology},
-  volume = {64},
-  number = {10},
-  issn = {1532-2890},
-  url = {http://dx.doi.org/10.1002/asi.22906},
-  doi = {10.1002/asi.22906},
-  pages = {1995--2012},
-  keywords = {personal information systems},
-  year = {2013},
-}
-\end{verbatim}
+\subsection{Choice of file organization}\label{choice-of-file-organization}
 
-\subsection{Choice of file
-organization}\label{choice-of-file-organization}
-
-The simplified folder structure was picked because of the balance
+The simplified folder structure was chosen because of the balance
 between the flexible organization of the tagging system and the
 simplistic file list. The simplified folder structure proved to be
-simple to implement and use within the system
+simple to implement and provides the required functionality.
 
-\emph{images of the final version}
 
-\section{Search capability in the
-system}\label{search-capability-in-the-system}
+\begin{figure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{Figures/BinderEmpty.png}
+  \caption{}
+  \label{fig:binderempty}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{Figures/BinderFull.png}
+  \caption{}
+  \label{fig:binderfull}
+\end{subfigure}
+\caption{Binder, top level container for tabs. fig \ref{fig:binderempty} and \ref{fig:binderfull} show empty and full binders respectively}
+\label{fig:binder}
+\end{figure}
 
-The requirements gathering process clearly identified in multiple places
-the need for the system to provide a quick and simple search function in
-order for developers to find the files that they need.
+Fig \ref{fig:binder} shows the implemented simple folder structure. The names given to the levels are as follows: Binder, top level container. Tab, second level container.
 
-There are multiple ways to provide search functionality within a
-document management system some of which are suitable for the
-application and some that are not. The below is a summary of a few of
-the options and an evaluation of each.
+\section{Search capability in the system}\label{search-capability-in-the-system}
 
-Ideally the functionality required is that a user can submit a query for
-some content, the files in the system is searched for the specified
-items and the results are shown. This part of the searching experience
-will be the same for all the discussed methods. However the parts that
-differ in the compared methods are: * the format of the users query
-(plain text or other). * the searching procedures * the performance *
-the presentation of results
+The requirements gathering process clearly identified in multiple places the
+need for the system to provide a quick and simple search function.
 
-\subsection{Simple text search / serial
-scanning}\label{simple-text-search-serial-scanning}
+There are multiple ways to provide search functionality within a document
+management system, some of which are suitable for the application and some are
+not. The below is a summary of a few of the options and an evaluation of each.
 
-The simplest method for searching is taking a simple section of text
-from the user, the search term, and then searching for the occurrences
-of the term in each file and for each result displaying the name of the
-file, and the position within the document.
+The search feature should take the users query and provide access to the
+matching files in the system. This part of the searching experience will be the
+same for all the discussed methods. However the parts that differ in the
+compared methods are:
+\begin{list}
+  \item the format of the users query
+  \item the searching method
+  \item the time taken to perform the search
+  \item the presentation of the results
+\end{list}
 
-Example:
+\subsection{Simple text search / serial scanning}%
+\label{simple-text-search-serial-scanning}
 
-\begin{verbatim}
-  search: "test"
-  results:
-  - File A, line 13, chars 34-38
-    - ... the users will then report on *test* ing ...
-  - File A, line 13, chars 10-13
-    - Chapter 2: *Test* ing ...
-\end{verbatim}
+The simplest method for searching in a collection of documents is taking a
+simple query from the user (the search term), and searches for the occurrences
+of the term in each file. Each match results in an item in the result list
+displaying the name of the file, and the position within the document.
 
-This technique is simple and for small amounts of files and content is
-quick to compute. However due to the fact that the algorithm is loosely
-linear in the number of files to search through, this would be
-impractical for large amounts of files.
+For example:
 
-\emph{cite wikipedia:
-https://en.wikipedia.org/wiki/Full\_text\_search\#Indexing} When dealing
-with a small number of documents, it is possible for the
-full-text-search engine to directly scan the contents of the documents
-with each query, a strategy called ``serial scanning.''
+\begin{alltt}
+    search term: \emph{test}
+    results:
+    - File A, line 13, chars 34-38
+      - ... the users will then report on \emph{test}ing ...
+    - File A, line 13, chars 10-13
+      - Chapter 2: \emph{Test}ing ...
+\end{alltt}
+
+This technique is simple and for small amounts of files and content is fast to
+compute. However, due to the fact that the algorithm is loosely linear in the
+number of files this technique would be impractical for large numbers of files.
+This technique, called ``serial scanning''\footenote{
+\url{https://en.wikipedia.org/wiki/Full_text_search#Indexing} has more details
+on this}, is only typically used for smaller amounts of text due to this problem.
+
+\blockquote{
+However, when the number of documents to search is potentially large, or the quantity of search queries to perform is substantial, the problem of full-text search is often divided into two tasks: indexing and searching.
+}\cite{wiki:full-text-search}
+
+This technique that wikipedia refers to is discussed below.
 
 \subsection{Full text index}\label{full-text-index}
 
-When a simple method for searching through all the files becomes too
-slow, an alternative is to create a concordance \emph{cite
-https://en.wikipedia.org/wiki/Concordance\_(publishing)} this is a table
-of words in a publication (here note) and where the words appear within
-the document. by using this concordance instead of searching the text
-directly, the application is able to search a smaller amount of data and
-hence speed up the search process.
+When a simple method for searching through all the files becomes too slow, an
+alternative is to create a concordance
+\footnote{\url{https://en.wikipedia.org/wiki/Concordance_(publishing)} for more
+information}. This is a table of words in a publication (here a note) and where
+these words appear within the document. By using this concordance in place of
+searching the text directly, the application is able to search a smaller amount
+of data to find the results and hence speed up the search process.
 
 This requires that there is a pre-processing step before a search can be
 completed. This needs to be recalculated for each time a user changes a
