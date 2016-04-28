@@ -74,11 +74,10 @@ more uniform the structure, the less the user has to remember for each case and
 the less brain power needs to be spent understanding it.
 
 There is another problem with a simple tree folder structure, each file in the
-folder tree can only exist in one place at once. %
+folder tree can only exist in one place at once.%
 %
 \footnote{This can however be solved, as with the unix file system for example.
-Symbolic links can allow for files to exist in multiple places at once. }%
-%
+Symbolic links can allow for files to exist in multiple places at once. }
 Some files could be ambiguously belong in multiple places at once. This can make
 finding these files take longer. Each ambiguously located file that needs to be
 found needs to be searched for in (worst case) all the locations it could be in.
@@ -133,7 +132,7 @@ filtering for the items that have the tags specified:
     - Project summary {Project B, overview}
 \end{verbatim}
 
-Note the folder structure as discussed above
+nb. the folder structure as discussed above
 \ref{folder-structure-i.e.explorer-finder} can be represented with a tagged list
 of files. This can be achieved by adding a single tag to each file with the path
 of the folder that contains it. However the tagging system allows for more
@@ -167,7 +166,30 @@ simple to implement and provides the required functionality.
 \label{fig:binder}
 \end{figure}
 
-Fig \ref{fig:binder} shows the implemented simple folder structure. The names given to the levels are as follows: Binder, top level container. Tab, second level container.
+\begin{figure}
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{Figures/PagesEmpty.png}
+  \caption{}
+  \label{fig:pagesempty}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{Figures/PagesFull.png}
+  \caption{}
+  \label{fig:pagesfull}
+\end{subfigure}
+\caption{Tabs, the second level container. fig \ref{fig:pagesempty} and
+\ref{fig:pagesfull} show an empty and full tab respectively. This is shown
+when a tab is selected, the pages are listed with the ability to edit the list,
+and add new items.}
+\label{fig:pages}
+\end{figure}
+
+Fig \ref{fig:binder} shows the implemented simple folder structure. The names
+given to the levels are as follows: Binder, top level container. Tab, second
+level container. Fig \ref{fig:pages} shows how the second level container is
+displayed.
 
 \section{Search capability in the system}\label{search-capability-in-the-system}
 
@@ -182,12 +204,12 @@ The search feature should take the users query and provide access to the
 matching files in the system. This part of the searching experience will be the
 same for all the discussed methods. However the parts that differ in the
 compared methods are:
-\begin{list}
+\begin{itemize}
   \item the format of the users query
   \item the searching method
   \item the time taken to perform the search
   \item the presentation of the results
-\end{list}
+\end{itemize}
 
 \subsection{Simple text search / serial scanning}%
 \label{simple-text-search-serial-scanning}
@@ -211,54 +233,59 @@ For example:
 This technique is simple and for small amounts of files and content is fast to
 compute. However, due to the fact that the algorithm is loosely linear in the
 number of files this technique would be impractical for large numbers of files.
-This technique, called ``serial scanning''\footenote{
-\url{https://en.wikipedia.org/wiki/Full_text_search#Indexing} has more details
-on this}, is only typically used for smaller amounts of text due to this problem.
+This technique, called ``serial scanning''\footnote{%
+\url{https://en.wikipedia.org/wiki/Full_text_search\#Indexing}%
+has more details on this.}%
+, is only typically used for smaller amounts of text due to this problem.
 
-\blockquote{
-However, when the number of documents to search is potentially large, or the quantity of search queries to perform is substantial, the problem of full-text search is often divided into two tasks: indexing and searching.
+\blockquote{ However, when the number of documents to search is potentially
+large, or the quantity of search queries to perform is substantial, the problem
+of full-text search is often divided into two tasks: indexing and searching.
 }\cite{wiki:full-text-search}
 
 This technique that wikipedia refers to is discussed below.
 
 \subsection{Full text index}\label{full-text-index}
 
-When a simple method for searching through all the files becomes too slow, an
+When the simple method of searching through all the files becomes too slow, one
 alternative is to create a concordance
 \footnote{\url{https://en.wikipedia.org/wiki/Concordance_(publishing)} for more
 information}. This is a table of words in a publication (here a note) and where
-these words appear within the document. By using this concordance in place of
+those words appear within the document. By using this concordance in place of
 searching the text directly, the application is able to search a smaller amount
 of data to find the results and hence speed up the search process.
 
 This requires that there is a pre-processing step before a search can be
-completed. This needs to be recalculated for each time a user changes a
+completed. This needs to be recalculated each time a user changes a
 document so that all subsequent queries can find the new content.
 
-This is the tradeoff with the more complex methods for searching.
+This is the tradeoff with the more complex methods for searching. This method
+requires the index to be built / rebuilt before any searching can take place.
+However this can be done ``offline'' and cached for later use.
 
 \subsection{Extraction of keywords}\label{extraction-of-keywords}
 
-Another method of searching is by analysis of keywords only. Indexing a
-select few words per note means smaller indexes and faster searches.
-Either a list of keywords is created and left static or machine learning
-algorithms learn the important words within the page and only those
-words are indexed.
+Another method of searching the documents is by analysis of keywords. Indexing a
+select few words per note instead of all the words as in \ref{full-text-index}
+means smaller indexes and faster searches.
+Either a list of keywords is created and left static or, machine learning
+algorithms can learn which words are important within the page and index only
+those words.
 
-This is however only applicable when the user's search terms can be
-limited as such. For example if the user searches for a table name that
-is contained within a file in the application, it will only be found if
-the table name is in the keywords list. In the case of a note taking
-application there is limited use of a search process that only finds
-some words of the documents stored. However such indexes can help to
-find preliminary results for a query, or even to provide caches of
-common queries.
+This is however only applicable when the user's search terms can be limited as
+such. This is because if the user searches for a word that is contained within a
+file in the application, it will only be found if the word is in the keywords
+list. In the case of a note taking application, a search method that can fail to
+find a word that exists in the  document is of little use. However indexes of
+the popular search terms can help to find preliminary results for a query, or
+provide caches of common queries.
 
-\subsection{Edit distance}\label{edit-distance}
 
-\begin{quote}
-JP maybe discuss fuzzy search
-\end{quote}
+%\subsection{Edit distance}\label{edit-distance}
+
+%\begin{quote}
+%JP maybe discuss fuzzy search
+%\end{quote}
 
 \subsection{Reasons for selecting simple text
 search}\label{reasons-for-selecting-simple-text-search}
