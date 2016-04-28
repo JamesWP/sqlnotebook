@@ -11,19 +11,18 @@ methodical pace.
 As always with development projects involving code version control is an
 important part of the development process. For this project git has been
 used to keep track of the changes to the code. This provides many
-benefits as can be seen in
-\href{https://books.google.co.uk/books?hl=en\&lr=\&id=aM7-Oxo3qdQC\&oi=fnd\&pg=PR3\&dq=version+control+software\&ots=38zcOCRfo9\&sig=RrjwXCtjK_7I4AtQZiOWj5wSo5Q\#v=onepage\&q\&f=false}{this
-book} published on git.
+benefits as can be seen in Version Control with Git
+\footnote{\url{https://goo.gl/WqK6f2}}.
 
-Keeping the iterations small and using technologies like git will enable
-me to be agile when developing. Being agile means that I can react to
-complications with development and delays that occur due to new
-languages and technologies.
+Keeping the iterations small and using technologies like git allows for more
+agile development. Being agile means reacting to complications with development
+and delays that occur due to new languages and technologies will have less
+impact on the development process.
 
-With this in mind the application was broken down into smaller parts
+With this in mind, the application was broken down into smaller parts
 that fit together to form the application. The front end of the system
 is the part the users will directly be interacting with. This would form
-the bulk of the development however, the backend of the application is
+the bulk of the development however; the backend of the application is
 the middleware component that will enable the javascript front end to
 talk to the database.
 
@@ -46,7 +45,7 @@ as follows:
     connection.
   \end{itemize}
 \item
-  Allow the caller to execute queries against a connected db.
+  Allow the caller to execute queries against a connected database.
 
   \begin{itemize}
   \tightlist
@@ -76,8 +75,8 @@ A connection string is a textual detail of the parameters required to
 connect to the database. This can contain many different types of
 connection however the more usual address and username and password will
 be used to connect to the database in the api.
-
-\begin{verbatim}
+\begin{listing}[ht]
+\begin{minted}{csharp}
     public class ContextRequest
     {
         public string Database { get; set; }
@@ -85,7 +84,8 @@ be used to connect to the database in the api.
         public string Username { get; set; }
         public string Password { get; set; }
     }
-\end{verbatim}
+\end{minted}
+\end{listing}
 
 The ContextRequest class provides the definition for the parameters for
 the CreateExecutionContext when the /api/CreateExecutionContext method
@@ -93,21 +93,24 @@ received a http post the parameters are extracted from the body of the
 post and a sql connection is created, opened and a token is returned to
 the user.
 
-From javascript there are many different ways in which you can do a HTTP
-post. The library that is used in the application is called superagent
-\emph{cite superagent} this provides a set of functions that manage HTTP
-posts. Here is an example of how a HTTP post can be made to \emph{url}
-with parameters \emph{params}. When the post has completed the callback
-function is called with the response.
+From javascript there are many different ways in which you can do a HTTP post.
+The library that is used in the application is called superagent
+\footnote{\url{http://visionmedia.github.io/superagent/} has more details and
+documentation} this provides a set of functions that manage HTTP posts. Here is
+an example of how a HTTP post can be made to \emph{url} with parameters
+\emph{params}. When the post has completed the callback function is called with
+the response.
 
-\begin{verbatim}
+\begin{listing}[ht]
+\begin{minted}{javascript}
   request
     .post(url)
     .send(params)
     .type('application/json')
     .accept('application/json')
     .end(newCallback(callback));
-\end{verbatim}
+\end{minted}
+\end{listing}
 
 Here the response is the connection token. This token will be needed to
 execute all further requests to this connection.
@@ -119,46 +122,47 @@ application. It is written in javascript and runs in the browser in a
 single web page. Requests to the SQL middleware API are made over HTTP
 with the superagent package.
 
-Applications built for browsers can have very large codebases, There are
-many different problems that arrive from having a large code base and
-there are tools available to help developers manage the applications.
-With standard javascript there is currently no module system (although
-this may change soon \emph{cite ES6 modules}) and so if we want to split
-our application into multiple smaller components we must ensure that
-they are all correctly loaded in the browser before being required. This
-can become difficult with many interdependent modules.
+Applications built for browsers can have very large codebases, There are many
+different problems that arrive from having a large code base and there are tools
+available to help developers manage the applications. With standard javascript
+there is currently no module system (although this may change
+soon\cite{javascriptes6}) so when the application is separated into multiple
+files these must be loaded in the browser before being used. This can become
+difficult with many interdependent and third party modules.
 
-There are ways to automate this process and automatically find all
-dependancies and bundle them all into one file that the browser can
-load. \href{http://browserify.org/}{Browserify} is one such program.
+There are ways to automate this process and automatically find all dependancies
+and bundle them all into one file. This bundle file contains a compiled and
+compressed version of all of the different modules. The browser can then load
+this single file. This enables developers to separate the different parts of the application and not have to
+put time into loading each manually.
 
-\begin{verbatim}
-Browserify lets you require('modules') in the browser by bundling up all of your dependencies.
-\end{verbatim}
-
-This enables developers to think in smaller files and have the
-dependancies and load order be solved by a tool.
-
-The Browserify process can also be extended to optimize our javascript
-code and also provide us with analysis to point out potential bugs and
-also best practices. These tools help to turn the javascript development
-process into something similar to ahead of time compiled code like C\#
-and Java and C++. This is needed for larger applications to be built in
-the browser.
+\href{http://browserify.org/}{Browserify} is one such program. The tool can be
+used from the command line to compile the application into a single javascript
+file. The Browserify process can also be extended to optimize our javascript
+code and also provide us with analysis to point out potential bugs and best
+practices. These tools help to turn the javascript development process into
+something similar to ahead-of-time compiled code like C\# and Java and C++. This
+is needed for larger applications to be built in the browser\footnote{ other
+tools such as \url{https://en.wikipedia.org/wiki/Emscripten} could have been
+used instead to transpile c++ or c into javascript }.
 
 \subsection{React.js development}\label{react.js-development}
 
 With React.js the UI is defined by React components. Each component can
 be thought of as a new html element. They can have attributes defined:
 
-\begin{verbatim}
-  <NewElement attributeNo1="Ted" attributeNo2="123.4"/>
-\end{verbatim}
+\begin{listing}[ht]
+  \begin{minted}{html}
+    <NewElement attributeNo1="Ted" attributeNo2="123.4"/>
+  \end{minted}
+\end{listing}
 
 And each component has a render function, this render function takes
 each components internal state and produces more html for the page.
 
+
 \begin{verbatim}
+
   var HelloMessage = React.createClass({
   render: function() {
     return <div>Hello {this.props.name}</div>;
@@ -166,6 +170,7 @@ each components internal state and produces more html for the page.
   });
 
   ReactDOM.render(<HelloMessage name="John" />, mountNode);
+
 \end{verbatim}
 
 In the above example the HelloMessage component is created. In this

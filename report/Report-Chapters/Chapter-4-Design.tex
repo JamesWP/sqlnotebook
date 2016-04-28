@@ -28,7 +28,7 @@ For example, the following is an idea of how this might look.
     - Project B - Overview - Project summary
     - ...
 \end{verbatim}
-Each line in the above example is a file and each has been named with a logical structure of $ PROJECT - CATEGORY - NAME $
+Each line in the above example is a file and each has been named with a logical structure of $$ PROJECT - CATEGORY - NAME $$
 
 For many reasons this is not an ideal way to view files for a single section of a system. Typically developers work with a single project at once and within that project only a limited subset. This means when the developer has to navigate to a particular file in the system they have to find just one file in what can be a large list.
 
@@ -71,16 +71,17 @@ different ways. Within each project, unless managed correctly, there could exist
 different ways of creating / naming the folders. This problem of uniformity
 crops up in many places within the topic of organization and in general, the
 more uniform the structure, the less the user has to remember for each case and
-the less brain power needs to be spent understanding it.
+less effort to understand it.
 
 There is another problem with a simple tree folder structure, each file in the
 folder tree can only exist in one place at once.%
 %
 \footnote{This can however be solved, as with the unix file system for example.
-Symbolic links can allow for files to exist in multiple places at once. }
-Some files could be ambiguously belong in multiple places at once. This can make
-finding these files take longer. Each ambiguously located file that needs to be
-found needs to be searched for in (worst case) all the locations it could be in.
+Symbolic links can allow for files to exist in multiple places at once. } Some
+files could belong in multiple places at once. This causes ambiguity and can
+make finding these files take longer. Each ambiguously located file that needs
+to be found needs to be searched for in (worst case) all the locations it could
+be in.
 
 Both the two above problems are lessened by putting sensible limits on
 the depth of the folder structure. The reason for this is discussed
@@ -139,7 +140,8 @@ of the folder that contains it. However the tagging system allows for more
 flexibility by allowing multiple tags to exist on the same file.
 
 For some applications, a tagged file system can be both faster and more simple
-to understand for the users\cite{ASI:ASI22906}
+to understand for the users, the paper by Bergman, Ofer et. al.\cite{ASI:ASI22906}
+has a detailed analysis of this technique.
 
 \subsection{Choice of file organization}\label{choice-of-file-organization}
 
@@ -290,16 +292,14 @@ provide caches of common queries.
 \subsection{Reasons for selecting simple text
 search}\label{reasons-for-selecting-simple-text-search}
 
-The numerous ways to search the text within a collection of documents
-each provide there own ways to provide the results. While many of the
-different search methods are concerned with the performance of a search
-and their accuracy in terms of the results, the most basic search
-discussed the Simple text search \emph{link above section} as discussed
-can offer the features needed by most users of the application.
-
-There are many other features that can be added to the functionality
-provided by the Simple text search \emph{link} however these can be
-added as an extension to the program after the initial release.
+The numerous ways to search the text within a collection of documents each
+provide their own ways to provide the results. While many of the different
+search methods are concerned with the performance of a search and their accuracy
+in terms of the results, the most basic search discussed the Simple text search
+\ref{simple-text-search-serial-scanning} as discussed can offer the features
+needed by most users of the application, While remaining simple to implement.
+This could always be replaced or enhanced as a future development of the
+system.
 
 \section{Type of user interface}\label{type-of-user-interface}
 
@@ -307,18 +307,20 @@ The different types of user interface that designers can choose from
 when designing applications can be categorized into a few main
 categories:
 
-\begin{verbatim}
-- Command line
-- GUI / WIMPS
-\end{verbatim}
+\begin{itemize}
+  \item Command line
+  \item GUI / WIMPS (windows, icons, menus, and pointers)
+\end{itemize}
 
-For visualizing text, popular command line applications for editing text
-like Vim or Emacs do exist however, the richer environment of a GUI
-application is predominately preferred with its ability to customize
-fonts and other such attributes of the layout and style. They also
-provide a better experience for users with the use of menus etc. These
-can provide a more simple to use application than an alternate command
-line program with many shortcuts to memorize.
+For visualizing text, popular command line applications for editing text like
+Vim\footnote{http://www.vim.org/} or GNU
+Emacs\footnote{\url{https://www.gnu.org/software/emacs/}} do exist however, the
+richer environment of GUI applications are predominately preferred with their
+ability to customize fonts and other attributes of the layout and style. They
+also provide a better experience for users with the use of menus etc. visual
+reminders on how to perform actions. These can provide a more simple to use
+application than an alternate command line program with many shortcuts to
+memorize.
 
 There are many different types of GUI application that can be built and
 an important decision that needs to be made before selecting the layout
@@ -327,89 +329,86 @@ of the application is what platform to build the application on.
 \subsection{Native solution for operating
 system}\label{native-solution-for-operating-system}
 
-The first platform option is developing a desktop first application
-native in a selected operating system. This would require selecting one
-of the native windowing API's for the operating system. Some of these
-API's are cross platform enabled for example see
-\href{http://www.qt.io/}{qt} for a popular choice. Some more polished
-and more integrated with the selected operating system for example
-Apple's own windowing API is
-\href{https://en.wikipedia.org/wiki/Cocoa_(API)}{Cocoa}
+The first option is to develop a ``desktop first'' application. This would mean
+developing an application for a chosen operating system. This would require
+selecting one of the native windowing API's for the operating system. Some of
+these API's are cross platform enabled\footnote{for example, see ``qt'' for a
+popular choice. \url{http://www.qt.io/}} others are proprietary and more
+integrated and tied down to the selected operating system. Apple's own windowing
+API Cocoa\footnote{\url{https://en.wikipedia.org/wiki/Cocoa_(API)}} is an
+example of this.
 
-The advantages of using the operating system's manufacturer built API is
-one of support from the company and choice of open source vs
-proprietary. As one of the requirements is that the system should be
-accessible the proprietary method is not an option for a time
-constrained development like this. In order to complete a cross platform
-version using operating system specific (non cross platform) API's would
-mean a rewrite of the GUI code for each operating system that was to be
-supported. The advantages of using the operating system's manufacturer
-built API is one of support from the company and choice of open source
-vs proprietary. As one of the requirements is that the system should be
-accessible the proprietary method is not an option for a time
-constrained development like this. In order to complete a cross platform
-version using operating system specific (non cross platform) API's would
-mean a rewrite of the GUI code for each operating system that was to be
-supported.
+One advantage of using the manufacturer built API is in the level of support
+from the manufacturer that is available. However a downside of this is often the
+proprietary libraries are closed source. These closed source API's impose a
+limitation towards changing and tweaking the system.
 
-\subsection{Mobile solution for Android /
-IOS}\label{mobile-solution-for-android-ios}
+As one of the requirements of the project is that the system should be
+accessible to all platforms \footnote{ see \ref{requirement:accessible} for the
+requirement} the proprietary method is not an option for a time constrained
+development like this. In order to complete a cross platform version using
+operating system specific (non cross platform) API's, Multiple versions would
+have to be created, one for each different API.
 
-The production of a mobile application for either the Android or IOS
-markets would be done with either two versions of the application as
-discussed with the desktop versions above, or there are tools like
-\href{https://www.xamarin.com/platform}{Xamarin}
+\subsection{Mobile solution for Android / IOS}%
+\label{mobile-solution-for-android-ios}
 
+The production of a mobile application for either the Android or IOS operating
+systems would either require two versions of the application, or the use of
+tools like \href{https://www.xamarin.com/platform}{Xamarin}.
+
+Xamerin's goals are as follows:
 \begin{verbatim}
 "Deliver native Android, iOS, and Windows apps, using existing skills,
 teams, and code."
-*cite xamerin*
-\end{verbatim}
+\end{verbatim}\cite{Xamerin}
 
-This allows for applications to be built for a variety of mobile
-platforms with a single code base in C\#. The ability to ``write once
-run anywhere'' is a big selling point for Xamarin and others like it.
-However it would still restrict users into using mobile only.
+Tools like this allow for applications to be built for a variety of mobile
+platforms with a single code base. In the case of Xamerin, in C\#. The ability
+to ``write once run anywhere'' is a big selling point for these tools. However
+it would still restrict users into using mobile only to access the application.
 
 \subsection{Browser based solution}\label{browser-based-solution}
 
-With modern advances in browser technology it has become more feasible
-to create full desktop replacement applications as website-applications.
-These websites are truly cross platform, they can be viewed on any
-platform with access to a web browser. Desktop OS or mobile OS alike can
-all use one of a multitude of recent browsers from many vendors. -
-Chrome (Windows, Mac OSX, IOS, Android) - Safari (Mac OSX, IOS, Windows)
-- Opera (Windows, Mac OSX, IOS \{opera-mini\}, Android \{opera-mini\}) -
-Firefox (Windows, Mac OSX, IOS, Android)
+With modern advances in browser technology it has become more feasible to create
+full desktop replacement applications as website-applications. These websites
+are truly cross platform, they can be viewed on any platform with access to a
+web browser. Desktop OS or mobile OS's have access to many of the most
+recent browsers.
 
-There are many different libraries on offer to help develop applications
-with javascript. However it is still possible to create more traditional
-client-server applications and have just a simple lightweight javascript
-free front end. These applications tend to be slower and more cumbersome
-to use because of there need to communicate every action with a server
-over http.
+\begin{itemize}
+  \item Chrome (Windows, Mac OSX, IOS, Android)
+  \item Safari (Mac OSX, IOS, Windows)
+  \item Opera (Windows, Mac OSX, IOS \{opera-mini\}, Android \{opera-mini\})
+  \item Firefox (Windows, Mac OSX, IOS, Android)
+\end{itemize}
+
+There are many different libraries to help develop applications with javascript.
+However it is still possible to create more traditional client-server
+applications and have a simple lightweight javascript free front end. These
+applications tend to be slower in terms of latency between user action and
+application response because of there need to communicate every action with a
+server over http.
 
 An alternative to the more traditional client-server architecture is the
-now more popular single page javascript application. This merges the
+now popular ``single page javascript application'' or \emph{SPA}. This merges the
 lines between the user perceived differences of the desktop and browser
 experience.
 
-A single page javascript application is a single web page that functions
-like a normal application. The application have all the features of a
-desktop application, they can make use of windows, buttons, and
-animations etc\ldots{}
+An SPA is a single web page that functions like a normal native desktop
+application. The application have all the features of a desktop application,
+they can make use of windows, buttons, and animations etc.
 
 External data is gathered in background http calls (called Ajax
 requests) and does not necessitate a full page reload. The absence of
 these full reloads and the flash of white as the page loads give the
 user a much better experience.
 
-\emph{cite}
+For more information about the use of ajax replacing client server applications
+refer to the paper ``Single Page Web Applications'' By Michael S. Mikowski and Josh C.
+Powell\cite{garrett2005ajax}.
 
-Single Page Web Applications By Michael S. Mikowski and Josh C. Powell
-
-\subsection{Reason for selecting
-browser}\label{reason-for-selecting-browser}
+\subsection{Reason for selecting browser}\label{reason-for-selecting-browser}
 
 For the application being built the choice of platform is between a
 cross platform library for a native desktop application and a web based
@@ -419,46 +418,46 @@ languages developing for the browser was selected as the platform.
 The browser application will be accessible from any platform and device
 and provides an easy way to update the application in the future.
 
-There are many different libraries that can help when building a
-javascript application in the browser. The libraries have some things in
-common and other unique points that set them apart from each other. Most
-of the libraries cover the standard principles of MVC ``Model View
-Controller'' or some similar variant thereof. See
-\href{https://en.wikipedia.org/wiki/List_of_JavaScript_libraries\#Web-application_related_.28MVC.2C_MVVM.29}{here}
-for a community populated list on wikipedia.
+There are many different libraries that can help when building a javascript
+application in the browser. The libraries have some things in common and other
+unique points that set them apart from each other. Most of the libraries cover
+the standard principles of MVC ``Model View Controller'' or some similar
+variant. \footnote{
+\href{https://en.wikipedia.org/wiki/List_of_JavaScript_libraries\#Web-application_related_.28MVC.2C_MVVM.29}%
+{https://en.wikipedia.org/wiki/List\_of\_JavaScript\_libraries}
+has a community populated list of libraries.}
 
-\subsection{Javascript MVC library -
-React.js}\label{javascript-mvc-library---react.js}
+\subsection{Javascript MVC library React.js}\label{javascript-mvc-library-react.js}
+
+In this section, the choice of javascript library React.js will be explained
+along with a brief description of how it works in order to help understanding.
 
 React.js is a fairly new open source library from facebook.
 
 \begin{verbatim}
 A JAVASCRIPT LIBRARY FOR BUILDING USER INTERFACES
+\end{verbatim}\cite{reactjs}
 
-*cite React.js website*
-https://facebook.github.io/react/
-\end{verbatim}
-
-React.js brings the notions of pure functions to the problem of creating
-and updating views. In React.js the headache of updating the view when
-something happens in the application is handled automatically. This is
-accomplished by having the view hierarchy be a result of applying a pure
-function of the application state. This has the important consequence of
-removing the need for the developer to tell the application how an
-action should update the UI. The developer only needs to update the
-state and React.js will work out what needs to change by calculating the
-difference in the old and new view hierarchies.
+React.js brings the notions of pure functions to the problem of creating and
+updating views. In React.js the headache of updating the view when something
+happens in the application is handled automatically. This is accomplished by
+having the view hierarchy be a result of a pure function of the application's
+current state. This has the important consequence of removing the need for the
+developer to detail how an action should update the UI. Instead, the developer
+needs only to to update the state and React.js will work out what changes are
+required by calculating the difference in the old and new view hierarchies.
 
 \subsection{Future React Native}\label{future-react-native}
 
-React.js has a new related project created by the same team called React
-Native. React Native takes the principles of React.js and with slight
-tweaks to the code the same code can run as a native application on both
-IOS and Android.
+React.js has a new related project created by the same team called ``React
+Native''\footnote{\url{https://facebook.github.io/react-native/} for more
+information}. React Native takes the principles of React.js and allows the same
+React.js code, with slight tweaks, to run as a native application on both IOS
+and Android.
 
-This would provide a way to get the application onto mobile devices in a
-native environment the users wouldn't even know that the application was
-even running in the browser.
+This would provide a simple way to get the application onto mobile operating systems in a
+native environment. With a native environment the users would be able to access the application
+as they would any other app on the device and not through the browser.
 
 \section{Choice of interface - Notebook
 metaphor}\label{choice-of-interface---notebook-metaphor}
@@ -468,55 +467,41 @@ understand. the more complicated the interface the more brainpower needs
 to be dedicated to using it. The most successful user interfaces provide
 simple intuitive ways for uses to do the actions they require.
 
-\begin{verbatim}
-Metaphors are the fundamental concepts, terms, and images
-by which information is easily recognized, understood, and
-remembered.
-- Metaphor Design for User Interfaces, Marcus, Aaron
-\end{verbatim}
+\blockquote{%
+  Metaphors are the fundamental concepts, terms, and images by which information
+  is easily recognized, understood, and remembered.%
+}
 
-\emph{cite} @inproceedings\{Marcus:1998:MDU:286498.286577, author =
-\{Marcus, Aaron\}, title = \{Metaphor Design for User Interfaces\},
-booktitle = \{CHI 98 Cconference Summary on Human Factors in Computing
-Systems\}, series = \{CHI '98\}, year = \{1998\}, isbn =
-\{1-58113-028-7\}, location = \{Los Angeles, California, USA\}, pages =
-\{129--130\}, numpages = \{2\}, url =
-\{http://doi.acm.org/10.1145/286498.286577\}, doi =
-\{10.1145/286498.286577\}, acmid = \{286577\}, publisher = \{ACM\},
-address = \{New York, NY, USA\}, keywords = \{Web, consumers, culture,
-diversity, graphic design, icons, information design, metaphors,
-multi-media, productivity tools, rhetoric, semantics, semi-otics,
-symbols, user interfaces, visible language\}, \}
+Metaphor Design for User Interfaces, Marcus, Aaron\cite{Marcus:1998:MDU:286498.286577}
 
 The metaphor chosen for the application is the notebook. A physical
-notebook has pages, tabs etc\ldots{} These are easily understood by
-anyone who knows what a notebook is. We can extend the notion of a
+notebook has pages, tabs etc. These are easily understood by
+anyone who knows what a physical notebook is. We can extend the notion of a
 notebook with concepts from the wider world of books with indexes and
 contents pages.
 
-The application will take from this notion of the ``notebook metaphor''
-and from there the application interface will be designed.
+The application will take from this notion of the ``notebook metaphor'' and from
+there the application interface will be designed.
 
-\emph{notebook image mapped to uml diagram of application}
+\todo{notebook image mapped to uml diagram of application}
 
 \section{Detachment of the SQL interface through custom web
 API}\label{detachment-of-the-sql-interface-through-custom-web-api}
 
-Selecting the browser poses some specific problems for a SQL IDE. A SQL
-IDE needs to have access to the SQL server in order to execute queries
-and retrieve results. There is no support in any of the mainstream
-browsers for direct integration with a SQL server database, although
-they do have limited support \emph{cite web sql} for in browser
-databases.
+Selecting the browser poses some specific problems for a SQL IDE. A SQL IDE
+needs to have access to the SQL server in order to execute queries and retrieve
+results. There is no support in any of the mainstream browsers for direct
+integration with a SQL server database, although they do have limited support
+for in browser databases\footnote{\url{http://caniuse.com/\#search=sql-storage}
+shows a report for the support of in browser sql in common browsers}.
 
-This therefore requires the production of some middleware to connect the
-database to the application. The commonly used method for transferring
-data in the browser is via a JSON web API. There are many methods for
-connecting to a SQL server database however, the Microsoft documentation
-\emph{cite} https://msdn.microsoft.com/en-us/library/ms162132.aspx
-contains C\#, VB, C++ documentation and libraries for querying the
-database. I have experience using the C\# conneciton methods before and
-with this in mind the middleware was chosen to be a C\# website
-providing a mapping from JSON to the database.
+This therefore requires the creation of some middleware to connect the database
+to the application. The commonly used method for transferring data in the
+browser is via a JSON web API. There are many methods for connecting to a SQL
+server database however, the Microsoft documentation contains C\#, VB, C++
+documentation and libraries for querying the database.\cite{sqlserverconnect} I
+personally have experience using the C\# connection methods and with this in mind
+the middleware was chosen to be a C\# website providing a mapping from JSON to
+the database.
 
-\emph{diagram of connection}
+\todo{diagram of connection}

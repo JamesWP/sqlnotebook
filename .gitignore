@@ -33,3 +33,7 @@ report/report.blg
 report/report.run.xml
 
 report/report.toc
+
+*.pygtex
+
+*.pygstyle

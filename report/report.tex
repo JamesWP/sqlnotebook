@@ -15,6 +15,10 @@
 \usepackage{alltt}
 \usepackage{caption}
 \usepackage{subcaption}
+\usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
+\usepackage{perpage}
+\MakePerPage{footnote}
+\usepackage{minted}
 
 % hyperref loaded at end, only cleverref loaded after
 \usepackage{hyperref}
@@ -80,19 +84,30 @@
 
 
 
-
-\title{Third year project\\Combining a SQL IDE with a documentation tool}
-\author{James Peach}
-\affil{University of Manchester, School of computer science}
-\affil{Project supervisor: Alvaro. A. A. Fernandes}
-
-\date{April 20, 2016}    % type date between braces
-
 \addbibresource{bibliography.bib}
 
 \begin{document}
 
-\maketitle
+
+\begin{titlepage}
+	\centering
+	\includegraphics[width=0.6\textwidth]{Figures/UniOfManchesterLogo.eps}\par\vspace{1cm}
+	%{\scshape\LARGE The University of Manchester \par}
+	\vspace{1cm}
+	{\scshape\Large Third year project\par}
+	\vspace{1.5cm}
+	{\huge\bfseries A Notebook-Style SQL IDE\par}
+	\vspace{2cm}
+	{\Large\itshape James Peach\par}
+	\vfill
+	supervised by\par
+	Alvaro. A. A. \textsc{Fernandes}
+
+	\vfill
+
+% Bottom of the page
+	{\large \today\par}
+\end{titlepage}
 
 \begin{titlepage}
 \input{./Report-Chapters/Chapter-0-Intro}
@@ -103,8 +118,8 @@
 %\input{./Report-Chapters/Chapter-1-Introduction}
 %\input{./Report-Chapters/Chapter-2-Background}
 %\input{./Report-Chapters/Chapter-3-Requirements}
-\input{./Report-Chapters/Chapter-4-Design}
-%\input{./Report-Chapters/Chapter-5-Implementation}
+%\input{./Report-Chapters/Chapter-4-Design}
+\input{./Report-Chapters/Chapter-5-Implementation}
 %\input{./Report-Chapters/Chapter-6-Evaluation}
 %\input{./Report-Chapters/Chapter-7-Conclusion}
 

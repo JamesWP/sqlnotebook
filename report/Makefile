@@ -5,7 +5,7 @@
 
 # The first rule in a Makefile is the one executed by default ("make"). It
 # should always be the "all" rule, so that "make" and "make all" are identical.
-all: 
+all:
 
 # CUSTOM BUILD RULES
 
@@ -30,7 +30,7 @@ all:
 # missing file reference and interactively asking you for an alternative.
 
 report.pdf: report.tex
-	~/bin/latexmk -pdf -pdflatex="/Library/TeX/texbin/pdflatex -interaction=nonstopmode" -use-make report.tex
+	~/bin/latexmk -pdf -pdflatex="/Library/TeX/texbin/pdflatex -interaction=nonstopmode --shell-escape" -use-make report.tex -shell-escape
 
 clean:
 	latexmk -CA
