@@ -11,7 +11,7 @@ methodical pace.
 As always with development projects involving code version control is an
 important part of the development process. For this project git has been
 used to keep track of the changes to the code. This provides many
-benefits as can be seen in Version Control with Git
+benefits as can be seen in Version Control with Git%
 \footnote{\url{https://goo.gl/WqK6f2}}.
 
 Keeping the iterations small and using technologies like git allows for more
@@ -142,7 +142,7 @@ file. The Browserify process can also be extended to optimize our javascript
 code and also provide us with analysis to point out potential bugs and best
 practices. These tools help to turn the javascript development process into
 something similar to ahead-of-time compiled code like C\# and Java and C++. This
-is needed for larger applications to be built in the browser\footnote{ other
+is needed for larger applications to be built in the browser\footnote{other
 tools such as \url{https://en.wikipedia.org/wiki/Emscripten} could have been
 used instead to transpile c++ or c into javascript }.
 
@@ -163,23 +163,32 @@ each components internal state and produces more html for the page.
 
 \begin{verbatim}
 
-  var HelloMessage = React.createClass({
-  render: function() {
-    return <div>Hello {this.props.name}</div>;
-  }
-  });
+    var HelloMessage = React.createClass({
+    render: function() {
+      return <div>Hello {this.props.name}</div>;
+    }
+    });
 
-  ReactDOM.render(<HelloMessage name="John" />, mountNode);
+    ReactDOM.render(<HelloMessage name="John" />, mountNode);
 
 \end{verbatim}
 
 In the above example the HelloMessage component is created. In this
-simple component when it is used it outputs just a simple html Div
+simple component when it is used it outputs just a simple html DIV
 element.
 
 The use of React.Js in the project forces structure in the use of
-components. The layout of the application is as follows: - controllers/
-- helpers/ - stores/ - ui/ - app.js
+components. The layout of the application is as follows:
+
+\begin{verbatim}
+
+   - controllers/
+   - helpers/ 
+   - stores/ 
+   - ui/ 
+   - app.js
+
+\end{verbatim}
 
 The application is created in the app.js and this then uses the
 components in the UI folder to create the interface. The app.js file
@@ -191,14 +200,14 @@ interface) and the workspace (where pages are opened).
 The application will store the data for the open notebook in the browser
 until it is closed and saved to disk. The data in the browser will form
 the state of the react components and any changes to this state will
-cause React.js to re-draw the ui.
+cause React.js to re-draw the UI.
 
 The pages are stored in the PageStore module. The tabs are stored in the
 TabStore module and the workspace in the WorkspaceStore module. Each of
 the stores contains the current state of the objects and components that
 need to access data from them add listeners when created and receive
 events when things change. This way we can separate the code that stores
-the data and modifies it and the code that creates the ui. This
+the data and modifies it and the code that creates the UI. This
 separation of concerns simplifies the details the developers needs to be
 aware of when writing code.
 
@@ -209,22 +218,29 @@ It is important that this interface is as simple to use as possible in
 order to ensure that all the complicated logic to change the data is
 completely within the store.
 
-First the actions were planned out that the user might trigger. - Create
-new page - Save page - Delete page - Create new tab - Change search text
-- Connect / Execute query
+First the actions were planned out that the user might trigger.
 
-These actions form events on the data stores and update the internal
-state. The changes in the state then cascade down to the components that
-depend on them and update the UI.
+\begin{verbatim}
+    - Create new page 
+    - Save page 
+    - Delete page 
+    - Create new tab 
+    - Change search text
+    - Connect / Execute query
+\end{verbatim}
+
+These actions form events. When these events are triggered, the data stores
+update the internal state. The changes in the state then cascade down to the
+components that depend on them and update the UI.
 
 \subsection{Components}\label{components}
 
 The application was split into small functional parts and a high level
 design for the application was drawn out.
 
-\emph{diagram}
+\todo{diagram, of interface ``boxes''}
 
-The left side of the application was dedicated to the navigation
+The left side of the application is dedicated to the navigation
 interface with tabs and pages displayed with buttons to create new and
 remove old.
 
@@ -234,12 +250,18 @@ example a search page renders a Search component and an index page
 renders an Index component. This allows for easy addition of new window
 types to the system as each is implemented in a separate file.
 
-The initial design was implemented with the standard html entities li
-for list and button for actions. Later on in the design process these
-were replaced with components form a third party library of elements
-that provided sections of
-\href{https://design.google.com/spec/}{material design} this proved the
-use of Browserify and React.js because the third party library
-\href{http://www.material-ui.com/\#/}{material ui} could be just
-referenced and the components used to replace the default html list
-elements and buttons etc and the application ui was improved.
+The initial design was implemented with the standard html entities ``li''
+for list and ``button'' for actions. Later in the design process these
+were replaced with components form a third party library of elements. The library
+provides styled components that can be used in place of standard html. 
+The styled components also follow the design specification called
+``material design''.\footnote{\url{https://design.google.com/spec/} for more
+information} This design specification defined rules for positioning, coloring
+and other visual semantics that give the application a profesional feel and 
+also giving the design consistency with other applications that also use 
+this style.
+
+Changing the visual design of the system proved to be a simple task, this is
+mostly due to the choice of technology. Browserify and React.js both contributed
+by allowing a third pary library\footnote{\url{http://www.material-ui.com/}} to 
+be easily imported and replace the unstyled components.

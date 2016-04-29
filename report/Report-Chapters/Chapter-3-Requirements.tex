@@ -6,33 +6,40 @@ and other base requirements a set of more formal requirements are listed
 below.
 \section{Requirements}
 
-The requirements will be detailed below, along with a brief reason for the importance.
+The requirements will be detailed below, along with a brief reason for the
+importance.
 
 \begin{requirement}
-The application must store notes about the project in various
-separate ``files'' within the system. The files can take on any form however it is required that they are separate entities.
+The application must store notes about the project in various separate
+``files'' within the system. The files can take on any form however it is
+required that they are separate entities.
 
-The files must exist in separate items so that each can have a well defined topic. This will aid the user in placing notes in the correct locations.
+The files must exist in separate items so that each can have a well defined
+topic. This will aid the user in placing notes in the correct locations.
 \end{requirement}
 
 \begin{requirement}
 The ``files'' stored within the system must be able to store code and also
 notes in a format easily read.
 
-For example these files should have the ability to contain syntax highlighted code and also headings lists.
+For example these files should have the ability to contain syntax highlighted
+code and also headings lists.
 \end{requirement}
 
 \begin{requirement}\label{requirement:accessible}
 The application should be easily accessible from multiple operating systems.
 
-The targeted operating systems should include Windows, Popular flavors of linux, and Mac OSX.
+The targeted operating systems should include Windows, Popular flavors of
+linux, and Mac OSX.
 \end{requirement}
 
 \begin{requirement}
 The application should have the ability to view the results of queries executed
 on the system in table form.
 
-This is the de-facto representation of the results from a SQL query, although it may be possible to view the results as plain text, the requirement is to display them in tabular form.
+This is the de-facto representation of the results from a SQL query, although
+it may be possible to view the results as plain text, the requirement is to
+display them in tabular form.
 \end{requirement}
 
 \begin{requirement}{(Optional)}
@@ -40,7 +47,9 @@ The ability to detect the type of result and view it in a
 more suitable form. The more suitable form could be anything from a
 graph to folder structure to a specific viewer for xml documents.
 
-This could be implemented in a way that automatically selects the best result format for the results. However, this could also be completed with a manual selection of the result type that changes the display format.
+This could be implemented in a way that automatically selects the best result
+format for the results. However, this could also be completed with a manual
+selection of the result type that changes the display format.
 \end{requirement}
 
 \begin{requirement}
@@ -48,13 +57,19 @@ The application should have a mechanism for organizing related files in
 a hierarchy. Files that are about a part of the system should be stored
 in the same place in the system.
 
-This requirement is non specific so as to not restrict the choice of possible implementations. The need to organize files is an old requirement. Many existing systems both specifically related to code and in general have mechanisms in place for this.
+This requirement is non specific so as to not restrict the choice of possible
+implementations. The need to organize files is an old requirement. Many
+existing systems both specifically related to code and in general have
+mechanisms in place for this.
 \end{requirement}
 
 \begin{requirement}
-The application should save the previous versions of the files stored within. These versions should allow editing and saving over newer versions if needed.
+The application should save the previous versions of the files stored within.
+These versions should allow editing and saving over newer versions if needed.
 
-Developers often have to revise code and often new features are added to existing systems. The ability to see previous versions of code is necessary in order to provide adequate context to developers.
+Developers often have to revise code and often new features are added to
+existing systems. The ability to see previous versions of code is necessary in
+order to provide adequate context to developers.
 \end{requirement}
 
 \begin{requirement}
@@ -62,70 +77,86 @@ The application should allow for multiple files to
 be open at once and viewed at the same time. This can be done in a free
 sized window mode or windows listed vertically or horizontally.
 
-The ability to work on multiple files at the same time will help the developer to remember the details of the different tasks without the possibility to forget one entirely.
+The ability to work on multiple files at the same time will help the developer
+to remember the details of the different tasks without the possibility to
+forget one entirely.
 \end{requirement}
 
 \begin{requirement}
 The application should allow for searching for strings in files.
 
-When searching through documents the ability to find a single occurrence of a word or phrase in many documents can drastically decrease the time needed to continue working. When trying to complete an action, the time taken to find a file needed, determines the chance of forgetting the task.
+When searching through documents the ability to find a single occurrence of a
+word or phrase in many documents can drastically decrease the time needed to
+continue working. When trying to complete an action, the time taken to find a
+file needed, determines the chance of forgetting the task.
 \end{requirement}
 
 \begin{requirement}{(Optional)}
-The ability to view, in each of the search results, where the search phrase was found. And the ability to open the file from the search result.
+The ability to view, in each of the search results, where the search phrase was
+found. And the ability to open the file from the search result.
 
-When searching, the context around the match is often very important and can help identify the right instance of the phrase. Because when searching, in most cases the searcher is only interested in one location of the phrase.
+When searching, the context around the match is often very important and can
+help identify the right instance of the phrase. Because when searching, in most
+cases the searcher is only interested in one location of the phrase.
 \end{requirement}
 
 \begin{requirement}
-The application should allow for the easy comparison results. Historic results of the queries should be shown as a diff or side by side with newly executed results.
+The application should allow for the easy comparison results. Historic results
+of the queries should be shown as a diff or side by side with newly executed
+results.
 
-Within the database, the data can change frequently. The ability to save previous versions of the results of the queries and then compare them with new versions can have many different uses. For example a query might not be as performant as required. The developer will need some method to verify that the results from before the changes is the same as the optimized version.
+Within the database, the data can change frequently. The ability to save
+previous versions of the results of the queries and then compare them with new
+versions can have many different uses. For example a query might not be as
+performant as required. The developer will need some method to verify that the
+results from before the changes is the same as the optimized version.
 \end{requirement}
 
 \section{Use cases of the system}\label{use-cases-of-the-system}
 
-The use cases of the system will detail how the system is intended to be used. The specific and important use cases will give context to the requirements.
+The use cases of the system will detail how the system is intended to be used.
+The specific and important use cases will give context to the requirements.
 
 The primary users of the system as discussed are the developers of the projects
-themselves. The uses will be performing some tasks more than others and some will have more of an impact on the use of the application than others. The important use cases are captured below to aid development and evaluation.
+themselves. The uses will be performing some tasks more than others and some
+will have more of an impact on the use of the application than others. The
+important use cases are captured below to aid development and evaluation.
 
-\subsection{Use case 1}\label{use-case-1}
-
+\begin{usecase}
 Developer wishes to document information about a development.
 
-The correct file must be found in an existing project and amended with details of the new development.
-
-\subsection{Use case 2}\label{use-case-2}
-
+The correct file must be found in an existing project and amended with details
+of the new development.
+\end{usecase}
+\begin{usecase}
 Developer needs to view all documents pertaining to a project in the
 system.
 
-The collection of files for a project must be identified within the application.
-
-\subsection{Use case 3}\label{use-case-3}
-
+The collection of files for a project must be identified within the
+application.
+\end{usecase}
+\begin{usecase}
 Developer needs to find reference to a particular item within the system
 but is unfamiliar with the specific location or other detail
 
-\subsection{Use case 4}\label{use-case-4}
-
+\end{usecase}
+\begin{usecase}
 Developer has to find specific details of a system previously worked on
 in order to maintain it.
 
-\subsection{Use case 5}\label{use-case-5}
-
+\end{usecase}
+\begin{usecase}
 Developer wants to view and compare previous versions of some code
 within the database
 
-\subsection{Use case 6}\label{use-case-6}
-
+\end{usecase}
+\begin{usecase}
 Developer want to view the versions of files within the notebook.
 
 The different states of a piece of code (query) in the system need to be identified and the saved results compared.
 
-\subsection{Use case 7}\label{use-case-7}
-
+\end{usecase}
+\begin{usecase}
 The developer wants to find the places a particular entity is used
 within the system to better understand how the changes planned could
 effect the system as a whole. \footnote{%
@@ -133,6 +164,8 @@ effect the system as a whole. \footnote{%
   \href{https://en.wikipedia.org/wiki/Change\_impact\_analysis}{impact
 analysis}%
 }
+
+\end{usecase}
 
 \subsection{Priority of requirements}
 
