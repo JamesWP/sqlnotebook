@@ -12,7 +12,7 @@ implemented solution have been lost.
 There are many different ways to document code they range from
 completely offline to completely digital and many different methods for
 integrating code. The most simple offline approaches consist of simple
-notepad pages with notes and diagrams. This offers a totally free-form
+notepad pages with notes and diagrams. This offers a totally freeform
 approach to note taking as with pen and paper there is no limit to what
 you can make notes about. Tables diagrams and hand written pseudo code
 can be easily drawn and annotated. While this is suitable for some
@@ -31,7 +31,7 @@ the lack of specific features aimed at developers for example, version control.
 This makes it difficult to use in this way.
 
 The above solutions are not tailored to suit the specific task of making notes
-for SQL developers. Tools used by developers can both develop new code and help
+for sql developers. Tools used by developers can both develop new code and help
 document it for future readers. Commenting code is often the closest notes get
 to the code. Well commented code can help developers to both remember the code
 they wrote in the past and understand new code. Comments provide an excellent
@@ -47,9 +47,9 @@ purpose. Unless the developer remembers to update the comment then, over time, t
 The different applications vary from exact programming language and
 operating system. They each have positives and negatives.
 
-Each is analysed below with a brief overview of the functionality provided and
+Each is analyzed below with a brief overview of the functionality provided and
 details on specific positives and negatives. After the analysis of the existing
-solutions the problems will be summarised before requirements are set out.
+solutions the problems will be summarized before requirements are set out.
 
 
 \begin{figure}
@@ -208,8 +208,8 @@ understand exactly what effects each part of the code has on the end
 result. This is important because developers who understand the impact of the existing code and their changes to it will create less bugs in code and are more productive.
 
 The notebooks reside on files on the local disk of the system, much like
-any other file. As such the organisation of the files is left up to you
-the creator to file them in folders etc. This can be a problem for long term users of the application as while the individual files might be organised, if the collection of files is haphazard then the organisation problem has just moved to another part of the process.
+any other file. As such the organization of the files is left up to you
+the creator to file them in folders etc. This can be a problem for long term users of the application as while the individual files might be organized, if the collection of files is haphazard then the organization problem has just moved to another part of the process.
 
 \section{Problems}\label{problems}
 
@@ -219,7 +219,7 @@ As developers work on their projects and as these projects evolve there
 become an increasing number of things that need to be understood in
 order to develop / maintain the project. The problem is to provide an
 easy flexible way to make notes on different topics and allow access to
-the notes in an organised way.
+the notes in an organized way.
 
 \end{problem}
 
@@ -241,7 +241,7 @@ information accessible from the past.
 updated}
 
 The notes, in some note taking applications that store code, are often not in an
-executable format. This code will have dependencies as code does not exist in
+executable format. This code will have dependences as code does not exist in
 isolation. For example the functions used or the tables referenced may be
 modified. If the code in the note can not be directly executed, these changed
 in the context can create bugs in the code that wont be immediately visible and
@@ -294,7 +294,7 @@ The problems identified above fall into different categories:
 \begin{itemize}
 \tightlist
 \item
-  Organisation of notes
+  Organization of notes
 \item
   SQL specific problems
 \item
@@ -305,4 +305,4 @@ Each of the above categories of problems could be tackled in many different
 ways. The next stage in the development of a complete solution is to identify
 some concrete requirements and use cases for the application and discuss the
 different approaches available. Each approach has downsides, these need to be
-properly analysed and evaluated to provide a solution.
+properly analyzed and evaluated to provide a solution.

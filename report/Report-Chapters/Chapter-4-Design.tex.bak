@@ -46,7 +46,7 @@ folders\footnote{Windows has Explorer, and OSX has Finder} to contain files
 and more folders. This acts like a tree, each leaf is a file and each subtree
 is a folder.
 
-This approach still offers the users free reign over the organisation
+This approach still offers the users free reign over the organization
 and naming of each file in the system, however, it also provides the
 ability to focus on single parts of the tree at once.
 
@@ -66,17 +66,17 @@ ability to focus on single parts of the tree at once.
 In the example above the items ending with / are the folders (subtrees) and the
 other items are the files (leaf nodes).
 
-This organisation into folders can take time to complete and can be done in many
+This organization into folders can take time to complete and can be done in many
 different ways. Within each project, unless managed correctly, there could exist
 different ways of creating / naming the folders. This problem of uniformity
-crops up in many places within the topic of organisation and in general, the
+crops up in many places within the topic of organization and in general, the
 more uniform the structure, the less the user has to remember for each case and
 less effort to understand it.
 
 There is another problem with a simple tree folder structure, each file in the
 folder tree can only exist in one place at once.%
 %
-\footnote{This can however be solved, as with the UNIX file system for example.
+\footnote{This can however be solved, as with the unix file system for example.
 Symbolic links can allow for files to exist in multiple places at once. } Some
 files could belong in multiple places at once. This causes ambiguity and can
 make finding these files take longer. Each ambiguously located file that needs
@@ -104,7 +104,7 @@ levels. This, although limiting, reduces the number of cases where files have
 
 \subsection{Tagged files}\label{tagged-files}
 
-In a tagged file organisational system, files are not placed in folders
+In a tagged file organizational system, files are not placed in folders
 but instead have each an associated set of ``tags''. Each of these tags
 has a name and can be applied to many files.
 
@@ -133,7 +133,7 @@ filtering for the items that have the tags specified:
     - Project summary {Project B, overview}
 \end{verbatim}
 
-n.b.. the folder structure as discussed above
+nb. the folder structure as discussed above
 \ref{folder-structure-i.e.explorer-finder} can be represented with a tagged list
 of files. This can be achieved by adding a single tag to each file with the path
 of the folder that contains it. However the tagging system allows for more
@@ -143,10 +143,10 @@ For some applications, a tagged file system can be both faster and more simple
 to understand for the users, the paper by Bergman, Ofer et. al.\cite{ASI:ASI22906}
 has a detailed analysis of this technique.
 
-\subsection{Choice of file organisation}\label{choice-of-file-organization}
+\subsection{Choice of file organization}\label{choice-of-file-organization}
 
 The simplified folder structure was chosen because of the balance
-between the flexible organisation of the tagging system and the
+between the flexible organization of the tagging system and the
 simplistic file list. The simplified folder structure proved to be
 simple to implement and provides the required functionality.
 
@@ -245,7 +245,7 @@ large, or the quantity of search queries to perform is substantial, the problem
 of full-text search is often divided into two tasks: indexing and searching.
 }\cite{wiki:full-text-search}
 
-This technique that Wikipedia refers to is discussed below.
+This technique that wikipedia refers to is discussed below.
 
 \subsection{Full text index}\label{full-text-index}
 
@@ -261,7 +261,7 @@ This requires that there is a pre-processing step before a search can be
 completed. This needs to be recalculated each time a user changes a
 document so that all subsequent queries can find the new content.
 
-This is the trade off with the more complex methods for searching. This method
+This is the tradeoff with the more complex methods for searching. This method
 requires the index to be built / rebuilt before any searching can take place.
 However this can be done ``offline'' and cached for later use.
 
@@ -304,7 +304,7 @@ system.
 \section{Type of user interface}\label{type-of-user-interface}
 
 The different types of user interface that designers can choose from
-when designing applications can be categorised into a few main
+when designing applications can be categorized into a few main
 categories:
 
 \begin{itemize}
@@ -312,15 +312,15 @@ categories:
   \item GUI / WIMPS (windows, icons, menus, and pointers)
 \end{itemize}
 
-For visualising text, popular command line applications for editing text like
+For visualizing text, popular command line applications for editing text like
 Vim\footnote{http://www.vim.org/} or GNU
 Emacs\footnote{\url{https://www.gnu.org/software/emacs/}} do exist however, the
 richer environment of GUI applications are predominately preferred with their
-ability to customise fonts and other attributes of the layout and style. They
+ability to customize fonts and other attributes of the layout and style. They
 also provide a better experience for users with the use of menus etc. visual
 reminders on how to perform actions. These can provide a more simple to use
 application than an alternate command line program with many shortcuts to
-memorise.
+memorize.
 
 There are many different types of GUI application that can be built and
 an important decision that needs to be made before selecting the layout
@@ -359,7 +359,7 @@ tools like \href{https://www.xamarin.com/platform}{Xamarin}.
 
 Xamerin's goals are as follows:
 \begin{verbatim}
-"Deliver native Android, IOS, and Windows apps, using existing skills,
+"Deliver native Android, iOS, and Windows apps, using existing skills,
 teams, and code."
 \end{verbatim}\cite{Xamerin}
 
@@ -383,15 +383,15 @@ recent browsers.
   \item Firefox (Windows, Mac OSX, IOS, Android)
 \end{itemize}
 
-There are many different libraries to help develop applications with JavaScript.
+There are many different libraries to help develop applications with javascript.
 However it is still possible to create more traditional client-server
-applications and have a simple lightweight JavaScript free front end. These
+applications and have a simple lightweight javascript free front end. These
 applications tend to be slower in terms of latency between user action and
 application response because of there need to communicate every action with a
-server over HTTP.
+server over http.
 
 An alternative to the more traditional client-server architecture is the
-now popular ``single page JavaScript application'' or \emph{SPA}. This merges the
+now popular ``single page javascript application'' or \emph{SPA}. This merges the
 lines between the user perceived differences of the desktop and browser
 experience.
 
@@ -399,12 +399,12 @@ An SPA is a single web page that functions like a normal native desktop
 application. The application have all the features of a desktop application,
 they can make use of windows, buttons, and animations etc.
 
-External data is gathered in background HTTP calls (called Ajax
+External data is gathered in background http calls (called Ajax
 requests) and does not necessitate a full page reload. The absence of
 these full reloads and the flash of white as the page loads give the
 user a much better experience.
 
-For more information about the use of Ajax replacing client server applications
+For more information about the use of ajax replacing client server applications
 refer to the paper ``Single Page Web Applications'' By Michael S. Mikowski and Josh C.
 Powell\cite{garrett2005ajax}.
 
@@ -418,7 +418,7 @@ languages developing for the browser was selected as the platform.
 The browser application will be accessible from any platform and device
 and provides an easy way to update the application in the future.
 
-There are many different libraries that can help when building a JavaScript
+There are many different libraries that can help when building a javascript
 application in the browser. The libraries have some things in common and other
 unique points that set them apart from each other. Most of the libraries cover
 the standard principles of MVC ``Model View Controller'' or some similar
@@ -427,12 +427,12 @@ variant. \footnote{
 {https://en.wikipedia.org/wiki/List\_of\_JavaScript\_libraries}
 has a community populated list of libraries.}
 
-\subsection{JavaScript MVC library React.js}\label{javascript-mvc-library-react.js}
+\subsection{Javascript MVC library React.js}\label{javascript-mvc-library-react.js}
 
-In this section, the choice of JavaScript library React.js will be explained
+In this section, the choice of javascript library React.js will be explained
 along with a brief description of how it works in order to help understanding.
 
-React.js is a fairly new open source library from Facebook.
+React.js is a fairly new open source library from facebook.
 
 \begin{verbatim}
 A JAVASCRIPT LIBRARY FOR BUILDING USER INTERFACES
@@ -469,7 +469,7 @@ simple intuitive ways for users to perform the actions they require.
 
 \blockquote{%
   Metaphors are the fundamental concepts, terms, and images by which information
-  is easily recognised, understood, and remembered.%
+  is easily recognized, understood, and remembered.%
 }
 
 Metaphor Design for User Interfaces, Marcus, Aaron\cite{Marcus:1998:MDU:286498.286577}
@@ -478,11 +478,11 @@ The metaphor chosen for the application is the notebook. A physical
 notebook has pages, tabs and other concepts. These are easily understood by
 anyone who knows what a notebook is. We can extend this notion of a
 notebook with concepts from the wider world of physical print media with indexes and
-contents pages. See fig \ref{fig:notebookmetaphor} for a pictorial diagram.
+contents pages. See fig \ref{fig:notebookmetaphor} for a pictoral diagram.
 
 The result of using a metaphor to guide the design of the application should be
-an intuitive and simple interface. It should lead to a design that users will be able to
-explore with little to no intervention. Complicated non intuitive interfaces however, 
+an intuative and simple interface. It should lead to a design that users will be able to
+explore with little to no intervention. Complicated non intuative interfaces however, 
 can be quickly judged by users and lead to the failure of the application.
 
 An example of a popular interface with a strong use of a metaphor is the 
@@ -494,7 +494,7 @@ of how they think it should work.
 Another example of a user interface with its roots in the physical world is a
 word processing application, Microsoft Word is a popular example. The physical page
 is used to give the user a representation of their work. With a real time view
-on the layout of the document the user can see immediately the effect of any 
+on the layout of the document the user can see immediatley the effect of any 
 actions they perform.
 
 
@@ -515,15 +515,15 @@ needs to have access to the SQL server in order to execute queries and retrieve
 results. There is no support in any of the mainstream browsers for direct
 integration with a SQL server database, although they do have limited support
 for in browser databases\footnote{\url{http://caniuse.com/\#search=sql-storage}
-shows a report for the support of in browser SQL in common browsers}.
+shows a report for the support of in browser sql in common browsers}.
 
-This therefore requires the creation of some middle ware to connect the database
+This therefore requires the creation of some middleware to connect the database
 to the application. The commonly used method for transferring data in the
 browser is via a JSON web API. There are many methods for connecting to a SQL
 server database however, the Microsoft documentation contains C\#, VB, C++
 documentation and libraries for querying the database.\cite{sqlserverconnect} I
 personally have experience using the C\# connection methods and with this in mind
-the middle ware was chosen to be a C\# website providing a mapping from JSON to
+the middleware was chosen to be a C\# website providing a mapping from JSON to
 the database. See fig \ref{fig:apparch} for a diagram.
 
 \begin{figure}

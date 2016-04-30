@@ -2,7 +2,7 @@
 \begin{abstract}
   
    Developers require an understanding of the task at hand in order to do their job. 
-   Sometimes this information comes from documentation, other times it comes from
+   Somtimes this information comes from documentation, other times it comes from
    code and comments. Having separated code and documentation means developers have to
    read and update two sets of information.
    This duplication of effort can lead to mistakes especially when switching between 

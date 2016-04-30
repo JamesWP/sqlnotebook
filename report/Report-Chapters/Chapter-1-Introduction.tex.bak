@@ -2,15 +2,15 @@
 
 Developers use documentation to aid their understanding of code, however the
 documentation is often constructed and viewed on paper or in a web browser. An
-example for Java applications is \textit{Java-doc}\cite{javadoc}. While the use
+example for Java applications is \textit{Javadoc}\cite{javadoc}. While the use
 of a documentation tools provides a good overview of the code, it shouldn't
 exist in isolation.  Developers can't rely on the documentation alone, they must
 also have an understanding of the other components of the system and their
 interaction.
 
 This is also true of database applications. Database applications are often the
-backing store for the data of the system and also provide a centre for the
-business logic for the application. They are often at the centre of large
+backing store for the data of the system and also provide a center for the
+business logic for the application. They are often at the center of large
 applications and as a result they can be complicated. This is because databases
 are designed to store and validate large amounts of data. They also provide many
 useful mechanisms for integrating with a large number of other technologies.
@@ -26,7 +26,7 @@ developers to document and code in a more consistent and interactive
 manner. The result should try to accomplish this within one tool, both for coding, and for documenting.
 
 The project will cover methods for identifying the problems with existing
-applications, and formalising them. The project then aims to provide an
+applications, and formalizing them. The project then aims to provide an
 evaluation of the different approaches to solving the problems along with
 reasons for any choices made.
 
@@ -47,7 +47,7 @@ information.
 Creating an application for this purpose will require considering the many
 problems that existing applications have attempted to tackle and their success.
 
-One example of the type of problems an organisation application would look to
+One example of the type of problems an organization application would look to
 solve is this: A developer is working on more than one application and is
 responsible for supporting older applications. The developer receives notice
 that a problem exists with a project he worked on previously. His current

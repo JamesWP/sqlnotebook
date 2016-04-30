@@ -30,7 +30,7 @@ code and also headings lists.
 The application should be easily accessible from multiple operating systems.
 
 The targeted operating systems should include Windows, Popular flavors of
-Linux, and Mac OSX.
+linux, and Mac OSX.
 \end{requirement}
 
 \begin{requirement}
@@ -45,7 +45,7 @@ display them in tabular form.
 \begin{requirement}{(Optional)}
 The ability to detect the type of result and view it in a
 more suitable form. The more suitable form could be anything from a
-graph to folder structure to a specific viewer for XML documents.
+graph to folder structure to a specific viewer for xml documents.
 
 This could be implemented in a way that automatically selects the best result
 format for the results. However, this could also be completed with a manual
@@ -53,12 +53,12 @@ selection of the result type that changes the display format.
 \end{requirement}
 
 \begin{requirement}
-The application should have a mechanism for organising related files in
+The application should have a mechanism for organizing related files in
 a hierarchy. Files that are about a part of the system should be stored
 in the same place in the system.
 
 This requirement is non specific so as to not restrict the choice of possible
-implementations. The need to organise files is an old requirement. Many
+implementations. The need to organize files is an old requirement. Many
 existing systems both specifically related to code and in general have
 mechanisms in place for this.
 \end{requirement}
@@ -109,7 +109,7 @@ Within the database, the data can change frequently. The ability to save
 previous versions of the results of the queries and then compare them with new
 versions can have many different uses. For example a query might not be as
 performant as required. The developer will need some method to verify that the
-results from before the changes is the same as the optimised version.
+results from before the changes is the same as the optimized version.
 \end{requirement}
 
 \section{Use cases of the system}\label{use-cases-of-the-system}

@@ -256,7 +256,7 @@ example a search page renders a Search component and an index page
 renders an Index component. This allows for easy addition of new window
 types to the system as each is implemented in a separate file.
 
-The initial design was implemented with the standard HTML entities ``li''
+The initial design was implemented with the standard html entities ``li''
 for list and ``button'' for actions. Later in the design process these
 were replaced with components form a third party library of elements. The library
 provides styled components that can be used in place of standard HTML. 

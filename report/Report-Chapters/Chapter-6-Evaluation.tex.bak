@@ -11,13 +11,13 @@ and does so correctly.
 The system was designed to be easily tested. The data store's interface
 which provides the methods that the application uses was tested at the
 beginning of each run of the application. The application would
-initialise and then perform the testing procedure. The testing procedure
+initialize and then perform the testing procedure. The testing procedure
 contained a simulation of a user performing some tasks, creating pages
 and adding content etc..
 
 After the system had finished running the user's commands the resulting
 UI could be checked against the expected output and in this way
-regression could be detected early. The JavaScript console also provides
+regression could be detected early. The javascript console also provides
 an excellent way to monitor the application for errors at runtime and
 debug to find the cause of the error.
 
@@ -36,8 +36,8 @@ feedback on how real users interacted with the UI to find the
 information stored in the system.
 
 The testers were only told a bare minimum of what the application was
-supposed to do. The application should allow for the organisation of
-data and code for a SQL application.
+supposed to do. The application should allow for the organization of
+data and code for a sql application.
 
 Overall the testers were all able to find the various functionality of
 the application by navigating the familiar UI features like the burger
@@ -56,7 +56,7 @@ discussed below.
 
 \section{Future developments}\label{future-developments}
 
-The application as it is can be used for daily work by SQL developers
+The application as it is can be used for daily work by sql developers
 and meets the requirements set out initially. However there are some
 features that did not fit into the schedule of remaining time. These
 features were not essential to completing a functional working
@@ -66,7 +66,7 @@ application however, they would make the application more useful.
 engines}\label{multiple-database-engines}
 
 Currently the application only supports Microsoft SQL Server however
-with the addition of more middle ware and a configurable settings window
+with the addition of more middleware and a configurable settings window
 the application could be made to talk to any database server.
 
 This would enable the users to work on multiple systems across multiple
@@ -75,11 +75,11 @@ solely use one of those databases.
 
 \subsection{Query explanation}\label{query-explanation}
 
-The middle ware supports a method to explain the objects referenced in a
+The middleware supports a method to explain the objects referenced in a
 query. This functionality could be used to provide code completions and
 also more data when the objects are hovered on.
 
-The meta-data could also be saved in the file when the page is saved.
+The metadata could also be saved in the file when the page is saved.
 This would then be available when the page was loaded. This could
 provide extra context when looking into old queries.
 
@@ -93,7 +93,7 @@ There could be some automatic classification of results to decide the
 best way to display the results. Or failing that, fall back onto manual
 selection for the results presentation.
 
-\subsection{Resizing windows}\label{resizable-windows}
+\subsection{Resizable windows}\label{resizable-windows}
 
 The workspace shows the open pages and their controls. Currently the
 application sizes these to have all the same width however, this might
