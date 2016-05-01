@@ -3,7 +3,7 @@
 The design of the application will draw from the above requirements and
 the associated use cases to form a final application. There are many
 decisions to be made when designing an application and each decision needs to
-be solved in the best way possible given the conditions and the available
+be solved in the best way possible given the conditions, available
 solutions and development time.
 
 In this chapter some design problems are listed and a discussion is provided
@@ -11,7 +11,8 @@ for each on a selection of solutions. Each candidate solution is evaluated and
 compared to other solutions, and a summary of the chosen approach is given in
 conclusion.
 
-\section{Structure of the information in the solution}\label{structure-of-the-information-in-the-solution}
+\section{Structure of the information in the solution}%
+\label{structure-of-the-information-in-the-solution}
 
 The application will store notes and code (files) created by the user, however
 there are many different ways to store these files. Here are a few of the
@@ -21,7 +22,9 @@ different ways to store this information with some positive and negatives of eac
 
 The application could store the notes as a list of simple files in the system.
 Each file would have a name and a collection of other attributes: date created,
-date modified. This method is the most simple of solutions discussed here however, it does rely on the user to correctly name the files with discipline. If this is done correctly then the list of files solution could be viable.
+date modified. This method is the most simple of solutions discussed here
+however, it does rely on the user to correctly name the files with discipline.
+If this is done correctly then the list of files solution could be viable.
 
 For example, the following is an idea of how this might look.
 
@@ -33,15 +36,21 @@ For example, the following is an idea of how this might look.
     - Project B - Overview - Project summary
     - ...
 \end{verbatim}
-Each line in the above example is a file and each has been named with a logical structure of $$ PROJECT - CATEGORY - NAME $$
+Each line in the above example is a file and each has been named with a logical
+structure of $$ PROJECT - CATEGORY - NAME $$
 
-For many reasons this is not an ideal way to view files for a single section of a system. Typically developers work with a single project at once and within that project only a limited subset. This means when the developer has to navigate to a particular file in the system they have to find just one file in what can be a large list.
+For many reasons this is not an ideal way to view files for a single section of
+a system. Typically developers work with a single project at once and within
+that project only a limited subset. This means when the developer has to
+navigate to a particular file in the system they have to find just one file in
+what can be a large list.
 
 
-As a positive consequence of choosing a simple list, the times in which need to
-access files across multiple projects. For example in a use case where the developer
-needs to switch between projects frequently, the developer can see the
-entire list of files without the need to change between folders.
+As a positive consequence of choosing a simple list, when the developer needs to
+access files across multiple projects, they can see the entire list of files
+without the need to change between folders. This can be important because
+often, when performing complicated tasks the smallest of interruptions, like 
+searching folders, can cause cause the user to make mistakes.
 
 \subsection{Folder structure}\label{folder-structure-i.e.explorer-finder}
 
@@ -88,7 +97,7 @@ make finding these files take longer. Each ambiguously located file that needs
 to be found needs to be searched for in (worst case) all the locations it could
 be in.
 
-Both the two above problems are lessened by putting sensible limits on
+Both of the two above problems are lessened by putting sensible limits on
 the depth of the folder structure. The reason for this is discussed
 below.
 
@@ -138,14 +147,14 @@ filtering for the items that have the tags specified:
     - Project summary {Project B, overview}
 \end{verbatim}
 
-n.b.. the folder structure as discussed above
-\ref{folder-structure-i.e.explorer-finder} can be represented with a tagged list
+N.B. The folder structure as discussed above
+\ref{folder-structure-i.e.explorer-finder} can also be represented with a tagged list
 of files. This can be achieved by adding a single tag to each file with the path
 of the folder that contains it. However the tagging system allows for more
 flexibility by allowing multiple tags to exist on the same file.
 
 For some applications, a tagged file system can be both faster and more simple
-to understand for the users, the paper by Bergman, Ofer et. al.\cite{ASI:ASI22906}
+to understand for the users. The paper by Bergman, Ofer et. al.\cite{ASI:ASI22906}
 has a detailed analysis of this technique.
 
 \subsection{Choice of file organisation}\label{choice-of-file-organization}
@@ -194,8 +203,13 @@ and add new items.}
 \end{figure}
 
 Fig \ref{fig:binder} shows the implemented simple folder structure. The names
-given to the levels are as follows: Binder, top level container. Tab, second
-level container. Fig \ref{fig:pages} shows how the second level container is
+given to the levels are as follows: 
+\begin{itemize}
+  \item Binder: top level container
+  \item Tab: second level container
+  \item Page: items in the Binder
+\end{itemize}
+Fig \ref{fig:pages} shows how the second level container is
 displayed.
 
 \section{Search capability in the system}\label{search-capability-in-the-system}
@@ -209,7 +223,7 @@ not. The below is a summary of a few of the options and an evaluation of each.
 
 The search feature should take the users query and provide access to the
 matching files in the system. This part of the searching experience will be the
-same for all the discussed methods. However the parts that differ in the
+same for all the discussed methods. However, the parts that differ in the
 compared methods are:
 \begin{itemize}
   \item the format of the users query
@@ -221,7 +235,7 @@ compared methods are:
 \subsection{Simple text search / serial scanning}%
 \label{simple-text-search-serial-scanning}
 
-The simplest method for searching in a collection of documents is taking a
+The simplest method for searching in a collection of documents is takes a
 simple query from the user (the search term), and searches for the occurrences
 of the term in each file. Each match results in an item in the result list
 displaying the name of the file, and the position within the document.
@@ -257,7 +271,7 @@ This technique that Wikipedia refers to is discussed below.
 When the simple method of searching through all the files becomes too slow, one
 alternative is to create a concordance
 \footnote{\url{https://en.wikipedia.org/wiki/Concordance_(publishing)} for more
-information}. This is a table of words in a publication (here a note) and where
+information}. This is a table of words in a publication (a note) and where
 those words appear within the document. By using this concordance in place of
 searching the text directly, the application is able to search a smaller amount
 of data to find the results and hence speed up the search process.
@@ -297,14 +311,12 @@ provide caches of common queries.
 \subsection{Reasons for selecting simple text
 search}\label{reasons-for-selecting-simple-text-search}
 
-The numerous ways to search the text within a collection of documents each
-provide their own ways to provide the results. While many of the different
-search methods are concerned with the performance of a search and their accuracy
-in terms of the results, the most basic search discussed the Simple text search
-\ref{simple-text-search-serial-scanning} as discussed can offer the features
-needed by most users of the application, While remaining simple to implement.
-This could always be replaced or enhanced as a future development of the
-system.
+While many of the different search methods focus on the performance and 
+accuracy, the most basic search technique, Simple text search
+\ref{simple-text-search-serial-scanning} can offer the features required by most
+users of the application. It does this while also remaining simple to implement.
+This implementation could always be replaced or enhanced as a future
+development of the project.
 
 \section{Type of user interface}\label{type-of-user-interface}
 
@@ -319,10 +331,10 @@ categories:
 
 For visualising text, popular command line applications for editing text like
 Vim\footnote{http://www.vim.org/} or GNU
-Emacs\footnote{\url{https://www.gnu.org/software/emacs/}} do exist however, the
+Emacs\footnote{\url{https://www.gnu.or/software/emacs/}} do exist , however, the
 richer environment of GUI applications are predominately preferred with their
 ability to customise fonts and other attributes of the layout and style. They
-also provide a better experience for users with the use of menus etc. visual
+also provide a better experience for users with the use of menus and visual
 reminders on how to perform actions. These can provide a more simple to use
 application than an alternate command line program with many shortcuts to
 memorise.
@@ -336,23 +348,23 @@ system}\label{native-solution-for-operating-system}
 
 The first option is to develop a ``desktop first'' application. This would mean
 developing an application for a chosen operating system. This would require
-selecting one of the native windowing API's for the operating system. Some of
-these API's are cross platform enabled\footnote{for example, see ``qt'' for a
-popular choice. \url{http://www.qt.io/}} others are proprietary and more
-integrated and tied down to the selected operating system. Apple's own windowing
+selecting one of the native windowing APIs for the operating system. Some of
+these APIs are cross platform enabled\footnote{for example, see ``qt'' for a
+popular choice. \url{http://www.qt.io/}}, others are proprietary, more
+integrated and tied down to the selected operating system. Apple's windowing
 API Cocoa\footnote{\url{https://en.wikipedia.org/wiki/Cocoa_(API)}} is an
 example of this.
 
 One advantage of using the manufacturer built API is in the level of support
-from the manufacturer that is available. However a downside of this is often the
-proprietary libraries are closed source. These closed source API's impose a
-limitation towards changing and tweaking the system.
+from the manufacturer that is available. However a downside of this is that
+often proprietary libraries are closed source. These closed source API's impose
+a limitation towards changing and tweaking the system.
 
 As one of the requirements of the project is that the system should be
 accessible to all platforms \footnote{ see \ref{requirement:accessible} for the
 requirement} the proprietary method is not an option for a time constrained
 development like this. In order to complete a cross platform version using
-operating system specific (non cross platform) API's, Multiple versions would
+operating system specific (non cross platform) APIs, Multiple versions would
 have to be created, one for each different API.
 
 \subsection{Mobile solution for Android / IOS}%
@@ -392,16 +404,16 @@ There are many different libraries to help develop applications with JavaScript.
 However it is still possible to create more traditional client-server
 applications and have a simple lightweight JavaScript free front end. These
 applications tend to be slower in terms of latency between user action and
-application response because of there need to communicate every action with a
+application response because of their need to communicate every action with a
 server over HTTP.
 
 An alternative to the more traditional client-server architecture is the
-now popular ``single page JavaScript application'' or \emph{SPA}. This merges the
+now popular ``single page JavaScript application'' or \emph{SPA}. This blurs the
 lines between the user perceived differences of the desktop and browser
 experience.
 
-An SPA is a single web page that functions like a normal native desktop
-application. The application have all the features of a desktop application,
+An SPA is a single web page that functions like a native desktop
+application. These applications have all the features of a desktop application,
 they can make use of windows, buttons, and animations etc.
 
 External data is gathered in background HTTP calls (called Ajax
@@ -410,15 +422,15 @@ these full reloads and the flash of white as the page loads give the
 user a much better experience.
 
 For more information about the use of Ajax replacing client server applications
-refer to the paper ``Single Page Web Applications'' By Michael S. Mikowski and Josh C.
+refer to the paper ``Single Page Web Applications'' by Michael S. Mikowski and Josh C.
 Powell\cite{garrett2005ajax}.
 
 \subsection{Reason for selecting browser}\label{reason-for-selecting-browser}
 
 For the application being built the choice of platform is between a
-cross platform library for a native desktop application and a web based
-solution. For reasons of experience with technology and programming
-languages developing for the browser was selected as the platform.
+cross platform library for a native desktop application and a web-based
+solution. For reasons including: experience with technology and programming
+languages, developing for the browser was selected as the platform.
 
 The browser application will be accessible from any platform and device
 and provides an easy way to update the application in the future.
@@ -467,7 +479,7 @@ as they would any other app on the device and not through the browser.
 \section{Choice of interface - Notebook
 metaphor}\label{choice-of-interface---notebook-metaphor}
 
-The interface of any application need to be simple and easy to
+The interface of any application needs to be simple and easy to
 understand. The more complicated the interface the more brainpower needs
 to be dedicated to using it. The most successful user interfaces provide
 simple intuitive ways for users to perform the actions they require.
@@ -493,7 +505,7 @@ can be quickly judged by users and lead to the failure of the application.
 An example of a popular interface with a strong use of a metaphor is the 
 Facebook wall. The Facebook wall is a public surface in which a user's friends 
 can see posts that have been placed there. This interface is very easy to explain
-to users as they can understand the effects of their actions with there intuition
+to users as they can understand the effects of their actions with their intuition
 of how they think it should work.
 
 Another example of a user interface with its roots in the physical world is a
@@ -506,7 +518,7 @@ actions they perform.
 
 \begin{figure}
   \includegraphics[width=0.8\textwidth]{Figures/NotebookMetaphor.png}
-  \caption{The notebook metaphor, Real concepts mapped to UML diagram, Image under CC}
+  \caption{The notebook metaphor, real concepts mapped to UML diagram, Image under CC}
   \label{fig:notebookmetaphor}
 \end{figure}
 
@@ -533,7 +545,7 @@ the database. See fig \ref{fig:apparch} for a diagram.
 
 \begin{figure}
   \includegraphics[width=0.8\textwidth]{Figures/ApplicationArch.png}
-  \caption{The application architecture, Shows the connection between browser
+  \caption{The application architecture, shows the connection between browser
   and database through the ``SQL API'' interface }
   \label{fig:apparch}
 \end{figure}
