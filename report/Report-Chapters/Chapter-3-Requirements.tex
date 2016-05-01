@@ -22,8 +22,8 @@ topic. This will aid the user in placing notes in the correct locations.
 The ``files'' stored within the system must be able to store code and also
 notes in a format easily read.
 
-For example these files should have the ability to contain syntax highlighted
-code and also headings lists.
+For example, these files should have the ability to contain syntax highlighted
+code and also headings and lists.
 \end{requirement}
 
 \begin{requirement}\label{requirement:accessible}
@@ -101,9 +101,11 @@ cases the searcher is only interested in one location of the phrase.
 \end{requirement}
 
 \begin{requirement}
-The application should allow for the easy comparison results. Historic results
-of the queries should be shown as a diff or side by side with newly executed
+The application should allow for the easy comparison of results. Historic results
+of the queries should be shown as a diff\footnotemark or side by side with newly executed
 results.
+
+\footnotetext{See \url{https://en.wikipedia.org/wiki/Diff\_utility} for an explanation of diff}
 
 Within the database, the data can change frequently. The ability to save
 previous versions of the results of the queries and then compare them with new
@@ -117,7 +119,7 @@ results from before the changes is the same as the optimised version.
 The use cases of the system will detail how the system is intended to be used.
 The specific and important use cases will give context to the requirements.
 
-The primary users of the system as discussed are the developers of the projects
+The primary users of the system, as discussed, are the developers of the projects
 themselves. The uses will be performing some tasks more than others and some
 will have more of an impact on the use of the application than others. The
 important use cases are captured below to aid development and evaluation.
@@ -151,7 +153,7 @@ within the database
 
 \end{usecase}
 \begin{usecase}
-Developer want to view the versions of files within the notebook.
+Developer wants to view the versions of files within the notebook.
 
 The different states of a piece of code (query) in the system need to be identified and the saved results compared.
 

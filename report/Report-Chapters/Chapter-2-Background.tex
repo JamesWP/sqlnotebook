@@ -1,15 +1,15 @@
 \chapter{Background}\label{background}
 
 In this chapter the reason for a documentation tool is outlined and some
-existing solutions are described. Each existing solution will be analyses for
+existing solutions are described. Each existing solution will be analysed for
 its strengths and weaknesses.
 
 If code is written without comments or detail about what is to be
-achieved then, it is possible that in the future, when the code is read again
-that the original intent is lost. The decisions the developer made about the
-implemented solution have been lost.
+achieved, it is possible that when the code is read again in the future, the
+original intent will have been lost. The decisions the developer made about the implemented
+solution have been lost.
 
-There are many different ways to document code they range from
+There are many different ways to document code ranging from
 completely offline to completely digital and many different methods for
 integrating code. The most simple offline approaches consist of simple
 notepad pages with notes and diagrams. This offers a totally free-form
@@ -18,17 +18,17 @@ you can make notes about. Tables diagrams and hand written pseudo code
 can be easily drawn and annotated. While this is suitable for some
 circumstances it isn't for others. For example if you had an email you wanted
 to include in your notes it would have to be printed and filed in the notes.
-This leads to problems of printing and loosing loose pages.
+This leads to problems of printing and loosing the loose pages.
 
 One solution for this problem is the many solutions for electronic or digital
-notes. \textit{Evernote}\cite{evernote} is a popular choice for notes and offers
+notes. \textit{Evernote}\cite{evernote}, is a popular choice for notes and offers
 a wide range of platforms for note creation however it is not designed with code
-documentation in mind specifically. While it is a very good solution for taking
-notes as is evident in the number of users\footnote{The current raking of
+documentation specifically in mind. While it is a very good solution for taking
+notes, as is evident in the number of users\footnote{The current ranking of
 Evernote by Alexa is 397
 \href{http://www.alexa.com/siteinfo/evernote.com}{http://www.alexa.com/siteinfo/evernote.com}}.
-the lack of specific features aimed at developers for example, version control.
-This makes it difficult to use in this way.
+the lack of specific features aimed at developers e.g. version control makes it
+difficult to use for documentation.
 
 The above solutions are not tailored to suit the specific task of making notes
 for SQL developers. Tools used by developers can both develop new code and help
@@ -44,7 +44,7 @@ purpose. Unless the developer remembers to update the comment then, over time, t
 
 \section{Analysis of existing solutions}\label{analysis-of-existing-solutions}
 
-The different applications vary from exact programming language and
+The different applications vary with programming language and
 operating system. They each have positives and negatives.
 
 Each is analysed below with a brief overview of the functionality provided and
@@ -77,7 +77,7 @@ offers no management of files within the tool, it does however, offer the
 ability to open files from the filesystem. The tool allows for the execution of
 queries and the result viewing pane shows a table containing the output. The
 results in the result pane can not be stored in the application or with the
-query for later review if this is a requirement of a user it must be done
+query for later review. If this is a requirement of a user it must be done
 manually with the export function.
 
 As with many database servers the functions and procedures are stored within the
@@ -110,11 +110,13 @@ See fig \ref{fig:mysqlworkbench} for a screenshot.
 \url{https://www.mysql.com/products/workbench/}
 
 
-The MySQL Workbench offers a multi-platform solution for accessing a
-MySql database. The tool also offers a model management tool (fig \ref{fig:mysqlworkbenchmodel}) for designing
-a logical model of the database entities and relations, this provides a way to
-easily view a high level overview and make useful annotations that go
-above and beyond simple comments written separately. For more information Oracle have published a paper detailing the creation of the tool\cite{mysqlworkbenchmodeldesign}.
+The MySQL Workbench offers a multi-platform solution for accessing a MySql
+database. The tool also offers a model management tool (fig
+\ref{fig:mysqlworkbenchmodel}) for designing a logical model of the database
+entities and relations. This provides a way to easily view a high level
+overview and make useful annotations that go above and beyond simple comments
+written separately. For more information Oracle have published a paper
+detailing the creation of the tool\cite{mysqlworkbenchmodeldesign}.
 
 \begin{figure}
   \includegraphics[width=\linewidth]{Figures/MySqlWorkbenchModel.png}
@@ -123,10 +125,11 @@ above and beyond simple comments written separately. For more information Oracle
 \end{figure}
 
 The Workbench also offers multi-platform capability. Providing more ways for the
-users of an application helps integrate a tool into the workflow of the
-developer, having to switch between operating systems because your database
-management software is not offered on the same work machine as your front end
-development environment. Applications that are not cross-platform pose a problem to the users who develop on another platform the development of this project should aim to support common platforms.
+users of an application to access it, this helps integrate a tool into the 
+workflow of the developer. Having to switch between operating systems when your database
+management software is not available on the same operating system as your application
+development environment can be very disruptive to a development workflow. The
+development of this project should aim to support common platforms.
 
 
 \begin{figure}
@@ -181,11 +184,15 @@ See fig \ref{fig:ipythonnotebook} for a screenshot.
 \url{http://ipython.org/}
 
 IPython, now Jupyter, differs from other solutions evaluated above as it is not
-a SQL IDE and such it doesn't show any specific features for SQL code in
-particular however the integration between the code and the text in the editor
+a SQL IDE as such it doesn't show any specific features for SQL code in
+particular, however, the integration between the code and the text in the editor
 is done in a very easy to use way.
 
-IPython provides an interactive browser based coding tool the ``notebook''. The notebook provides the ability to create cells for code and text. The code can be executed and results are shown below the code. The text cells are formatted with Markdown\cite{wiki:markdown}.
+IPython provides an interactive browser based coding tool, the ``notebook''. The
+notebook provides the ability to create cells for code and text. These code cells
+can then be executed and results are shown below the code. This provides a
+visual relationship between the code and its output. The text cells are
+formatted with Markdown\cite{wiki:markdown}.
 
 \begin{figure}
   \includegraphics[width=\linewidth]{Figures/markdown.png}
@@ -205,18 +212,23 @@ Interactive code and results as done in an IPython notebook provide a
 quick way to see the results of the code. This allows and promotes the
 testing and exploration of the code and can help the developer to
 understand exactly what effects each part of the code has on the end
-result. This is important because developers who understand the impact of the existing code and their changes to it will create less bugs in code and are more productive.
+result. This is important because developers who understand the impact of the
+existing code and their changes to it will create fewer bugs in code and are
+more productive.
 
 The notebooks reside on files on the local disk of the system, much like
 any other file. As such the organisation of the files is left up to you
-the creator to file them in folders etc. This can be a problem for long term users of the application as while the individual files might be organised, if the collection of files is haphazard then the organisation problem has just moved to another part of the process.
+the creator to file them in folders etc. This can be a problem for long term
+users of the application as while the individual files might be organised, if
+the collection of files is haphazard then the organisation problem has just
+moved to another part of the process.
 
 \section{Problems}\label{problems}
 
 \begin{problem}{Keeping notes of important things}
 
 As developers work on their projects and as these projects evolve there
-become an increasing number of things that need to be understood in
+becomes an increasing number of things that need to be understood in
 order to develop / maintain the project. The problem is to provide an
 easy flexible way to make notes on different topics and allow access to
 the notes in an organised way.
@@ -225,7 +237,9 @@ the notes in an organised way.
 
 \begin{problem}{Notes are only useful when they are read}
 
-The notes / code stored need to be accessible for developers, they are read more times than they are modified. This shows the importance of the time spend documenting the code when it is first written.
+The notes / code stored need to be accessible for developers, they are read
+more times than they are modified. This shows the importance of the time spent
+documenting the code when it is first written.
 
 The notes as discussed do not have an implicit structure and so a helpful
 search is difficult to create. Most solutions just offer full text
@@ -258,7 +272,7 @@ date within the note.
 
 \begin{problem}{Data always changing}
 
-The data in database systems is always changing, when the system was
+The data in database systems is always changing. When the system was
 written the data might have looked significantly different to what it is
 now. This makes things hard to compare as time goes on.
 
