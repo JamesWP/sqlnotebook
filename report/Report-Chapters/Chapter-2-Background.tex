@@ -6,27 +6,26 @@ its strengths and weaknesses.
 
 If code is written without comments or detail about what is to be
 achieved, it is possible that when the code is read again in the future, the
-original intent will have been lost. The decisions the developer made about the implemented
-solution have been lost.
+original intent will have been lost. 
 
 There are many different ways to document code ranging from
 completely offline to completely digital and many different methods for
 integrating code. The most simple offline approaches consist of simple
 notepad pages with notes and diagrams. This offers a totally free-form
-approach to note taking as with pen and paper there is no limit to what
+approach to note taking for, as with pen and paper, there is no limit to what
 you can make notes about. Tables diagrams and hand written pseudo code
 can be easily drawn and annotated. While this is suitable for some
-circumstances it isn't for others. For example if you had an email you wanted
+circumstances it is not for others. For example, if you had an email you wanted
 to include in your notes it would have to be printed and filed in the notes.
 This leads to problems of printing and loosing the loose pages.
 
-One solution for this problem is the many solutions for electronic or digital
-notes. \textit{Evernote}\cite{evernote}, is a popular choice for notes and offers
-a wide range of platforms for note creation however it is not designed with code
+One solution for this problem is use of a electronic or digital
+note taking application. \textit{Evernote}\cite{evernote}, is a popular choice for notes and offers
+a wide range of platforms for note creation, however, it is not designed with code
 documentation specifically in mind. While it is a very good solution for taking
 notes, as is evident in the number of users\footnote{The current ranking of
 Evernote by Alexa is 397
-\href{http://www.alexa.com/siteinfo/evernote.com}{http://www.alexa.com/siteinfo/evernote.com}}.
+\href{http://www.alexa.com/siteinfo/evernote.com}{http://www.alexa.com/siteinfo/evernote.com}},
 the lack of specific features aimed at developers e.g. version control makes it
 difficult to use for documentation.
 
@@ -37,7 +36,7 @@ to the code. Well commented code can help developers to both remember the code
 they wrote in the past and understand new code. Comments provide an excellent
 opportunity to pass details of previous attempts from programmer to programmer.
 
-Comments on code can often not last the test of time as they don't force you to
+Comments on code will often not last the test of time as they do not force you to
 update your note when the code they refer to changes. For example, over time the
 commented function might offer more options or deviate from its original
 purpose. Unless the developer remembers to update the comment then, over time, this could lead to confusion.
@@ -49,7 +48,7 @@ operating system. They each have positives and negatives.
 
 Each is analysed below with a brief overview of the functionality provided and
 details on specific positives and negatives. After the analysis of the existing
-solutions the problems will be summarised before requirements are set out.
+solutions, the problems will be summarised before requirements are set out.
 
 
 \begin{figure}
@@ -62,27 +61,26 @@ solutions the problems will be summarised before requirements are set out.
 
 \noindent
 See fig \ref{fig:ssms} for a screenshot.
-
-\noindent
-
+\noindent\\
 \textbf{Product URL}\cite{ssms}
 \url{https://msdn.microsoft.com/en-us/library/hh213248.aspx}
-
-
-
-An official offering for the Microsoft SQL Server Database server. The ability
+\\
+\\
+\noindent
+The official IDE for Microsoft SQL Server has been available for many years. 
+It has many features aimed at the SQL developer. The ability
 to open multiple connections to databases and have many open files in an IDE
 powered with the Microsoft Visual Studio Shell\cite{vsshell}. The application
 offers no management of files within the tool, it does however, offer the
 ability to open files from the filesystem. The tool allows for the execution of
 queries and the result viewing pane shows a table containing the output. The
 results in the result pane can not be stored in the application or with the
-query for later review. If this is a requirement of a user it must be done
+query for later review. If this is a requirement for the user it must be done
 manually with the export function.
 
-As with many database servers the functions and procedures are stored within the
-databases and so any files on the local system might not be in sync with the
-ones on the server. The application is a native windows application and offers
+As with many database servers, the functions and procedures are stored within the
+databases so any files on the local system might not be in sync with the
+ones on the server. The application is a native Windows application and offers
 no alternatives for other operating systems. Developers have the ability to
 connect via TCP, Shared memory, and named pipes. This allows for connections to
 be made from anywhere with a suitably open internet connection however it poses
@@ -104,12 +102,12 @@ From SSMS 2016 preview download page \cite{ssmsdownload}.
 
 \noindent
 See fig \ref{fig:mysqlworkbench} for a screenshot.
-
-\noindent
+\noindent\\
 \textbf{Product URL}\cite{mysqlworkbench}
 \url{https://www.mysql.com/products/workbench/}
-
-
+\\
+\\
+\noindent
 The MySQL Workbench offers a multi-platform solution for accessing a MySql
 database. The tool also offers a model management tool (fig
 \ref{fig:mysqlworkbenchmodel}) for designing a logical model of the database
@@ -125,10 +123,10 @@ detailing the creation of the tool\cite{mysqlworkbenchmodeldesign}.
 \end{figure}
 
 The Workbench also offers multi-platform capability. Providing more ways for the
-users of an application to access it, this helps integrate a tool into the 
-workflow of the developer. Having to switch between operating systems when your database
+users to access the application, this helps integrate a tool into the 
+workflow of the developer. Having to switch between operating systems, when your database
 management software is not available on the same operating system as your application
-development environment can be very disruptive to a development workflow. The
+development environment, can be very disruptive to a development workflow. The
 development of this project should aim to support common platforms.
 
 
@@ -143,17 +141,17 @@ development of this project should aim to support common platforms.
 
 \noindent
 See fig \ref{fig:phpmyadmin} for a screenshot.
-
-\noindent
+\noindent\\
 \textbf{Product URL}\cite{phpmyadmin}
 \url{https://www.phpmyadmin.net/}
-
-
+\\
+\\
+\noindent
 The alternative to the official MySqlWorkbench is an open source web
 based solution for easy access to the database from anywhere you have an
 internet connection. phpMyAdmin is a PHP web application and needs a
-hosting server to provide access. The application, once running
-has a secure login system with the ability to view and edit data in the
+hosting server to provide access. The application, once running,
+has a secure login system and the ability to view and edit data in the
 system.
 
 However the tool offers little in the way of editing for scripts and
@@ -161,12 +159,14 @@ database code. Bulk manipulation of data is not offered in the
 application but instead through the export of multiple different file
 types.
 
-The application also analyses the foreign keys in the database and provides access to the referenced rows in the related tables. This feature can make viewing the data in the system more intuitive as related data need not be separately queried for.
+The application also analyses the foreign keys in the database and provides
+access to the referenced rows in the related tables. This feature can make
+viewing the data in the system more intuitive as related data need not be
+separately queried for.
 
-Unlike the MySql Workbench there is no designer for models and all
-changes are done to the database ``live'' there is no design and publish
-as offered in MySql workbench.
-
+Unlike the MySql Workbench, there is no designer for models and all
+changes are done to the database ``live''. Additionally there is no design and
+publish as offered in MySql workbench.
 
 \begin{figure}
   \includegraphics[width=\linewidth]{Figures/ipython.png}
@@ -178,15 +178,16 @@ as offered in MySql workbench.
 
 \noindent
 See fig \ref{fig:ipythonnotebook} for a screenshot.
-
-\noindent
+\noindent\\
 \textbf{Product URL}\cite{PER-GRA:2007}
 \url{http://ipython.org/}
-
+\\
+\\
+\noindent
 IPython, now Jupyter, differs from other solutions evaluated above as it is not
-a SQL IDE as such it doesn't show any specific features for SQL code in
+a SQL IDE and, as such, it doesn't show any specific features for SQL code in
 particular, however, the integration between the code and the text in the editor
-is done in a very easy to use way.
+is done in an intuative and simple to understand way.
 
 IPython provides an interactive browser based coding tool, the ``notebook''. The
 notebook provides the ability to create cells for code and text. These code cells
@@ -205,7 +206,7 @@ textual documents. Markdown provides simple ways to create headings and lists
 paragraphs while balancing this with simple easy to read minimal formatting.
 
 The mix of executable code within the text notes provides a unique
-experience. The ability to see and tweak code and have a well
+experience: The ability to see and tweak code and have a well
 presented explanation of the code.
 
 Interactive code and results as done in an IPython notebook provide a
@@ -217,9 +218,9 @@ existing code and their changes to it will create fewer bugs in code and are
 more productive.
 
 The notebooks reside on files on the local disk of the system, much like
-any other file. As such the organisation of the files is left up to you
-the creator to file them in folders etc. This can be a problem for long term
-users of the application as while the individual files might be organised, if
+any other file. As such the organisation of the files is left up to you,
+the creator, to file them in folders etc. This can be a problem for long term
+users of the application as, while the individual files might be organised, if
 the collection of files is haphazard then the organisation problem has just
 moved to another part of the process.
 
@@ -251,13 +252,12 @@ information accessible from the past.
 \end{problem}
 
 
-\begin{problem}{Notes that include code are often not
-updated}
+\begin{problem}{Notes that include code are often not updated}
 
 The notes, in some note taking applications that store code, are often not in an
 executable format. This code will have dependencies as code does not exist in
 isolation. For example the functions used or the tables referenced may be
-modified. If the code in the note can not be directly executed, these changed
+modified. If the code in the note cannot be directly executed, these changed
 in the context can create bugs in the code that wont be immediately visible and
 could mislead the reader.
 
@@ -285,7 +285,7 @@ in the future.
 \begin{problem}{System access}
 
 Developers need easy access to the information and the database from in or out
-of the office. Current solutions for IDE's are often system specific and
+of the office. Current solutions for IDEs are often system specific and
 don't offer good cross platform compatibility.
 
 The problem is providing access to the data and system from whatever

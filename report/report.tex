@@ -35,53 +35,37 @@
 
 \renewcommand{\thefootnote}{\roman{footnote}}
 
-
-% problem env
-\newcounter{problemctr}
-\newenvironment{problem}[1][]{%      define a custom environment
-  \refstepcounter{problemctr}% increment the environment's counter
-
-  \addcontentsline{toc}{subsection}{Problem \arabic{problemctr}}%
-  \bigskip\noindent%         create a vertical offset to previous material
-
-  \noindent
-  \textbf{Problem \arabic{problemctr} #1}% or \textbf, \textit, ...
-  \newline%
-  \newline%
-  \noindent
-}{\par\bigskip}%          create a vertical offset to following material
+%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-% requirement env
-\newcounter{requirementctr}
-\newenvironment{requirement}[1][]{%      define a custom environment
-  \refstepcounter{requirementctr}% increment the environment's counter
+\newcounter{problem}[section]
+\newenvironment{problem}[1][]{\refstepcounter{problem}
+   %\addcontentsline{toc}{subsection}{Problem \theproblem\noindent#1}%
+   \par\medskip
+   \noindent \textbf{Problem \theproblem. #1\medskip}\rmfamily%
+   }{\medskip}
 
-  \addcontentsline{toc}{subsection}{Requirement \arabic{requirementctr}}%
-  \bigskip\noindent%         create a vertical offset to previous material
-
-  \noindent
-  \textbf{Requirement \arabic{requirementctr} \textit{#1}}% or \textbf, \textit, ...
-  \newline%
-  \newline%
-  \noindent
-}{\par\bigskip}%          create a vertical offset to following material
+%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-% usecase env
-\newcounter{usecasectr}
-\newenvironment{usecase}[1][]{%      define a custom environment
-  \refstepcounter{usecasectr}% increment the environment's counter
+\newcounter{requirement}[section]
+\newenvironment{requirement}[1][\medskip]{\refstepcounter{requirement}
+   %\addcontentsline{toc}{subsection}{Requirement \therequirement\noindent#1}%
+   \par\medskip
+   \noindent \textbf{Requirement \therequirement. #1 \medskip}\rmfamily
+   }{\medskip}
 
-  \addcontentsline{toc}{subsection}{Use-Case \arabic{usecasectr}}%
-  \bigskip\noindent%         create a vertical offset to previous material
+%%%%%%%%%%%%%%%%%%%%%%%%
 
-  \noindent
-  \textbf{Use-Case \arabic{usecasectr} #1}% or \textbf, \textit, ...
-  \newline%
-  \newline%
-  \noindent
-}{\par\bigskip}%          create a vertical offset to following material
+
+\newcounter{usecase}[section]
+\newenvironment{usecase}[1][]{\refstepcounter{usecase}
+   %\addcontentsline{toc}{subsection}{Usecase \theusecase\noindent#1}%
+   \par\medskip
+   \noindent \textbf{Usecase \theusecase. #1\medskip}\rmfamily%
+   }{\medskip}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 

@@ -9,7 +9,9 @@ below.
 The requirements will be detailed below, along with a brief reason for the
 importance.
 
-\begin{requirement}
+\begin{requirement}{Storage of files}
+
+\noindent
 The application must store notes about the project in various separate
 ``files'' within the system. The files can take on any form however it is
 required that they are separate entities.
@@ -18,7 +20,9 @@ The files must exist in separate items so that each can have a well defined
 topic. This will aid the user in placing notes in the correct locations.
 \end{requirement}
 
-\begin{requirement}
+\begin{requirement}{Types of files}
+\noindent
+
 The ``files'' stored within the system must be able to store code and also
 notes in a format easily read.
 
@@ -26,14 +30,18 @@ For example, these files should have the ability to contain syntax highlighted
 code and also headings and lists.
 \end{requirement}
 
-\begin{requirement}\label{requirement:accessible}
+\begin{requirement}{Accessibility}\label{requirement:accessible}
+\noindent
+
 The application should be easily accessible from multiple operating systems.
 
 The targeted operating systems should include Windows, Popular flavors of
 Linux, and Mac OSX.
 \end{requirement}
 
-\begin{requirement}
+\begin{requirement}{Results}
+\noindent
+
 The application should have the ability to view the results of queries executed
 on the system in table form.
 
@@ -42,7 +50,9 @@ it may be possible to view the results as plain text, the requirement is to
 display them in tabular form.
 \end{requirement}
 
-\begin{requirement}{(Optional)}
+\begin{requirement}{Result display (Optional)}
+\noindent
+
 The ability to detect the type of result and view it in a
 more suitable form. The more suitable form could be anything from a
 graph to folder structure to a specific viewer for XML documents.
@@ -52,7 +62,9 @@ format for the results. However, this could also be completed with a manual
 selection of the result type that changes the display format.
 \end{requirement}
 
-\begin{requirement}
+\begin{requirement}{File organisation}
+\noindent
+
 The application should have a mechanism for organising related files in
 a hierarchy. Files that are about a part of the system should be stored
 in the same place in the system.
@@ -63,7 +75,9 @@ existing systems both specifically related to code and in general have
 mechanisms in place for this.
 \end{requirement}
 
-\begin{requirement}
+\begin{requirement}{Versioning}
+\noindent
+
 The application should save the previous versions of the files stored within.
 These versions should allow editing and saving over newer versions if needed.
 
@@ -72,7 +86,9 @@ existing systems. The ability to see previous versions of code is necessary in
 order to provide adequate context to developers.
 \end{requirement}
 
-\begin{requirement}
+\begin{requirement}{Editing multiple files}
+\noindent
+
 The application should allow for multiple files to
 be open at once and viewed at the same time. This can be done in a free
 sized window mode or windows listed vertically or horizontally.
@@ -82,7 +98,9 @@ to remember the details of the different tasks without the possibility to
 forget one entirely.
 \end{requirement}
 
-\begin{requirement}
+\begin{requirement}{File searching}
+\noindent
+
 The application should allow for searching for strings in files.
 
 When searching through documents the ability to find a single occurrence of a
@@ -91,7 +109,9 @@ continue working. When trying to complete an action, the time taken to find a
 file needed, determines the chance of forgetting the task.
 \end{requirement}
 
-\begin{requirement}{(Optional)}
+\begin{requirement}{Viewing search matches (Optional)}
+\noindent
+
 The ability to view, in each of the search results, where the search phrase was
 found. And the ability to open the file from the search result.
 
@@ -100,7 +120,9 @@ help identify the right instance of the phrase. Because when searching, in most
 cases the searcher is only interested in one location of the phrase.
 \end{requirement}
 
-\begin{requirement}
+\begin{requirement}{Result comparison}
+\noindent
+
 The application should allow for the easy comparison of results. Historic results
 of the queries should be shown as a diff\footnotemark or side by side with newly executed
 results.
@@ -125,12 +147,14 @@ will have more of an impact on the use of the application than others. The
 important use cases are captured below to aid development and evaluation.
 
 \begin{usecase}
+
 Developer wishes to document information about a development.
 
 The correct file must be found in an existing project and amended with details
 of the new development.
 \end{usecase}
 \begin{usecase}
+
 Developer needs to view all documents pertaining to a project in the
 system.
 
@@ -138,27 +162,32 @@ The collection of files for a project must be identified within the
 application.
 \end{usecase}
 \begin{usecase}
+
 Developer needs to find reference to a particular item within the system
 but is unfamiliar with the specific location or other detail
 
 \end{usecase}
 \begin{usecase}
+
 Developer has to find specific details of a system previously worked on
 in order to maintain it.
 
 \end{usecase}
 \begin{usecase}
+
 Developer wants to view and compare previous versions of some code
 within the database
 
 \end{usecase}
 \begin{usecase}
+
 Developer wants to view the versions of files within the notebook.
 
 The different states of a piece of code (query) in the system need to be identified and the saved results compared.
 
 \end{usecase}
 \begin{usecase}
+
 The developer wants to find the places a particular entity is used
 within the system to better understand how the changes planned could
 effect the system as a whole. \footnote{%
